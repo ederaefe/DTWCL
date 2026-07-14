@@ -119,7 +119,8 @@ export default function Contact() {
                   src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%" 
                   height="220" 
-                  style={{ border: 0, borderRadius: 'var(--radius-sm)' }} 
+                  className="map-frame"
+                  style={{ border: 0, borderRadius: '0px' }} 
                   allowFullScreen={true} 
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

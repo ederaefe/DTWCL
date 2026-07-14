@@ -48,7 +48,16 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           className="logo"
           aria-label="DTW Consults Home"
         >
-          <div className="logo-icon">D</div>
+        {/* Geometric SVG logo-icon monogram */}
+          <div className="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="28" height="28" shapeRendering="crispEdges">
+              <polygon points="12,0 52,0 64,12 64,52 52,64 12,64 0,52 0,12" fill="#ad810b"/>
+              <line x1="4" y1="32" x2="12" y2="32" stroke="#c5d3cc" strokeWidth="1.5"/>
+              <line x1="52" y1="32" x2="60" y2="32" stroke="#c5d3cc" strokeWidth="1.5"/>
+              <path d="M20 18 L20 46 L33 46 Q46 46 46 32 Q46 18 33 18 Z" fill="none" stroke="#ffffff" strokeWidth="4" strokeLinejoin="miter"/>
+              <path d="M26 24 L26 40 L33 40 Q39 40 39 32 Q39 24 33 24 Z" fill="rgba(255,255,255,0.35)"/>
+            </svg>
+          </div>
           <span>DTW Consults</span>
         </button>
 

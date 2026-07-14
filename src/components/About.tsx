@@ -112,18 +112,18 @@ export default function About() {
                 Today, we combine classroom teaching with strategic advisory. We help students transition from local secondary mock settings to global university placements in the UK, US, and Europe.
               </p>
               
-              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '24px' }}>
-                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>200k+</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>Subscribers</div>
+              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginTop: '24px' }}>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: '0px', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', borderTop: '2px solid var(--primary)' }}>
+                  <div className="stat-number animate" style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>200k+</div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginTop: '4px' }}>Subscribers</div>
                 </div>
-                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>20k+</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>CBT Installs</div>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: '0px', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', borderTop: '2px solid var(--primary)' }}>
+                  <div className="stat-number animate" style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>20k+</div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginTop: '4px' }}>CBT Installs</div>
                 </div>
-                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>95%</div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>Retention</div>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: '0px', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)', borderTop: '2px solid var(--primary)' }}>
+                  <div className="stat-number animate" style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>95%</div>
+                  <div style={{ fontSize: '0.7rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginTop: '4px' }}>Retention</div>
                 </div>
               </div>
             </div>
