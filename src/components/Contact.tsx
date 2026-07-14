@@ -3,6 +3,8 @@ import { Mail, MapPin, Phone, ShieldCheck, Clock, Check } from 'lucide-react';
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,11 +19,44 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email) return;
-    setFormSubmitted(true);
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mzdnzael", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: 'International Education Consulting',
+          curriculum: 'Both Local & International',
+          notes: ''
+        });
+      } else {
+        const errorData = await response.json();
+        setSubmitError(errorData.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setSubmitError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-12">
@@ -294,10 +329,16 @@ export default function Contact() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-95 btn-active-bounce transition duration-200 uppercase text-center cursor-pointer shadow-sm"
+                    disabled={isSubmitting}
+                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-95 btn-active-bounce transition duration-200 uppercase text-center cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    SUBMIT TO INTAKE REGISTRY
+                    {isSubmitting ? "Submitting to Registry..." : "SUBMIT TO INTAKE REGISTRY"}
                   </button>
+                  {submitError && (
+                    <div className="text-red-500 font-sans text-xs text-center mt-3 font-medium">
+                      {submitError}
+                    </div>
+                  )}
                 </div>
 
                 <div className="animate-breath flex items-center gap-2 justify-center text-[10px] font-mono text-black/45 uppercase mt-4">
