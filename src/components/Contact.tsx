@@ -60,7 +60,7 @@ export default function Contact() {
 
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-12">
-      
+
       {/* Header Grid */}
       <div className="pb-10 border-b border-black/10 space-y-4">
         <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
@@ -76,10 +76,10 @@ export default function Contact() {
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 py-10">
-        
+
         {/* Left Column: Contact Info and Google Map */}
         <div className="lg:col-span-5 space-y-8">
-          
+
           {/* Institutional Contact Block */}
           <div className="space-y-6">
             <h3 className="font-space text-xs font-bold tracking-widest text-black uppercase">
@@ -153,13 +153,13 @@ export default function Contact() {
               OFFICE LOCATION MAP
             </h4>
             <div className="border border-black/10 p-1 bg-stone rounded-xs shadow-sm overflow-hidden group">
-              <iframe 
+              <iframe
                 title="DTW Consults Lagos Office Location Map"
                 src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%" 
-                height="200" 
-                style={{ border: 0 }} 
-                allowFullScreen={true} 
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="filter grayscale opacity-90 hover:grayscale-0 hover:scale-[1.01] transition-all duration-500 rounded-xs"
@@ -191,7 +191,7 @@ export default function Contact() {
         <div className="lg:col-span-7">
           <div className="border border-black/15 bg-cream p-6 md:p-8 rounded-xs relative shadow-xs">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold" />
-            
+
             <div className="mb-6">
               <h3 className="font-fraunces text-xl md:text-2xl font-normal text-black">
                 DTW Consult Intake &amp; Diagnostic Registry
@@ -221,7 +221,7 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label htmlFor="name" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">

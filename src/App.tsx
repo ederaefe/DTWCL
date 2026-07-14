@@ -30,8 +30,8 @@ export default function App() {
         */}
         <main className="pb-12">
           {/* Hero Component Stage */}
-          <div 
-            className={currentPage === 'home' ? 'block animate-fade-in' : 'hidden'} 
+          <div
+            className={currentPage === 'home' ? 'block animate-fade-in' : 'hidden'}
             aria-hidden={currentPage !== 'home'}
             id="section-home"
           >
@@ -39,8 +39,8 @@ export default function App() {
           </div>
 
           {/* About Component Stage (Placed before Services in the DOM) */}
-          <div 
-            className={currentPage === 'about' ? 'block animate-fade-in' : 'hidden'} 
+          <div
+            className={currentPage === 'about' ? 'block animate-fade-in' : 'hidden'}
             aria-hidden={currentPage !== 'about'}
             id="section-about"
           >
@@ -48,8 +48,8 @@ export default function App() {
           </div>
 
           {/* Services Component Stage */}
-          <div 
-            className={currentPage === 'services' ? 'block animate-fade-in' : 'hidden'} 
+          <div
+            className={currentPage === 'services' ? 'block animate-fade-in' : 'hidden'}
             aria-hidden={currentPage !== 'services'}
             id="section-services"
           >
@@ -57,8 +57,8 @@ export default function App() {
           </div>
 
           {/* Contact Component Stage */}
-          <div 
-            className={currentPage === 'contact' ? 'block animate-fade-in' : 'hidden'} 
+          <div
+            className={currentPage === 'contact' ? 'block animate-fade-in' : 'hidden'}
             aria-hidden={currentPage !== 'contact'}
             id="section-contact"
           >

@@ -17,10 +17,10 @@ export default function Hero({ setCurrentPage }: HeroProps) {
 
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-12">
-      
+
       {/* Editorial Typographic Hero Block */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pb-12 border-b border-black/10">
-        
+
         {/* Left column: Text Content */}
         <div className="lg:col-span-7 space-y-6 md:space-y-8">
           <h1 className="font-fraunces text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] md:leading-[1.1] text-black tracking-tight">
@@ -53,9 +53,9 @@ export default function Hero({ setCurrentPage }: HeroProps) {
         <div className="lg:col-span-5 relative w-full max-w-md mx-auto lg:max-w-none animate-bob">
           <div className="relative group overflow-hidden border border-black/15 bg-stone rounded-xs p-1 shadow-sm transition-all duration-300 hover:shadow-lg">
             {/* The Custom Hero Image */}
-            <img 
-              src="/assets/hero-leadership.jpg" 
-              alt="DTW Consults Leadership and Global Career Advisory team" 
+            <img
+              src="/assets/hero-leadership.jpg"
+              alt="DTW Consults Leadership and Global Career Advisory team"
               className="w-full h-[280px] sm:h-[360px] md:h-[400px] object-cover filter grayscale opacity-90 transition-transform duration-700 hover:scale-105"
               width="500"
               height="400"
@@ -72,11 +72,11 @@ export default function Hero({ setCurrentPage }: HeroProps) {
             {/* Side Borders Fades */}
             <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-cream/30 to-transparent pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-cream/30 to-transparent pointer-events-none" />
-            
+
             {/* Premium Gold border highlight on hover */}
             <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition duration-300 pointer-events-none" />
           </div>
-          
+
           {/* Subtle caption overlay */}
           <div className="mt-3 text-right">
             <span className="font-space text-[9px] font-bold tracking-widest text-black/40 uppercase">
@@ -109,8 +109,8 @@ export default function Hero({ setCurrentPage }: HeroProps) {
         {/* 6-item horizontal preview strip */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {servicePreviews.map((service, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="border border-black/10 p-5 bg-stone/70 flex flex-col justify-between hover:border-gold hover:translate-y-[-4px] hover:shadow-xs transition-all duration-300 group cursor-pointer"
               onClick={() => {
                 setCurrentPage('services');
@@ -129,7 +129,7 @@ export default function Hero({ setCurrentPage }: HeroProps) {
 
       {/* Trust & Institution Pillars Section */}
       <div className="py-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-        
+
         <div className="space-y-3 p-2 hover:translate-y-[-2px] transition-transform duration-200">
           <div className="h-10 w-10 flex items-center justify-center bg-gold/10 text-gold rounded-full">
             <Shield className="h-5 w-5" />

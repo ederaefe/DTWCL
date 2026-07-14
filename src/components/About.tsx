@@ -34,7 +34,7 @@ export default function About() {
 
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-16">
-      
+
       {/* Header Block */}
       <div className="pb-10 border-b border-black/10 space-y-4">
         <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
@@ -47,7 +47,7 @@ export default function About() {
 
       {/* Main Core Identity & Accordion Row */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-black/10 items-start">
-        
+
         {/* Left Column: Parent Brand Content */}
         <div className="lg:col-span-6 space-y-6 font-sans text-sm md:text-base text-black/80 leading-relaxed">
           <p className="text-black font-semibold text-lg leading-snug">
@@ -67,10 +67,10 @@ export default function About() {
         {/* Right Column: Collapsible Accordion (UI Layout Ported from firconsulting.com) */}
         <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
           <div className="accordion">
-            
+
             {/* Panel 1: Mission */}
             <div className={`accordion-item ${activePanel === 'mission' ? 'active' : ''}`}>
-              <button 
+              <button
                 onClick={() => togglePanel('mission')}
                 className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'mission'}
@@ -87,7 +87,7 @@ export default function About() {
 
             {/* Panel 2: Vision */}
             <div className={`accordion-item ${activePanel === 'vision' ? 'active' : ''}`}>
-              <button 
+              <button
                 onClick={() => togglePanel('vision')}
                 className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'vision'}
@@ -104,7 +104,7 @@ export default function About() {
 
             {/* Panel 3: Values */}
             <div className={`accordion-item ${activePanel === 'values' ? 'active' : ''}`}>
-              <button 
+              <button
                 onClick={() => togglePanel('values')}
                 className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'values'}
@@ -126,7 +126,7 @@ export default function About() {
 
       {/* DTW Tutorials - Child Company Segment */}
       <div className="py-12 border-b border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        
+
         {/* Left Column: Context Image Box */}
         <div className="lg:col-span-5 relative order-last lg:order-first w-full max-w-sm mx-auto lg:max-w-none">
           <div className="relative border border-black/10 bg-stone p-2 rounded-xs transition-transform duration-300 hover:scale-[1.01]">
@@ -141,9 +141,9 @@ export default function About() {
               <p className="font-sans text-xs text-black/70 leading-relaxed">
                 Purchase WAEC syllabus guides, JAMB UTME practice software, and results check cards directly at our e-commerce portal:
               </p>
-              <a 
-                href="https://www.dtwedustore.com" 
-                target="_blank" 
+              <a
+                href="https://www.dtwedustore.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-space text-[10px] font-bold tracking-widest text-black hover:text-gold uppercase group"
               >
@@ -167,9 +167,9 @@ export default function About() {
             Before DTW Consults expanded into global career transitions and GMAT/GRE international advisory, we founded <strong>DTW Tutorials</strong>. Operating as our specialized child company, DTW Tutorials addresses the critical need for high-quality, free secondary education and test preparation within Nigeria and West Africa.
           </p>
           <p className="font-sans text-sm md:text-base text-black/80 leading-relaxed">
-            Founded by <strong>Blessing Seun Chukwuka</strong>, the DTW Tutorials YouTube initiative has grown to support over <strong>200,000+ students</strong>. We deliver free step-by-step Math and Physics video tutorials, WAEC prep classes, JAMB mock tests, and post-UTME syllabus guides. 
+            Founded by <strong>Blessing Seun Chukwuka</strong>, the DTW Tutorials YouTube initiative has grown to support over <strong>200,000+ students</strong>. We deliver free step-by-step Math and Physics video tutorials, WAEC prep classes, JAMB mock tests, and post-UTME syllabus guides.
           </p>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
               <Youtube className="h-5 w-5 text-gold shrink-0 mt-0.5" />
@@ -210,7 +210,7 @@ export default function About() {
 
         {/* 2-Column Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-          
+
           {/* Founder: Blessing Seun Chukwuka */}
           <div className="team-card border border-black/10 p-6 md:p-8 bg-stone rounded-xs space-y-6 shadow-sm relative group">
             <div className="flex items-center gap-6">
@@ -270,8 +270,8 @@ export default function About() {
         {/* List of Core Values */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {coreValues.map((value, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="border border-black/10 p-6 bg-stone space-y-4 hover:border-gold hover:translate-y-[-4px] hover:shadow-xs transition-all duration-300 shadow-xs"
             >
               <div className="font-fraunces text-lg font-bold text-black/35 select-none">

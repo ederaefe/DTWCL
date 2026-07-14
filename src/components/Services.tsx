@@ -77,7 +77,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
 
   return (
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-16">
-      
+
       {/* Header Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-black/10">
         <div className="lg:col-span-8 space-y-4">
@@ -106,8 +106,8 @@ export default function Services({ setCurrentPage }: ServicesProps) {
       {/* Services List */}
       <div className="divide-y divide-black/10">
         {services.map((service) => (
-          <div 
-            key={service.id} 
+          <div
+            key={service.id}
             id={service.id}
             className="service-card py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-transparent hover:border-black/5 hover:bg-stone/20 transition-all duration-300 px-4 rounded-md"
           >
@@ -126,7 +126,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
               <p className="font-sans text-black/80 leading-relaxed text-sm md:text-base">
                 {service.description}
               </p>
-              
+
               <div className="flex items-center gap-3 pt-2">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
                 <span className="font-space text-[10px] font-bold tracking-widest text-black/60 uppercase">
@@ -157,7 +157,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
 
       {/* Conversion metrics table and lists */}
       <div className="py-12 border-t border-black/10 space-y-8">
-        
+
         <div className="space-y-2">
           <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
             ACADEMIC CONVERSION REFERENCE
@@ -209,7 +209,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
 
       {/* DTW CBT Software App Callout Section */}
       <div className="py-12 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
+
         {/* Left Column: Software Features & Benefits */}
         <div className="lg:col-span-7 space-y-6">
           <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
@@ -221,7 +221,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           <p className="font-sans text-sm md:text-base text-black/80 leading-relaxed">
             For local candidates preparing for national college entries, DTW Tutorials provides our proprietary Offline CBT (Computer Based Test) Practice Application. Available for Windows desktops and Android mobile, this app provides candidates with a realistic simulation of standard national testing environments.
           </p>
-          
+
           <ul className="space-y-3 font-sans text-xs md:text-sm text-black/75">
             <li className="flex items-start gap-2 group cursor-default">
               <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
@@ -238,9 +238,9 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           </ul>
 
           <div className="pt-2">
-            <a 
-              href="https://www.dtwedustore.com" 
-              target="_blank" 
+            <a
+              href="https://www.dtwedustore.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone active:scale-95 btn-active-bounce transition uppercase cursor-pointer shadow-sm"
             >
@@ -266,13 +266,13 @@ export default function Services({ setCurrentPage }: ServicesProps) {
 
       {/* Ethics Resolve Section */}
       <div className="py-12 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
+
         <div className="lg:col-span-7 space-y-6">
           <h3 className="font-fraunces text-2xl md:text-3xl font-normal text-black tracking-tight">
             Our Strict Guarantee of Educational Ethics
           </h3>
           <p className="font-sans text-sm text-black/70 leading-relaxed">
-            DTW Consult is founded upon the principle of sustainable and verifiable intellectual advancement. We never offer short-cuts or participate in examination malpractice. 
+            DTW Consult is founded upon the principle of sustainable and verifiable intellectual advancement. We never offer short-cuts or participate in examination malpractice.
           </p>
           <p className="font-sans text-sm text-black/70 leading-relaxed">
             Our commitment is to guide, teach, correct, and position candidates so they are capable of securing success on their own merits—which is the only guarantee of surviving and thriving in global colleges or high-level careers.
