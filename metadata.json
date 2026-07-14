@@ -1,0 +1,6 @@
+{
+  "name": "DTW Consult",
+  "description": "Institutional education and career consulting firm guiding students and professionals through local (JAMB/WAEC/NECO) and international (SAT/GMAT/IELTS/TOEFL) academic transitions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
