@@ -19,7 +19,7 @@ export default function Footer({ setCurrentPage }: FooterProps) {
           
           {/* Logo & Slogan Column */}
           <div className="space-y-3">
-            <div className="font-fraunces text-xl md:text-2xl font-bold tracking-tight text-[#e8eddf]">
+            <div className="font-fraunces text-xl md:text-2xl font-bold tracking-tight text-white">
               DTW Consult
             </div>
             <p className="font-sans text-xs text-[#e8eddf]/70 max-w-xs leading-relaxed">

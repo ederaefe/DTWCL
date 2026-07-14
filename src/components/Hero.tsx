@@ -126,37 +126,37 @@ export default function Hero({ setCurrentPage }: HeroProps) {
       <div className="py-16 grid grid-cols-1 md:grid-cols-3 gap-10">
         
         <div className="space-y-3">
-          <div className="h-10 w-10 flex items-center justify-center bg-[#f5cb5c]/10 text-[#f5cb5c] rounded-full">
+          <div className="h-10 w-10 flex items-center justify-center bg-[#D4A017]/10 text-[#D4A017] rounded-full">
             <Shield className="h-5 w-5" />
           </div>
-          <h4 className="font-space text-xs font-bold tracking-wider text-[#242423] uppercase">
+          <h4 className="font-space text-xs font-bold tracking-wider text-[#1F1F1F] uppercase">
             UNCOMPROMISING HONESTY
           </h4>
-          <p className="font-sans text-xs text-[#242423]/65 leading-relaxed">
+          <p className="font-sans text-xs text-[#1F1F1F]/65 leading-relaxed">
             We provide realistic evaluations. We never claim guaranteed admissions or scholarships. We offer pure procedural expertise and rigorous study strategies.
           </p>
         </div>
 
         <div className="space-y-3">
-          <div className="h-10 w-10 flex items-center justify-center bg-[#f5cb5c]/10 text-[#f5cb5c] rounded-full">
+          <div className="h-10 w-10 flex items-center justify-center bg-[#D4A017]/10 text-[#D4A017] rounded-full">
             <Globe className="h-5 w-5" />
           </div>
-          <h4 className="font-space text-xs font-bold tracking-wider text-[#242423] uppercase">
+          <h4 className="font-space text-xs font-bold tracking-wider text-[#1F1F1F] uppercase">
             LOCAL & INTERNATIONAL PARITY
           </h4>
-          <p className="font-sans text-xs text-[#242423]/65 leading-relaxed">
+          <p className="font-sans text-xs text-[#1F1F1F]/65 leading-relaxed">
             We treat West African curricula and international entry grids with identical weight. Neither is a secondary focus; our advisors have proven masteries in both.
           </p>
         </div>
 
         <div className="space-y-3">
-          <div className="h-10 w-10 flex items-center justify-center bg-[#f5cb5c]/10 text-[#f5cb5c] rounded-full">
+          <div className="h-10 w-10 flex items-center justify-center bg-[#D4A017]/10 text-[#D4A017] rounded-full">
             <Users className="h-5 w-5" />
           </div>
-          <h4 className="font-space text-xs font-bold tracking-wider text-[#242423] uppercase">
+          <h4 className="font-space text-xs font-bold tracking-wider text-[#1F1F1F] uppercase">
             SYSTEMIC GUIDANCE
           </h4>
-          <p className="font-sans text-xs text-[#242423]/65 leading-relaxed">
+          <p className="font-sans text-xs text-[#1F1F1F]/65 leading-relaxed">
             We operate like a classic advisory firm. We analyze your academic metrics, identify systemic bottlenecks, and co-design a personalized pathway to success.
           </p>
         </div>
