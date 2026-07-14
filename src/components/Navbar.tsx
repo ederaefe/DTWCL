@@ -10,17 +10,17 @@ interface NavbarProps {
 export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Ordered: HOME -> ABOUT -> SERVICES -> CONTACT
   const navItems: { label: string; value: Page }[] = [
     { label: 'HOME', value: 'home' },
-    { label: 'SERVICES', value: 'services' },
     { label: 'ABOUT', value: 'about' },
+    { label: 'SERVICES', value: 'services' },
     { label: 'CONTACT', value: 'contact' },
   ];
 
   const handleNavClick = (page: Page) => {
     setCurrentPage(page);
     setIsOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -30,10 +30,10 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
         {/* Brand Wordmark (Fraunces Serif) */}
         <button
           onClick={() => handleNavClick('home')}
-          className="flex flex-col items-start text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 rounded px-1"
+          className="flex flex-col items-start text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 rounded px-1 cursor-pointer"
         >
           <span className="font-fraunces text-xl md:text-2xl font-bold tracking-tight text-black">
-            DTW Consult
+            DTW Consults
           </span>
           <span className="font-space text-[9px] tracking-widest text-gold uppercase mt-0.5">
             Destined To Win
@@ -48,13 +48,13 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
               <button
                 key={item.value}
                 onClick={() => handleNavClick(item.value)}
-                className={`relative py-2 transition-colors duration-200 hover:text-gold focus:outline-none focus-visible:text-gold ${
+                className={`relative py-2 transition-colors duration-200 hover:text-gold focus:outline-none focus-visible:text-gold cursor-pointer ${
                   isActive ? 'text-black' : 'text-black/60'
                 }`}
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gold" />
+                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gold animate-fade-in" />
                 )}
               </button>
             );
@@ -62,7 +62,7 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           
           <button
             onClick={() => handleNavClick('contact')}
-            className="bg-gold text-black font-space text-xs font-bold tracking-wider px-4 py-2 hover:bg-stone active:scale-98 transition duration-150"
+            className="bg-gold text-black font-space text-xs font-bold tracking-wider px-4 py-2 hover:bg-stone active:scale-98 transition duration-150 cursor-pointer"
           >
             GET IN TOUCH
           </button>
@@ -71,7 +71,7 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 text-black md:hidden hover:text-gold transition"
+          className="p-2 text-black md:hidden hover:text-gold transition cursor-pointer"
           aria-label="Toggle navigation menu"
         >
           {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -88,7 +88,7 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
                 <button
                   key={item.value}
                   onClick={() => handleNavClick(item.value)}
-                  className={`text-left py-2 border-l-2 pl-3 transition-colors ${
+                  className={`text-left py-2 border-l-2 pl-3 transition-colors cursor-pointer ${
                     isActive
                       ? 'border-gold text-black'
                       : 'border-transparent text-black/60'
@@ -101,7 +101,7 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
             
             <button
               onClick={() => handleNavClick('contact')}
-              className="bg-gold text-black font-space text-xs font-bold tracking-wider py-3 text-center transition w-full"
+              className="bg-gold text-black font-space text-xs font-bold tracking-wider py-3 text-center transition w-full cursor-pointer"
             >
               GET IN TOUCH
             </button>

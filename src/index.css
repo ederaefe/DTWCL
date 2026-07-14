@@ -15,3 +15,144 @@
   --color-gold: #f5cb5c;
   --color-cream: #e8eddf;
 }
+
+/* --- Animated Background Gradient Battle & Grain Texture --- */
+@keyframes battleFlow {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+body {
+  position: relative;
+  background-color: var(--color-cream);
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Shifting white and cream gradient battle */
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(232, 237, 223, 0.45) 35%, 
+    rgba(255, 255, 255, 0.95) 70%, 
+    rgba(232, 237, 223, 0.35) 100%
+  );
+  background-size: 100% 300%;
+  animation: battleFlow 15s ease-in-out infinite;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.06;
+  /* Premium high-frequency fractal noise SVG overlay */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Ensure navbar, main, and footer appear above the fixed backgrounds */
+header, main, footer, nav {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- Accordion UI Framework (Adapted from firconsulting.com Layout) --- */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.accordion-item {
+  border: 1px solid rgba(36, 36, 35, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active {
+  border-color: var(--color-gold);
+  box-shadow: 0 4px 20px rgba(245, 203, 92, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-black);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: rgba(245, 203, 92, 0.05);
+}
+
+.accordion-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--color-gold);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 24px;
+}
+
+.accordion-item.active .accordion-body {
+  max-height: 500px;
+  padding: 0 24px 20px;
+}
+
+.accordion-body p {
+  color: var(--color-charcoal);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Fade In Animation Utility */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

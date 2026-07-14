@@ -1,4 +1,4 @@
-import { ArrowRight, Award, Compass, Globe, Shield, Star, Users } from 'lucide-react';
+import { ArrowRight, Globe, Shield, Users } from 'lucide-react';
 import { Page } from '../types';
 
 interface HeroProps {
@@ -37,42 +37,56 @@ export default function Hero({ setCurrentPage }: HeroProps) {
             <button
               onClick={() => {
                 setCurrentPage('contact');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="bg-gold text-black font-space text-sm font-bold tracking-wider px-8 py-4 hover:bg-stone active:scale-98 transition duration-150 text-center uppercase"
+              className="bg-gold text-black font-space text-sm font-bold tracking-wider px-8 py-4 hover:bg-stone active:scale-98 transition duration-150 text-center uppercase cursor-pointer"
             >
               Get in Touch
             </button>
             <button
               onClick={() => {
                 setCurrentPage('services');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="border border-black text-black font-space text-sm font-bold tracking-wider px-8 py-4 hover:bg-black hover:text-cream transition duration-150 text-center uppercase"
+              className="border border-black text-black font-space text-sm font-bold tracking-wider px-8 py-4 hover:bg-black hover:text-cream transition duration-150 text-center uppercase cursor-pointer"
             >
               Explore Services
             </button>
           </div>
         </div>
 
-        {/* Right column: Typographic Grid Visual */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="border border-black/15 p-6 md:p-8 bg-cream space-y-6 rounded-xs relative">
-            {/* Elegant grid background decoration */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#242423_1px,transparent_1px),linear-gradient(to_bottom,#242423_1px,transparent_1px)] bg-[size:14px_24px]" />
+        {/* Right column: Premium Custom Image with HTB-Style Gradient Fading Mask */}
+        <div className="lg:col-span-5 relative">
+          <div className="relative group overflow-hidden border border-black/15 bg-stone rounded-xs p-1 shadow-sm">
+            {/* The Custom Hero Image (Fades into the background at the borders) */}
+            <img 
+              src="/assets/hero-leadership.jpg" 
+              alt="DTW Consults Leadership and Global Career Advisory team" 
+              className="w-full h-[320px] md:h-[400px] object-cover filter grayscale opacity-90 transition-all duration-700 group-hover:scale-102"
+              width="500"
+              height="400"
+              loading="eager"
+            />
+            {/* 
+              HTB STYLE FADING MASK:
+              Uses overlapping gradients to blend the borders of the image seamlessly 
+              into our cream page background, creating a high-end corporate aesthetic.
+            */}
+            {/* Bottom Edge Fade */}
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cream via-cream/50 to-transparent pointer-events-none" />
+            {/* Top Edge Fade */}
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-cream/30 to-transparent pointer-events-none" />
+            {/* Side Borders Fades */}
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-cream/40 to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-cream/40 to-transparent pointer-events-none" />
             
-            <h3 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase relative z-10">
-              OUR CORE PHILOSOPHY
-            </h3>
-            
-            <div className="bg-stone border border-black/10 p-6 md:p-8 relative z-10 shadow-sm">
-              <div className="mb-4 text-xs text-gold font-space font-bold tracking-wider uppercase">
-                DTW Consult Credo
-              </div>
-              <div className="font-fraunces text-xl text-black leading-relaxed italic">
-                “Destined To Win: We believe academic and career transitions are not matters of chance, but of deliberate preparation, uncompromising integrity, and precise institutional guidance.”
-              </div>
-            </div>
+            {/* Premium Gold border highlight on hover */}
+            <div className="absolute inset-0 border border-transparent group-hover:border-gold/30 transition duration-300 pointer-events-none" />
+          </div>
+          
+          {/* Subtle caption overlay mapping to our team */}
+          <div className="mt-3 text-right">
+            <span className="font-space text-[10px] font-bold tracking-widest text-black/40 uppercase">
+              DTW Executive Board &amp; Strategic Advisors
+            </span>
           </div>
         </div>
 
@@ -86,15 +100,14 @@ export default function Hero({ setCurrentPage }: HeroProps) {
               CORE PRACTICE PATHWAYS
             </h2>
             <p className="font-fraunces text-xl text-black mt-1">
-              Six balanced support vectors for academic & career growth
+              Six balanced support vectors for academic &amp; career growth
             </p>
           </div>
           <button
             onClick={() => {
               setCurrentPage('services');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="group inline-flex items-center gap-2 font-space text-xs font-bold tracking-wider text-black hover:text-gold transition uppercase"
+            className="group inline-flex items-center gap-2 font-space text-xs font-bold tracking-wider text-black hover:text-gold transition uppercase cursor-pointer"
           >
             Detailed Syllabi <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
@@ -108,7 +121,6 @@ export default function Hero({ setCurrentPage }: HeroProps) {
               className="border border-black/10 p-5 bg-stone flex flex-col justify-between hover:border-gold transition-all group cursor-pointer"
               onClick={() => {
                 setCurrentPage('services');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
               <span className="font-fraunces text-xl text-black/30 font-medium group-hover:text-gold transition">
@@ -142,7 +154,7 @@ export default function Hero({ setCurrentPage }: HeroProps) {
             <Globe className="h-5 w-5" />
           </div>
           <h4 className="font-space text-xs font-bold tracking-wider text-black uppercase">
-            LOCAL & INTERNATIONAL PARITY
+            LOCAL &amp; INTERNATIONAL PARITY
           </h4>
           <p className="font-sans text-xs text-black/65 leading-relaxed">
             We treat West African curricula and international entry grids with identical weight. Neither is a secondary focus; our advisors have proven masteries in both.

@@ -42,7 +42,7 @@ export default function Contact() {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16">
         
-        {/* Left Column: Contact Info and Scratch Reveal */}
+        {/* Left Column: Contact Info and Google Map */}
         <div className="lg:col-span-5 space-y-10">
           
           {/* Institutional Contact Block */}
@@ -58,11 +58,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-space text-[10px] font-bold tracking-wider text-black/50 uppercase">
-                    HEADQUARTERS ADDRESS
+                    LAGOS HEADQUARTERS ADDRESS
                   </h4>
-                  <p className="font-sans text-xs text-black leading-relaxed mt-1">
-                    Plot 14, Admiralty Way, Lekki Phase 1,<br />
-                    Lagos State, Nigeria
+                  <p className="font-sans text-xs text-black leading-relaxed mt-1 font-medium">
+                    The Black Building,<br />
+                    111/113 Ago Palace Way (before Market Square),<br />
+                    Okota, Lagos State, Nigeria
                   </p>
                 </div>
               </div>
@@ -76,8 +77,8 @@ export default function Contact() {
                     SECURE INQUIRIES
                   </h4>
                   <p className="font-sans text-xs text-black leading-relaxed mt-1">
-                    admissions@dtwconsult.com<br />
-                    careers@dtwconsult.com
+                    dtwconsultng@gmail.com<br />
+                    dtwtutorialsng@gmail.com
                   </p>
                 </div>
               </div>
@@ -90,9 +91,9 @@ export default function Contact() {
                   <h4 className="font-space text-[10px] font-bold tracking-wider text-black/50 uppercase">
                     TELEPHONE DIRECTORY
                   </h4>
-                  <p className="font-sans text-xs text-black leading-relaxed mt-1">
-                    +234 (1) 456-7890<br />
-                    +234 (0) 803-DTW-WINS
+                  <p className="font-sans text-xs text-black leading-relaxed mt-1 font-semibold">
+                    +234 908 509 9582<br />
+                    +234 803 873 2879
                   </p>
                 </div>
               </div>
@@ -111,7 +112,30 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Contact Page Scratch Reveal Component */}
+          {/* Google Maps Location Embedding */}
+          <div className="space-y-4">
+            <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
+              OFFICE LOCATION MAP
+            </h4>
+            <div className="border border-black/10 p-1 bg-stone rounded-xs shadow-sm overflow-hidden">
+              <iframe 
+                title="DTW Consults Lagos Office Location Map"
+                src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%" 
+                height="220" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="filter grayscale opacity-90 hover:grayscale-0 transition-all duration-500 rounded-xs"
+              />
+            </div>
+            <p className="font-sans text-[10px] text-black/50 italic text-center">
+              (Our office is situated in the black building right before the Ago Palace Way Market Square)
+            </p>
+          </div>
+
+          {/* Contact Page Disclosure */}
           <div className="space-y-4">
             <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
               CONSULTATION DISCLOSURE SECURE KEY
@@ -135,7 +159,7 @@ export default function Contact() {
             
             <div className="mb-6">
               <h3 className="font-fraunces text-xl md:text-2xl font-normal text-black">
-                DTW Consult Intake & Diagnostic Registry
+                DTW Consult Intake &amp; Diagnostic Registry
               </h3>
               <p className="font-sans text-xs text-black/60 mt-1">
                 Formal Request for Academic and Career Positioning Advisory
@@ -155,7 +179,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="font-space text-xs text-gold hover:underline font-bold uppercase pt-4"
+                  className="font-space text-xs text-gold hover:underline font-bold uppercase pt-4 cursor-pointer"
                 >
                   Log Another Inquiry
                 </button>
@@ -208,7 +232,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="+234 803 000 0000"
+                      placeholder="+234 908 509 9582"
                       className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition"
                     />
                   </div>
@@ -229,7 +253,7 @@ export default function Contact() {
                       <option>Local Academic Support (JAMB/WAEC/NECO)</option>
                       <option>Postgraduate Consulting</option>
                       <option>Career Development</option>
-                      <option>Tech Bootcamps & Advisory</option>
+                      <option>Tech Bootcamps &amp; Advisory</option>
                     </select>
                   </div>
                 </div>
@@ -245,7 +269,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition appearance-none cursor-pointer"
                   >
-                    <option>Both Local & International</option>
+                    <option>Both Local &amp; International</option>
                     <option>International Only (US/UK/Canada matriculation)</option>
                     <option>Local West African Only (JAMB/WAEC/NECO pathways)</option>
                     <option>Corporate Career Transition Only</option>
@@ -268,10 +292,9 @@ export default function Contact() {
                 </div>
 
                 <div className="pt-2">
-                  {/* Repeated CTA styling: Amber fill, Space Grotesk, dark text, no gradient, no heavy shadow */}
                   <button
                     type="submit"
-                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-98 transition duration-150 uppercase text-center"
+                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-98 transition duration-150 uppercase text-center cursor-pointer"
                   >
                     SUBMIT TO INTAKE REGISTRY
                   </button>

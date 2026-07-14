@@ -3,12 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DTW Consult — Destined To Win</title>
+    
+    <!-- PRIMARY SEO META TAGS -->
+    <title>DTW Consults — Strategic Educational &amp; Career Advisory</title>
+    <meta name="description" content="DTW Consults is a leading educational and career advisory firm. We guide candidates across West Africa through national exam systems (JAMB, WAEC, NECO) and global study pathways (SAT, GMAT, IELTS, GRE admissions)." />
+    <meta name="keywords" content="DTW Consults, DTW Tutorials, Blessing Seun Chukwuka, Educational Consulting Nigeria, JAMB CBT app, WAEC prep, SAT classes Lagos, IELTS test prep, GMAT consulting, Study abroad advisory Lagos, dtwedustore" />
+    <meta name="author" content="Blessing Seun Chukwuka" />
+    <link rel="canonical" href="https://dtwlanind.vercel.app/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- OPEN GRAPH (FACEBOOK & LINKEDIN) -->
+    <meta property="og:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
+    <meta property="og:description" content="Guiding those Destined To Win toward academic and global career success. Comprehensive advisory from local WAEC/JAMB mocks to international SAT/GMAT credentials." />
+    <meta property="og:image" content="https://dtwlanind.vercel.app/favicon.svg" />
+    <meta property="og:url" content="https://dtwlanind.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DTW Consults" />
+
+    <!-- TWITTER CARDS -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
+    <meta name="twitter:description" content="Professional educational and career transition advisory for secondary school candidates and postgraduate scholars." />
+    <meta name="twitter:image" content="https://dtwlanind.vercel.app/favicon.svg" />
+    <meta name="twitter:site" content="@dtwtutorialsng" />
+
+    <!-- LINK FAVICON -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- 
+      STRUCTURED DATA: Schema.org JSON-LD (Parent-Child Organization Setup)
+      Ensures Google search, Gemini, Claude, and Perplexity crawl and index our entity relations.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://dtwlanind.vercel.app/#parent-org",
+          "name": "DTW Consults",
+          "url": "https://dtwlanind.vercel.app/",
+          "logo": "https://dtwlanind.vercel.app/favicon.svg",
+          "description": "Strategic educational advisory and global career consulting firm bridging West African candidates to international academic pathways.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "The Black Building, 111/113 Ago Palace Way (before Market Square), Okota",
+            "addressLocality": "Lagos",
+            "addressRegion": "Lagos State",
+            "addressCountry": "NG"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+234-908-509-9582",
+            "contactType": "admissions and corporate transition helpdesk",
+            "email": "dtwconsultng@gmail.com",
+            "availableLanguage": "English"
+          },
+          "founder": {
+            "@type": "Person",
+            "name": "Blessing Seun Chukwuka",
+            "jobTitle": "Founder & CEO"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://dtwlanind.vercel.app/#child-org",
+          "name": "DTW Tutorials",
+          "parentOrganization": {
+            "@id": "https://dtwlanind.vercel.app/#parent-org"
+          },
+          "url": "https://dtwtutorials.com",
+          "description": "Academic platform providing free STEM tutorial videos, WAEC/NECO prep, and the DTW CBT Practice Application for national exams.",
+          "sameAs": [
+            "https://www.youtube.com/dtwtutorials",
+            "https://www.dtwedustore.com"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://dtwlanind.vercel.app/#website",
+          "url": "https://dtwlanind.vercel.app/",
+          "name": "DTW Consults Official Portal",
+          "publisher": {
+            "@id": "https://dtwlanind.vercel.app/#parent-org"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
