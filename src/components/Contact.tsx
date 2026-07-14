@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, ShieldCheck, Clock, Check } from 'lucide-react';
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -57,176 +56,110 @@ export default function Contact() {
     }
   };
 
-
   return (
-    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-12">
-
-      {/* Header Grid */}
-      <div className="pb-10 border-b border-black/10 space-y-4">
-        <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
-          SECURE CLIENT INTAKE
-        </div>
-        <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
-          Get in Touch with our Advisors
-        </h1>
-        <p className="font-sans text-sm md:text-base text-black/70 max-w-2xl leading-relaxed">
-          Ready to chart your path? Complete our secure institutional intake form below, or contact our administrative desk directly. An experienced DTW advisor will review your academic background and coordinate a formal strategic interview within 24–48 hours.
-        </p>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 py-10">
-
-        {/* Left Column: Contact Info and Google Map */}
-        <div className="lg:col-span-5 space-y-8">
-
-          {/* Institutional Contact Block */}
-          <div className="space-y-6">
-            <h3 className="font-space text-xs font-bold tracking-widest text-black uppercase">
-              ADMINISTRATIVE DESK
-            </h3>
-
-            <div className="space-y-4">
-              <div className="flex items-start gap-4 group">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
-                  <MapPin className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
-                    LAGOS HEADQUARTERS ADDRESS
-                  </h4>
-                  <p className="font-sans text-xs text-black leading-relaxed mt-1 font-medium">
-                    The Black Building,<br />
-                    111/113 Ago Palace Way (before Market Square),<br />
-                    Okota, Lagos State, Nigeria
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 group">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
-                  <Mail className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
-                    SECURE INQUIRIES
-                  </h4>
-                  <p className="font-sans text-xs text-black leading-relaxed mt-1">
-                    dtwconsultng@gmail.com<br />
-                    dtwtutorialsng@gmail.com
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 group">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
-                  <Phone className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
-                    TELEPHONE DIRECTORY
-                  </h4>
-                  <p className="font-sans text-xs text-black leading-relaxed mt-1 font-semibold">
-                    +234 908 509 9582<br />
-                    +234 803 873 2879
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Business Hours */}
-          <div className="border border-black/10 p-6 bg-stone/70 space-y-4">
-            <h4 className="font-space text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
-              <Clock className="h-4 w-4 text-gold" />
-              STANDARD ENGAGEMENT HOURS
-            </h4>
-            <p className="font-sans text-xs text-black/70 leading-relaxed">
-              Monday through Friday: 08:30 AM – 05:00 PM (West Africa Time)<br />
-              Saturday appointments strictly by pre-screened reservation.
-            </p>
-          </div>
-
-          {/* Google Maps Location Embedding with grayscale transitions */}
-          <div className="space-y-3">
-            <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
-              OFFICE LOCATION MAP
-            </h4>
-            <div className="border border-black/10 p-1 bg-stone rounded-xs shadow-sm overflow-hidden group">
-              <iframe
-                title="DTW Consults Lagos Office Location Map"
-                src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="200"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="filter grayscale opacity-90 hover:grayscale-0 hover:scale-[1.01] transition-all duration-500 rounded-xs"
-              />
-            </div>
-            <p className="font-sans text-[10px] text-black/50 italic text-center">
-              (Our office is situated in the black building right before the Ago Palace Way Market Square)
-            </p>
-          </div>
-
-          {/* Contact Page Disclosure */}
-          <div className="space-y-4">
-            <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
-              CONSULTATION DISCLOSURE SECURE KEY
-            </h4>
-            <div className="bg-stone border border-black/10 p-6 md:p-8 shadow-sm">
-              <div className="mb-4 text-xs text-gold font-space font-bold tracking-wider uppercase">
-                CONSULT POLICY DECREE
-              </div>
-              <div className="font-fraunces text-lg text-black leading-relaxed italic">
-                “Initial Consultation: DTW Consult conducts structured diagnostics. There is no cost for the initial 15-minute intake screen. Full profile reviews, SAT/JAMB baseline diagnostics, and formal timeline plans carry custom administrative tariffs disclosed upfront.”
-              </div>
-            </div>
-          </div>
-
+    <section className="section">
+      <div className="container">
+        
+        {/* Section Header */}
+        <div className="section-header animate">
+          <span className="section-label">Contact Desk</span>
+          <h2>Get in Touch with our Advisors</h2>
+          <p>Chart your transition path. Submit details to our intake registry for baseline diagnostics.</p>
         </div>
 
-        {/* Right Column: Embedded Google Form Visual Mockup */}
-        <div className="lg:col-span-7">
-          <div className="border border-black/15 bg-cream p-6 md:p-8 rounded-xs relative shadow-xs">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold" />
+        {/* Contact Grid */}
+        <div className="contact-grid">
+          
+          {/* Left Column: Contact details & Map */}
+          <div className="contact-info animate-left">
+            <h3 className="mb-6 font-semibold">Administrative Office</h3>
 
-            <div className="mb-6">
-              <h3 className="font-fraunces text-xl md:text-2xl font-normal text-black">
-                DTW Consult Intake &amp; Diagnostic Registry
-              </h3>
-              <p className="font-sans text-xs text-black/60 mt-1">
-                Formal Request for Academic and Career Positioning Advisory
+            <div className="contact-item">
+              <div className="contact-icon">📍</div>
+              <div className="contact-text">
+                <h4>Lagos Headquarters</h4>
+                <p>
+                  The Black Building,<br />
+                  111/113 Ago Palace Way (before Market Square),<br />
+                  Okota, Lagos State, Nigeria
+                </p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <div className="contact-icon">✉️</div>
+              <div className="contact-text">
+                <h4>Email Inquiries</h4>
+                <p>
+                  dtwconsultng@gmail.com<br />
+                  dtwtutorialsng@gmail.com
+                </p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <div className="contact-icon">📞</div>
+              <div className="contact-text">
+                <h4>Telephone Directory</h4>
+                <p>
+                  +234 908 509 9582<br />
+                  +234 803 873 2879
+                </p>
+              </div>
+            </div>
+
+            {/* Google Maps Location Embedding */}
+            <div style={{ marginTop: '32px' }}>
+              <h4 style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', letterSpacing: '1px', marginBottom: '12px' }}>
+                Office Location Map
+              </h4>
+              <div style={{ border: '1px solid var(--border)', padding: '4px', background: 'var(--surface)', borderRadius: 'var(--radius-sm)' }}>
+                <iframe 
+                  title="DTW Consults Lagos Office Location Map"
+                  src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%" 
+                  height="220" 
+                  style={{ border: 0, borderRadius: 'var(--radius-sm)' }} 
+                  allowFullScreen={true} 
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic', textAlign: 'center', marginTop: '8px' }}>
+                (Our office is situated in the black building right before Market Square)
               </p>
             </div>
 
-            {formSubmitted ? (
-              <div className="py-12 flex flex-col items-center text-center space-y-4 animate-fade-in">
-                <div className="h-14 w-14 flex items-center justify-center bg-gold/20 text-gold rounded-full border-2 border-gold animate-bounce">
-                  <Check className="h-8 w-8" />
-                </div>
-                <h4 className="font-space text-base font-bold tracking-wide text-black uppercase">
-                  REGISTRY SUBMISSION VERIFIED
-                </h4>
-                <p className="font-sans text-xs text-black/65 max-w-sm leading-relaxed">
-                  Thank you, <span className="font-semibold text-black">{formData.name}</span>. Your details have been securely logged in our transition database. A DTW Senior Advisor will email you at <span className="font-semibold text-black">{formData.email}</span> within 24 hours.
-                </p>
-                <button
-                  onClick={() => setFormSubmitted(false)}
-                  className="font-space text-xs text-gold hover:underline font-bold uppercase pt-4 cursor-pointer active:scale-95"
-                >
-                  Log Another Inquiry
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+          </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label htmlFor="name" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                      Candidate Full Name *
-                    </label>
+          {/* Right Column: Secure Formspree Intake Form */}
+          <div className="animate-right">
+            <div className="form-card">
+              
+              <h3 className="mb-4 text-black">Intake &amp; Diagnostic Registry</h3>
+              
+              {formSubmitted ? (
+                <div style={{ textAlign: 'center', padding: '40px 0' }} className="animate">
+                  <div style={{ fontSize: '3rem', color: 'var(--primary-dark)', marginBottom: '16px' }}>✓</div>
+                  <h4 style={{ fontFamily: 'Space Grotesk, sans-serif', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>
+                    Submission Verified
+                  </h4>
+                  <p className="mt-4 font-sans text-sm text-black/75">
+                    Your baseline details have been securely logged in our transition registry. A DTW Senior Advisor will email you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => setFormSubmitted(false)}
+                    className="mt-6"
+                    style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--primary-dark)', textTransform: 'uppercase', background: 'transparent', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}
+                  >
+                    Log Another Inquiry
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  
+                  <div className="form-group">
+                    <label htmlFor="name">Candidate Full Name *</label>
                     <input
                       type="text"
                       id="name"
@@ -235,14 +168,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. Chinedu Okafor"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
+                      className="form-control"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="email" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                      Secure Email Address *
-                    </label>
+                  <div className="form-group">
+                    <label htmlFor="email">Secure Email Address *</label>
                     <input
                       type="email"
                       id="email"
@@ -251,16 +182,12 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="candidate@domain.com"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
+                      className="form-control"
                     />
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label htmlFor="phone" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                      Contact Telephone Number
-                    </label>
+                  <div className="form-group">
+                    <label htmlFor="phone">Contact Telephone Number</label>
                     <input
                       type="tel"
                       id="phone"
@@ -268,20 +195,19 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+234 908 509 9582"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
+                      className="form-control"
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="service" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                      Primary Service Interest
-                    </label>
+                  <div className="form-group">
+                    <label htmlFor="service">Primary Service Interest</label>
                     <select
                       id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition appearance-none cursor-pointer"
+                      className="form-control"
+                      style={{ cursor: 'pointer' }}
                     >
                       <option>International Education Consulting</option>
                       <option>Standardized Test Preparation</option>
@@ -291,68 +217,63 @@ export default function Contact() {
                       <option>Tech Bootcamps &amp; Advisory</option>
                     </select>
                   </div>
-                </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="curriculum" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                    Academic Curriculum Target
-                  </label>
-                  <select
-                    id="curriculum"
-                    name="curriculum"
-                    value={formData.curriculum}
-                    onChange={handleInputChange}
-                    className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition appearance-none cursor-pointer"
-                  >
-                    <option>Both Local &amp; International</option>
-                    <option>International Only (US/UK/Canada matriculation)</option>
-                    <option>Local West African Only (JAMB/WAEC/NECO pathways)</option>
-                    <option>Corporate Career Transition Only</option>
-                  </select>
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="curriculum">Academic Curriculum Target</label>
+                    <select
+                      id="curriculum"
+                      name="curriculum"
+                      value={formData.curriculum}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <option>Both Local &amp; International</option>
+                      <option>International Only (US/UK/Canada matriculation)</option>
+                      <option>Local West African Only (JAMB/WAEC/NECO pathways)</option>
+                      <option>Corporate Career Transition Only</option>
+                    </select>
+                  </div>
 
-                <div className="space-y-1.5">
-                  <label htmlFor="notes" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                    Brief Statement of Academic / Career Objective
-                  </label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows={4}
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    placeholder="Describe any current standardized scores, targeted universities, or intended career pivots..."
-                    className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition resize-none"
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="notes">Statement of Academic / Career Objective</label>
+                    <textarea
+                      id="notes"
+                      name="notes"
+                      rows={4}
+                      value={formData.notes}
+                      onChange={handleInputChange}
+                      placeholder="Describe any current standardized scores, targeted universities, or intended career pivots..."
+                      className="form-control"
+                      style={{ resize: 'none' }}
+                    />
+                  </div>
 
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-95 btn-active-bounce transition duration-200 uppercase text-center cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? "Submitting to Registry..." : "SUBMIT TO INTAKE REGISTRY"}
-                  </button>
-                  {submitError && (
-                    <div className="text-red-500 font-sans text-xs text-center mt-3 font-medium">
-                      {submitError}
-                    </div>
-                  )}
-                </div>
+                  <div style={{ paddingTop: '8px' }}>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn btn-primary"
+                      style={{ width: '100%' }}
+                    >
+                      {isSubmitting ? "Submitting to Registry..." : "Submit to Intake Registry"}
+                    </button>
+                    {submitError && (
+                      <div style={{ color: '#e53e3e', fontSize: '0.75rem', textAlign: 'center', marginTop: '12px', fontWeight: '600' }}>
+                        {submitError}
+                      </div>
+                    )}
+                  </div>
 
-                <div className="animate-breath flex items-center gap-2 justify-center text-[10px] font-mono text-black/45 uppercase mt-4">
-                  <ShieldCheck className="h-4 w-4 text-gold" />
-                  SSL Secured • Your academic record remains confidential
-                </div>
+                </form>
+              )}
 
-              </form>
-            )}
+            </div>
           </div>
+
         </div>
 
       </div>
-
     </section>
   );
 }

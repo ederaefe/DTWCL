@@ -1,293 +1,225 @@
-import { useState } from 'react';
-import { ChevronDown, GraduationCap, Laptop, Youtube, ExternalLink } from 'lucide-react';
-
 export default function About() {
-  // Accordion state to toggle Mission, Vision, and Values panels
-  const [activePanel, setActivePanel] = useState<string | null>('mission');
-
-  const togglePanel = (panel: string) => {
-    setActivePanel(activePanel === panel ? null : panel);
-  };
-
-  const coreValues = [
+  const valuesList = [
     {
+      icon: "🔍",
       title: "Uncompromising Integrity",
-      description: "We provide realistic, honest assessments of candidate portfolios. We reject false admission claims, focusing strictly on merit and rigorous preparation."
+      desc: "We provide realistic, honest assessments of candidate portfolios. We reject false admission claims, focusing strictly on merit and preparation."
     },
     {
+      icon: "🎯",
       title: "Academic Rigor",
-      description: "We deliver deep, detailed test preparation and advisory resources. Our methods are built on proven performance strategies, not shortcuts."
+      desc: "We deliver deep, detailed test preparation and advisory resources. Our methods are built on proven performance, not shortcuts."
     },
     {
-      title: "Global Parity",
-      description: "We treat national systems (WAEC, JAMB) and international matrices (SAT, GMAT, GCE) with equal importance, ensuring no candidate is restricted by regional boundaries."
+      icon: "🤝",
+      title: "Collaborative Timelines",
+      desc: "We work directly with candidates and parents to design application milestones, coordinate documents, and manage submission deadlines."
     },
     {
-      title: "Student-Centricity",
-      description: "Every pathway we design is calibrated around the student's unique academic, financial, and geographic reality, prioritizing their true growth."
+      icon: "💡",
+      title: "Adaptive Preparation",
+      desc: "We integrate classroom teaching with offline CBT software simulations, adapting standard lessons to active exam conditions."
     },
     {
-      title: "Procedural Clarity",
-      description: "We remove the confusion from transitions, detailing every application step, visa protocol, and course conversion requirement with absolute transparency."
+      icon: "👥",
+      title: "Candidate-Centricity",
+      desc: "Every pathway we design is calibrated around the student's unique academic, financial, and geographic reality, prioritizing their true growth."
+    }
+  ];
+
+  const whyFeatures = [
+    {
+      title: "Combined Advisory Experience",
+      desc: "Our advisors bring deep knowledge of university requirements, exam structures, and credential conversions."
+    },
+    {
+      title: "Tailored Academic Pathways",
+      desc: "No general roadmaps. We design preparation and admissions schedules centered around your specific target institutions."
+    },
+    {
+      title: "Verifiable Performance Results",
+      desc: "A proven track record of student score improvements in SAT, GMAT, and WAEC, leading to competitive acceptances."
+    },
+    {
+      title: "Dual Local & Global Competence",
+      desc: "We provide expert support in West African secondary exams and global postgraduate admissions under one firm."
+    }
+  ];
+
+  const partnersList = [
+    {
+      title: "DTW Tutorials Platform",
+      desc: "Free STEM video lectures and syllabus guides supporting over 200,000+ students."
+    },
+    {
+      title: "DTW EduStore",
+      desc: "Secure e-commerce portal providing WAEC/NECO books and software access."
+    },
+    {
+      title: "Offline CBT Software",
+      desc: "Interactive mock software simulating JAMB and national computer-based testing."
+    },
+    {
+      title: "YouTube Academic Channel",
+      desc: "Step-by-step Math and Physics video tutorials for secondary school pupils."
     }
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-16">
-
-      {/* Header Block */}
-      <div className="pb-10 border-b border-black/10 space-y-4">
-        <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
-          WHO WE ARE &amp; HOW WE PLAN
-        </div>
-        <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
-          About DTW Consults
-        </h1>
-      </div>
-
-      {/* Main Core Identity & Accordion Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-black/10 items-start">
-
-        {/* Left Column: Parent Brand Content */}
-        <div className="lg:col-span-6 space-y-6 font-sans text-sm md:text-base text-black/80 leading-relaxed">
-          <p className="text-black font-semibold text-lg leading-snug">
-            DTW Consults (Destined To Win) is a premier educational advisory and strategic transition firm.
-          </p>
-          <p>
-            We specialize in bridging local talent with global opportunities. Our professional services enable West African secondary students, graduates, and corporate professionals to achieve placements in competitive academic institutions and global workspaces.
-          </p>
-          <p>
-            Whether navigating international boardrooms, converting academic transcripts for European admissions, or preparing candidates for high-stakes standardised tests, our processes remain objective, metrics-driven, and completely transparent.
-          </p>
-          <p>
-            Under the guidance of our leadership team, we manage candidate evaluations, map strategic milestone timelines, and oversee university placements across the UK, USA, Canada, and Europe.
-          </p>
-        </div>
-
-        {/* Right Column: Collapsible Accordion (UI Layout Ported from firconsulting.com) */}
-        <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
-          <div className="accordion">
-
-            {/* Panel 1: Mission */}
-            <div className={`accordion-item ${activePanel === 'mission' ? 'active' : ''}`}>
-              <button
-                onClick={() => togglePanel('mission')}
-                className="accordion-header focus:outline-hidden"
-                aria-expanded={activePanel === 'mission'}
-              >
-                <span className="font-semibold text-sm md:text-base">🎯 Our Mission</span>
-                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
-              </button>
-              <div className="accordion-body">
-                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
-                  <strong>To empower students and professionals</strong> with academic clarity, global advisory, and structured preparation pathways that drive sustainable career growth, international parity, and lasting placement success.
-                </p>
-              </div>
-            </div>
-
-            {/* Panel 2: Vision */}
-            <div className={`accordion-item ${activePanel === 'vision' ? 'active' : ''}`}>
-              <button
-                onClick={() => togglePanel('vision')}
-                className="accordion-header focus:outline-hidden"
-                aria-expanded={activePanel === 'vision'}
-              >
-                <span className="font-semibold text-sm md:text-base">🔭 Our Vision</span>
-                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
-              </button>
-              <div className="accordion-body">
-                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
-                  <strong>To be the most trusted educational and career advisory bridge</strong> between West Africa and global institutions — renowned for academic integrity, standardized preparation, and transparent, merit-based admissions.
-                </p>
-              </div>
-            </div>
-
-            {/* Panel 3: Values */}
-            <div className={`accordion-item ${activePanel === 'values' ? 'active' : ''}`}>
-              <button
-                onClick={() => togglePanel('values')}
-                className="accordion-header focus:outline-hidden"
-                aria-expanded={activePanel === 'values'}
-              >
-                <span className="font-semibold text-sm md:text-base">💎 Our Core Values</span>
-                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
-              </button>
-              <div className="accordion-body">
-                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
-                  <strong>Integrity, Academic Rigor, Global Parity, Uncompromising Transparency, and Student-Centric Mentorship.</strong> These standards guide every timeline we outline, every document we evaluate, and every candidate we advise.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      {/* DTW Tutorials - Child Company Segment */}
-      <div className="py-12 border-b border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-
-        {/* Left Column: Context Image Box */}
-        <div className="lg:col-span-5 relative order-last lg:order-first w-full max-w-sm mx-auto lg:max-w-none">
-          <div className="relative border border-black/10 bg-stone p-2 rounded-xs transition-transform duration-300 hover:scale-[1.01]">
-            {/* Inner info display card representing the software store */}
-            <div className="bg-cream border border-black/10 p-6 md:p-8 space-y-6">
-              <span className="font-space text-[9px] font-bold tracking-widest text-gold uppercase block">
-                CHILD COMPANY PLATFORM
-              </span>
-              <h4 className="font-fraunces text-2xl font-normal text-black italic">
-                DTW Tutorials Store
-              </h4>
-              <p className="font-sans text-xs text-black/70 leading-relaxed">
-                Purchase WAEC syllabus guides, JAMB UTME practice software, and results check cards directly at our e-commerce portal:
-              </p>
-              <a
-                href="https://www.dtwedustore.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-space text-[10px] font-bold tracking-widest text-black hover:text-gold uppercase group"
-              >
-                Visit dtwedustore.com <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            </div>
-            {/* Overlapping small grid background decoration */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#242423_1px,transparent_1px),linear-gradient(to_bottom,#242423_1px,transparent_1px)] bg-[size:10px_20px]" />
-          </div>
-        </div>
-
-        {/* Right Column: Historic Background Content */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
-            FOUNDATION &amp; LOCAL IMPACT
-          </div>
-          <h2 className="font-fraunces text-3xl md:text-4xl font-normal text-black tracking-tight">
-            DTW Tutorials — Our Foundations
-          </h2>
-          <p className="font-sans text-sm md:text-base text-black/80 leading-relaxed">
-            Before DTW Consults expanded into global career transitions and GMAT/GRE international advisory, we founded <strong>DTW Tutorials</strong>. Operating as our specialized child company, DTW Tutorials addresses the critical need for high-quality, free secondary education and test preparation within Nigeria and West Africa.
-          </p>
-          <p className="font-sans text-sm md:text-base text-black/80 leading-relaxed">
-            Founded by <strong>Blessing Seun Chukwuka</strong>, the DTW Tutorials YouTube initiative has grown to support over <strong>200,000+ students</strong>. We deliver free step-by-step Math and Physics video tutorials, WAEC prep classes, JAMB mock tests, and post-UTME syllabus guides.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
-              <Youtube className="h-5 w-5 text-gold shrink-0 mt-0.5" />
-              <div>
-                <h5 className="font-space text-[10px] font-bold text-black uppercase">200k+ YouTube</h5>
-                <p className="font-sans text-[11px] text-black/60 mt-1">Free Math &amp; Physics video tutorials.</p>
-              </div>
-            </div>
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
-              <Laptop className="h-5 w-5 text-gold shrink-0 mt-0.5" />
-              <div>
-                <h5 className="font-space text-[10px] font-bold text-black uppercase">CBT Practice</h5>
-                <p className="font-sans text-[11px] text-black/60 mt-1">Interactive offline prep software.</p>
-              </div>
-            </div>
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
-              <GraduationCap className="h-5 w-5 text-gold shrink-0 mt-0.5" />
-              <div>
-                <h5 className="font-space text-[10px] font-bold text-black uppercase">Local Entry</h5>
-                <p className="font-sans text-[11px] text-black/60 mt-1">Comprehensive JAMB, WAEC &amp; NECO prep.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Leadership Grid (UI Adapted from firconsulting.com) */}
-      <div className="py-12">
-        <div className="mb-10 space-y-2">
-          <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
-            OUR STRATEGIC LEADERSHIP
-          </h2>
-          <p className="font-fraunces text-2xl md:text-3xl text-black">
-            The Advisors Behind DTW Consults
-          </p>
-        </div>
-
-        {/* 2-Column Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-
-          {/* Founder: Blessing Seun Chukwuka */}
-          <div className="team-card border border-black/10 p-6 md:p-8 bg-stone rounded-xs space-y-6 shadow-sm relative group">
-            <div className="flex items-center gap-6">
-              {/* Initials Avatar Card */}
-              <div className="team-avatar w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner">
-                BC
-              </div>
-              <div>
-                <h3 className="font-fraunces text-2xl font-normal text-black leading-tight">
-                  Blessing Seun Chukwuka
-                </h3>
-                <span className="font-space text-xs font-bold tracking-wider text-black/45 uppercase block mt-1">
-                  Founder, CEO &amp; Lead Consultant
-                </span>
-              </div>
-            </div>
-            <p className="font-sans text-xs md:text-sm text-black/70 leading-relaxed pt-2">
-              Blessing is an educational pioneer who has guided thousands of West African candidates toward career success. As the founder of the DTW brand, she oversees global partnerships, international admissions advising, and strategic curriculum direction for our child company platforms.
+    <main>
+      {/* ========== SECTION 1: ABOUT HERO ========== */}
+      <section className="hero about-hero">
+        <div className="container">
+          <div className="hero-content animate">
+            <span className="section-label">Our Story</span>
+            <h1 className="hero-title">
+              <span>A Team Committed to Your </span>
+              <span className="hero-highlight">Academic Success</span>
+            </h1>
+            <p className="hero-desc">
+              We don't just advise — we partner with you to execute. Navigating WAEC/JAMB, SAT/GMAT, and global admissions.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Member 2: Victor Uyanna */}
-          <div className="team-card border border-black/10 p-6 md:p-8 bg-stone rounded-xs space-y-6 shadow-sm relative group">
-            <div className="flex items-center gap-6">
-              {/* Initials Avatar Card */}
-              <div className="team-avatar w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner">
-                VU
-              </div>
-              <div>
-                <h3 className="font-fraunces text-2xl font-normal text-black leading-tight">
-                  Victor Uyanna
-                </h3>
-                <span className="font-space text-xs font-bold tracking-wider text-black/45 uppercase block mt-1">
-                  Head of Academic Programs
-                </span>
-              </div>
-            </div>
-            <p className="font-sans text-xs md:text-sm text-black/70 leading-relaxed pt-2">
-              Victor directs the pedagogical design of the test prep structures. He oversees our writing team, maps exam trends for WAEC, JAMB, GMAT, and SAT, and coordinates online academic operations across West Africa to maintain our high success metrics.
-            </p>
+      {/* ========== SECTION 2: OUR STORY ========== */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header animate">
+            <span className="section-label">Milestones</span>
+            <h2>From Local Classrooms to Global Placements</h2>
+            <p>How we turned years of classroom teaching into a comprehensive advisory firm.</p>
           </div>
 
-        </div>
-      </div>
-
-      {/* Brand Pillars Section */}
-      <div className="py-12">
-        <div className="mb-10 space-y-2">
-          <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
-            OUR PRACTICE VECTORS
-          </h2>
-          <p className="font-fraunces text-2xl md:text-3xl text-black">
-            Five Pillars of Uncompromising Consult Practice
-          </p>
-        </div>
-
-        {/* List of Core Values */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {coreValues.map((value, idx) => (
-            <div
-              key={idx}
-              className="border border-black/10 p-6 bg-stone space-y-4 hover:border-gold hover:translate-y-[-4px] hover:shadow-xs transition-all duration-300 shadow-xs"
-            >
-              <div className="font-fraunces text-lg font-bold text-black/35 select-none">
-                0{idx + 1}
-              </div>
-              <h3 className="font-space text-[10px] font-bold tracking-wider text-black uppercase">
-                {value.title}
-              </h3>
-              <p className="font-sans text-xs text-black/60 leading-relaxed">
-                {value.description}
-              </p>
+          <div className="two-col">
+            {/* Left Column: Image */}
+            <div className="col animate-left">
+              <img 
+                src="/assets/hero-leadership.jpg" 
+                alt="DTW Consults educational advisory journey" 
+                className="rounded-image"
+                style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}
+              />
             </div>
-          ))}
-        </div>
-      </div>
 
-    </section>
+            {/* Right Column: Narrative & Stats */}
+            <div className="col animate-right">
+              <p>
+                DTW Consults was founded to address a critical gap between raw academic prep and global admission pathways. What started as a dedicated YouTube tutorial channel has grown into a trusted partner for candidates across West Africa.
+              </p>
+              <p>
+                Today, we combine classroom teaching with strategic advisory. We help students transition from local secondary mock settings to global university placements in the UK, US, and Europe.
+              </p>
+              
+              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginTop: '24px' }}>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>200k+</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>Subscribers</div>
+                </div>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>20k+</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>CBT Installs</div>
+                </div>
+                <div style={{ background: 'var(--surface)', padding: '16px', borderRadius: 'var(--radius-md)', textAlign: 'center', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--primary-dark)' }}>95%</div>
+                  <div style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: '4px' }}>Retention</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SECTION 3: OUR VALUES ========== */}
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-header animate">
+            <span className="section-label">Our Values</span>
+            <h2>What We Stand For</h2>
+            <p>The principles that guide every candidate roadmap we map and class we direct.</p>
+          </div>
+
+          <div className="values-grid animate" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px' }}>
+            {valuesList.map((val, idx) => (
+              <div 
+                key={idx} 
+                className="value-card"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '32px 24px', boxShadow: 'var(--shadow-sm)', transition: 'all var(--transition)' }}
+              >
+                <div style={{ fontSize: '2rem', marginBottom: '16px' }}>{val.icon}</div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '10px', color: 'var(--secondary)' }}>{val.title}</h3>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.6' }}>{val.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SECTION 4: WHY CHOOSE US ========== */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header animate">
+            <span className="section-label">Why Choose Us</span>
+            <h2>What Sets Us Apart</h2>
+            <p>We do not just offer admissions advice — we build authentic academic performance.</p>
+          </div>
+
+          <div className="two-col reverse">
+            {/* Left Column: List of Features */}
+            <div className="col animate">
+              <div className="why-features" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                {whyFeatures.map((feat, idx) => (
+                  <div key={idx} className="why-feature" style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                    <div style={{ color: 'var(--primary-dark)', fontSize: '1.2rem', fontWeight: 'bold' }}>✓</div>
+                    <div>
+                      <h3 style={{ fontSize: '1.05rem', color: 'var(--secondary)', marginBottom: '4px' }}>{feat.title}</h3>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>{feat.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Image */}
+            <div className="col animate">
+              <img 
+                src="/assets/hero-leadership.jpg" 
+                alt="Why Choose DTW Consults" 
+                className="rounded-image"
+                style={{ borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)' }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== SECTION 5: PARTNERSHIPS ========== */}
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-header animate">
+            <span className="section-label">Our Partnerships</span>
+            <h2>Trusted Education Portals</h2>
+            <p>We work in alignment with top prep programs to deliver complete support.</p>
+          </div>
+
+          <div className="partners-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+            {partnersList.map((partner, idx) => (
+              <div 
+                key={idx} 
+                className="partner-card animate"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '32px 24px', boxShadow: 'var(--shadow-sm)', textAlign: 'center', transition: 'all var(--transition)' }}
+              >
+                <div style={{ width: '60px', height: '60px', background: 'var(--accent)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-dark)' }}>
+                  {idx + 1}
+                </div>
+                <h3 style={{ fontSize: '1.05rem', marginBottom: '8px', color: 'var(--secondary)' }}>{partner.title}</h3>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.6' }}>{partner.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
