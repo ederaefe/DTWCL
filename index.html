@@ -3,101 +3,221 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- 
-      ANALYTICS & SESSION TRACKING:
-      Integrates Microsoft Clarity (ID: xmgo4l74yr) and Google Analytics (ID: G-CRPPHLYPBS) 
-      in the head segment to capture traffic, bounce metrics, and user session recordings.
-    -->
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "xmgo4l74yr");
-    </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRPPHLYPBS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    <!-- ============================================================
+      ANALYTICS & SESSION TRACKING (data-nosnippet: excluded from 
+      AI snippet extraction and content indexing per W3C spec)
+    ============================================================ -->
+    <div data-nosnippet style="display:none">
+      <!-- Microsoft Clarity — Session Recording (ID: xmgo4l74yr) -->
+      <script type="text/javascript">
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "xmgo4l74yr");
+      </script>
 
-      gtag('config', 'G-CRPPHLYPBS');
-    </script>
+      <!-- Google Analytics 4 — Traffic Measurement (ID: G-CRPPHLYPBS) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRPPHLYPBS"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CRPPHLYPBS');
+      </script>
+    </div>
 
-    <!-- PRIMARY SEO META TAGS -->
-    <title>DTW Consults — Strategic Educational &amp; Career Advisory</title>
-    <meta name="description" content="DTW Consults is a leading educational and career advisory firm. We guide candidates across West Africa through national exam systems (JAMB, WAEC, NECO) and global study pathways (SAT, GMAT, IELTS, GRE admissions)." />
-    <meta name="keywords" content="DTW Consults, DTW Tutorials, Blessing Seun Chukwuka, Educational Consulting Nigeria, JAMB CBT app, WAEC prep, SAT classes Lagos, IELTS test prep, GMAT consulting, Study abroad advisory Lagos, dtwedustore" />
-    <meta name="author" content="Blessing Seun Chukwuka" />
-    <link rel="canonical" href="https://dtw-consult.com" />
-    <meta name="robots" content="index, follow" />
+    <!-- ============================================================
+      PRIMARY SEO META TAGS
+    ============================================================ -->
+    <title>DTW Consults — Strategic Educational &amp; Career Advisory | Lagos, Nigeria</title>
+    <meta name="description" content="DTW Consults is a leading educational and career advisory firm in Lagos, Nigeria. We guide candidates across West Africa through JAMB, WAEC, NECO prep and global pathways: SAT, GMAT, IELTS, and international university admissions." />
+    <meta name="keywords" content="DTW Consults, DTW Tutorials, Blessing Seun Chukwuka, Educational Consulting Nigeria, JAMB CBT app, WAEC prep, SAT classes Lagos, IELTS test prep, GMAT consulting, Study abroad advisory Lagos, dtwedustore, academic advisory Nigeria, international university admissions Nigeria" />
+    <meta name="author" content="Blessing Seun Chukwuka — DTW Consults" />
+    <link rel="canonical" href="https://dtw-consult.com/" />
 
-    <!-- OPEN GRAPH (FACEBOOK & LINKEDIN) -->
+    <!-- Full crawl permissions for all major bots -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow" />
+
+    <!-- ============================================================
+      AI CRAWLER SPECIFIC META TAGS
+      Explicit permissions for LLM and AI search indexing
+    ============================================================ -->
+    <!-- Tell AI crawlers this page is intended to be indexed by AI -->
+    <meta name="ai-content-readable" content="true" />
+    <!-- Reference to the LLMs.txt plain-text AI-readable summary -->
+    <link rel="llms" href="/llms.txt" type="text/plain" />
+    <!-- Tells AI systems the primary content language -->
+    <meta name="content-language" content="en" />
+    <!-- Explicitly permit AI snippet generation from page content -->
+    <meta name="ai-snippet" content="allow" />
+
+    <!-- ============================================================
+      OPEN GRAPH (Facebook, LinkedIn, WhatsApp previews)
+    ============================================================ -->
     <meta property="og:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
     <meta property="og:description" content="Guiding those Destined To Win toward academic and global career success. Comprehensive advisory from local WAEC/JAMB mocks to international SAT/GMAT credentials." />
     <meta property="og:image" content="https://dtw-consult.com/favicon.svg" />
-    <meta property="og:url" content="https://dtw-consult.com" />
+    <meta property="og:url" content="https://dtw-consult.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DTW Consults" />
+    <meta property="og:locale" content="en_NG" />
 
-    <!-- TWITTER CARDS -->
+    <!-- ============================================================
+      TWITTER / X CARDS
+    ============================================================ -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
-    <meta name="twitter:description" content="Professional educational and career transition advisory for secondary school candidates and postgraduate scholars." />
+    <meta name="twitter:description" content="Professional educational and career transition advisory for secondary school candidates and postgraduate scholars across West Africa." />
     <meta name="twitter:image" content="https://dtw-consult.com/favicon.svg" />
     <meta name="twitter:site" content="@dtwtutorialsng" />
+    <meta name="twitter:creator" content="@dtwtutorialsng" />
 
-    <!-- LINK FAVICON -->
+    <!-- ============================================================
+      GEOGRAPHIC & BUSINESS META TAGS
+    ============================================================ -->
+    <meta name="geo.region" content="NG-LA" />
+    <meta name="geo.placename" content="Lagos, Nigeria" />
+    <meta name="geo.position" content="6.5244;3.3792" />
+    <meta name="ICBM" content="6.5244, 3.3792" />
+
+    <!-- ============================================================
+      FAVICON & ICONS
+    ============================================================ -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <!-- 
-      STRUCTURED DATA: Schema.org JSON-LD (Parent-Child Organization Setup)
-      Refitted to use our production domain: dtw-consult.com
-    -->
+    <!-- ============================================================
+      STRUCTURED DATA: Schema.org JSON-LD
+      Full graph: LocalBusiness + Organization + Service + FAQ + WebSite
+      AI crawlers (GPTBot, ClaudeBot, etc.) parse this directly.
+    ============================================================ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "Organization",
+          "@type": ["Organization", "LocalBusiness", "EducationalOrganization"],
           "@id": "https://dtw-consult.com/#parent-org",
           "name": "DTW Consults",
+          "alternateName": "Destined To Win Consults",
           "url": "https://dtw-consult.com/",
           "logo": "https://dtw-consult.com/favicon.svg",
-          "description": "Strategic educational advisory and global career consulting firm bridging West African candidates to international academic pathways.",
+          "image": "https://dtw-consult.com/favicon.svg",
+          "description": "Strategic educational advisory and global career consulting firm. DTW Consults bridges West African candidates to international academic pathways through standardized test preparation, university admissions consulting, and career transition advisory.",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "The Black Building, 111/113 Ago Palace Way (before Market Square), Okota",
             "addressLocality": "Lagos",
             "addressRegion": "Lagos State",
+            "postalCode": "102102",
             "addressCountry": "NG"
           },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+234-908-509-9582",
-            "contactType": "admissions and corporate transition helpdesk",
-            "email": "dtwconsultng@gmail.com",
-            "availableLanguage": "English"
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "6.5244",
+            "longitude": "3.3792"
           },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+234-908-509-9582",
+              "contactType": "admissions helpdesk",
+              "email": "dtwconsultng@gmail.com",
+              "availableLanguage": "English"
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+234-803-873-2879",
+              "contactType": "tutorials helpdesk",
+              "email": "dtwtutorialsng@gmail.com",
+              "availableLanguage": "English"
+            }
+          ],
           "founder": {
             "@type": "Person",
             "name": "Blessing Seun Chukwuka",
-            "jobTitle": "Founder & CEO"
+            "jobTitle": "Founder & CEO",
+            "worksFor": { "@id": "https://dtw-consult.com/#parent-org" }
+          },
+          "employee": [
+            {
+              "@type": "Person",
+              "name": "Blessing Seun Chukwuka",
+              "jobTitle": "Founder & CEO"
+            },
+            {
+              "@type": "Person",
+              "name": "Victor Uyanna",
+              "jobTitle": "Head of Academic Programs"
+            }
+          ],
+          "areaServed": ["Nigeria", "West Africa", "United Kingdom", "United States", "Canada"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "DTW Consults Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "International Education Consulting",
+                  "description": "Transcript evaluation, institution matching in UK/US/Canada/Europe, and full application pipeline management."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Standardized Test Preparation",
+                  "description": "Structured preparation for SAT, GMAT, IELTS, and TOEFL. Includes mock examinations and core content review."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Local Academic Support",
+                  "description": "JAMB, WAEC, and NECO preparation through DTW Tutorials. Mock exams, syllabus guides, and live classes."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Postgraduate Consulting",
+                  "description": "MBA, MSc, and PhD pathway advisory. SOP critique, CV rebuilds, and WES credential evaluation."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Career Development & Advisory",
+                  "description": "Career counseling, mock interviews, and LinkedIn positioning for professionals targeting global or executive roles."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Tech Bootcamps & Digital Literacy",
+                  "description": "Data analytics, SQL/Python basics, and UI/UX product design training bootcamps."
+                }
+              }
+            ]
           }
         },
         {
           "@type": "Organization",
           "@id": "https://dtw-consult.com/#child-org",
           "name": "DTW Tutorials",
-          "parentOrganization": {
-            "@id": "https://dtw-consult.com/#parent-org"
-          },
+          "parentOrganization": { "@id": "https://dtw-consult.com/#parent-org" },
           "url": "https://dtwtutorials.com",
-          "description": "Academic platform providing free STEM tutorial videos, WAEC/NECO prep, and the DTW CBT Practice Application for national exams.",
+          "description": "Academic platform providing free STEM tutorial videos, WAEC/NECO prep, and the DTW CBT Practice Application for national exams. Over 200,000 YouTube subscribers and 20,000+ CBT software installs.",
           "sameAs": [
             "https://www.youtube.com/dtwtutorials",
             "https://www.dtwedustore.com"
@@ -108,9 +228,67 @@
           "@id": "https://dtw-consult.com/#website",
           "url": "https://dtw-consult.com/",
           "name": "DTW Consults Official Portal",
-          "publisher": {
-            "@id": "https://dtw-consult.com/#parent-org"
+          "description": "Official website of DTW Consults — strategic educational and career advisory services for West African candidates.",
+          "publisher": { "@id": "https://dtw-consult.com/#parent-org" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://dtw-consult.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
           }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://dtw-consult.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What services does DTW Consults offer?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DTW Consults offers International Education Consulting, Standardized Test Preparation (SAT, GMAT, IELTS, TOEFL), Local Academic Support (JAMB, WAEC, NECO), Postgraduate Consulting (MBA, MSc, PhD), Career Development Advisory, and Tech Bootcamps."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is DTW Consults located?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DTW Consults is located at The Black Building, 111/113 Ago Palace Way (before Market Square), Okota, Lagos State, Nigeria."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who founded DTW Consults?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DTW Consults was founded by Blessing Seun Chukwuka, who serves as Founder and CEO. The Head of Academic Programs is Victor Uyanna."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I contact DTW Consults?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You can reach DTW Consults via email at dtwconsultng@gmail.com, by phone at +234 908 509 9582 or +234 803 873 2879, or through the intake registry form at https://dtw-consult.com/#contact."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is DTW Tutorials?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DTW Tutorials is the academic preparation arm of DTW Consults. It provides free STEM video tutorials on YouTube (200,000+ subscribers), offline CBT practice software (20,000+ installs), and WAEC/NECO exam resources through DTW EduStore."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does DTW Consults help with study abroad applications?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. DTW Consults evaluates candidate transcripts, matches academic profiles to universities in the UK, US, Canada, and Europe, and manages the full application pipeline including visa advisory and document processing."
+              }
+            }
+          ]
         }
       ]
     }

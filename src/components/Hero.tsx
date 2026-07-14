@@ -1,5 +1,6 @@
 import { Page } from '../types';
 import { useState } from 'react';
+import { IconCrosshair, IconScope, IconCrystal, IconChevronDown } from './Icons';
 
 interface HeroProps {
   setCurrentPage: (page: Page) => void;
@@ -127,8 +128,11 @@ export default function Hero({ setCurrentPage }: HeroProps) {
                   onClick={() => togglePanel('mission')}
                   aria-expanded={activePanel === 'mission'}
                 >
-                  <span>🎯 Our Mission</span>
-                  <span className="accordion-icon">▼</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <IconCrosshair size={16} strokeWidth={1.5} />
+                    Our Mission
+                  </span>
+                  <span className="accordion-icon"><IconChevronDown size={14} strokeWidth={2} /></span>
                 </button>
                 <div className="accordion-body">
                   <p>
@@ -144,8 +148,11 @@ export default function Hero({ setCurrentPage }: HeroProps) {
                   onClick={() => togglePanel('vision')}
                   aria-expanded={activePanel === 'vision'}
                 >
-                  <span>🔭 Our Vision</span>
-                  <span className="accordion-icon">▼</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <IconScope size={16} strokeWidth={1.5} />
+                    Our Vision
+                  </span>
+                  <span className="accordion-icon"><IconChevronDown size={14} strokeWidth={2} /></span>
                 </button>
                 <div className="accordion-body">
                   <p>
@@ -161,8 +168,11 @@ export default function Hero({ setCurrentPage }: HeroProps) {
                   onClick={() => togglePanel('values')}
                   aria-expanded={activePanel === 'values'}
                 >
-                  <span>💎 Our Values</span>
-                  <span className="accordion-icon">▼</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <IconCrystal size={16} strokeWidth={1.5} />
+                    Our Values
+                  </span>
+                  <span className="accordion-icon"><IconChevronDown size={14} strokeWidth={2} /></span>
                 </button>
                 <div className="accordion-body">
                   <p>

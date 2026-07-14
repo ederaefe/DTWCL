@@ -1,4 +1,5 @@
 import { Page } from '../types';
+import { IconHandset, IconEnvelope, IconPin } from './Icons';
 
 interface FooterProps {
   setCurrentPage: (page: Page) => void;
@@ -48,9 +49,18 @@ export default function Footer({ setCurrentPage }: FooterProps) {
           {/* Contacts */}
           <div className="footer-links">
             <h4>Contact Desk</h4>
-            <a href="tel:+2349085099582">📞 +234 908 509 9582</a>
-            <a href="mailto:dtwconsultng@gmail.com">✉️ dtwconsultng@gmail.com</a>
-            <a>📍 Lagos, Nigeria</a>
+            <a href="tel:+2349085099582" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <IconHandset size={14} strokeWidth={1.5} />
+              +234 908 509 9582
+            </a>
+            <a href="mailto:dtwconsultng@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <IconEnvelope size={14} strokeWidth={1.5} />
+              dtwconsultng@gmail.com
+            </a>
+            <a style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'default' }}>
+              <IconPin size={14} strokeWidth={1.5} />
+              Lagos, Nigeria
+            </a>
           </div>
 
         </div>
@@ -59,33 +69,31 @@ export default function Footer({ setCurrentPage }: FooterProps) {
         <div className="footer-bottom">
           <p>&copy; {currentYear} DTW Consults. All rights reserved.</p>
           <div className="social-links">
-            <a 
-              href="https://www.facebook.com/dtwtutorials" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Facebook" 
-              title="Facebook"
-            >
-              f
-            </a>
-            <a 
-              href="https://www.instagram.com/dtwtutorials" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="Instagram" 
-              title="Instagram"
-            >
-              ig
-            </a>
-            <a 
-              href="https://www.linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              aria-label="LinkedIn" 
-              title="LinkedIn"
-            >
-              in
-            </a>
+              {/* Facebook — geometric F monogram SVG */}
+              <a href="https://www.facebook.com/dtwtutorials" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square">
+                  <rect x="2" y="2" width="20" height="20" />
+                  <path d="M15 2v4h-2a2 2 0 0 0-2 2v3h4l-1 4h-3v7" />
+                </svg>
+              </a>
+              {/* Instagram — geometric camera frame SVG */}
+              <a href="https://www.instagram.com/dtwtutorials" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square">
+                  <rect x="2" y="2" width="20" height="20" />
+                  <rect x="8" y="8" width="8" height="8" />
+                  <line x1="17" y1="5" x2="19" y2="5" />
+                </svg>
+              </a>
+              {/* LinkedIn — geometric L-in frame SVG */}
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square">
+                  <rect x="2" y="2" width="20" height="20" />
+                  <line x1="7" y1="10" x2="7" y2="17" />
+                  <line x1="7" y1="7" x2="7" y2="7" strokeWidth="3" />
+                  <line x1="11" y1="17" x2="11" y2="13" />
+                  <path d="M11 13a3 3 0 0 1 6 0v4" />
+                </svg>
+              </a>
           </div>
         </div>
 

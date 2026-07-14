@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconPin, IconEnvelope, IconHandset, IconCheck } from './Icons';
 
 export default function Contact() {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -75,7 +76,7 @@ export default function Contact() {
             <h3 className="mb-6 font-semibold">Administrative Office</h3>
 
             <div className="contact-item">
-              <div className="contact-icon">📍</div>
+              <div className="contact-icon"><IconPin size={22} strokeWidth={1.4} /></div>
               <div className="contact-text">
                 <h4>Lagos Headquarters</h4>
                 <p>
@@ -87,7 +88,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">✉️</div>
+              <div className="contact-icon"><IconEnvelope size={22} strokeWidth={1.4} /></div>
               <div className="contact-text">
                 <h4>Email Inquiries</h4>
                 <p>
@@ -98,7 +99,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-item">
-              <div className="contact-icon">📞</div>
+              <div className="contact-icon"><IconHandset size={22} strokeWidth={1.4} /></div>
               <div className="contact-text">
                 <h4>Telephone Directory</h4>
                 <p>
@@ -141,7 +142,7 @@ export default function Contact() {
               
               {formSubmitted ? (
                 <div style={{ textAlign: 'center', padding: '40px 0' }} className="animate">
-                  <div style={{ fontSize: '3rem', color: 'var(--primary-dark)', marginBottom: '16px' }}>✓</div>
+                  <div style={{ color: 'var(--primary-dark)', marginBottom: '16px', display: 'flex', justifyContent: 'center' }}><IconCheck size={44} strokeWidth={1.2} /></div>
                   <h4 style={{ fontFamily: 'Space Grotesk, sans-serif', textTransform: 'uppercase', fontWeight: '700', letterSpacing: '1px' }}>
                     Submission Verified
                   </h4>

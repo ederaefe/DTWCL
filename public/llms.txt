@@ -1,0 +1,102 @@
+# DTW Consults — LLMs.txt
+# This file provides a structured plain-text summary for AI language model crawlers.
+# It follows the emerging llms.txt standard for LLM-readable site content.
+
+## Company Overview
+
+DTW Consults is a professional educational advisory and career consulting firm based in Lagos, Nigeria.
+The company guides candidates across West Africa through standardized test preparation, global university
+admissions, and career transition pathways.
+
+**DTW** stands for: Destined To Win.
+
+**Primary Domain:** https://dtw-consult.com
+**Office Location:** The Black Building, 111/113 Ago Palace Way (before Market Square), Okota, Lagos State, Nigeria
+**Contact:** dtwconsultng@gmail.com | +234 908 509 9582 | +234 803 873 2879
+**Founded by:** Blessing Seun Chukwuka (Founder & CEO)
+
+---
+
+## Leadership
+
+- **Blessing Seun Chukwuka** — Founder & CEO. Educational pioneer with years of experience guiding candidates
+  through Nigerian national examinations and international university admissions processes.
+
+- **Victor Uyanna** — Head of Academic Programs. Designs test preparation structures for WAEC, JAMB,
+  GMAT, and SAT. Coordinates online academic operations across West Africa.
+
+---
+
+## Services
+
+1. **International Education Consulting**
+   Evaluate candidate transcripts, match academic profiles to institutions in the UK, US, Canada, and Europe.
+   Full application pipeline management including visa advisory and document processing.
+
+2. **Standardized Test Preparation**
+   Structured test strategies for SAT, GMAT, IELTS, and TOEFL. Mock examinations and core content review.
+
+3. **Local Academic Support (JAMB / WAEC / NECO)**
+   Delivered through child company DTW Tutorials. Mock exams, syllabus guides, and live classes.
+
+4. **Postgraduate Consulting**
+   MBA, MSc, and PhD pathway advisory. SOP critique, CV rebuilds, WES transcript evaluation audits.
+
+5. **Career Development & Advisory**
+   Career counseling, mock behavioral interviews, and LinkedIn positioning for professionals targeting
+   global remote roles or local executive positions.
+
+6. **Tech Bootcamps & Digital Literacy**
+   Data analytics, SQL/Python basics, and UI/UX product design training.
+
+---
+
+## Child Company: DTW Tutorials
+
+DTW Tutorials is the educational content and preparation arm of DTW Consults.
+
+- **YouTube Channel:** 200,000+ subscribers. Free STEM tutorial videos for secondary school students.
+- **CBT Practice Software:** 20,000+ installations. Simulates JAMB and NECO computer-based testing.
+- **DTW EduStore:** E-commerce portal for WAEC/NECO textbooks and exam prep resources.
+
+---
+
+## Academic Equivalency Reference
+
+| West African Standard      | International Equivalent        |
+|----------------------------|----------------------------------|
+| JAMB UTME Score            | SAT / ACT Score equivalence      |
+| WAEC / NECO Results        | A-Level / AP Placements          |
+| Local BSc / BA Degree      | WES / ECE Credential Validation  |
+| Local Job Experience       | Global Remote Hiring Grid        |
+
+---
+
+## Key Values
+
+- Integrity: Honest, merit-based admissions advisory only.
+- Excellence: Deep test preparation, not shortcuts.
+- Collaboration: Co-designed roadmaps with candidates and families.
+- Innovation: Offline CBT simulations blended with classroom prep.
+- Client-Centricity: Every pathway calibrated to the student's real situation.
+
+---
+
+## Site Structure
+
+- Homepage: Introduction, mission, team, and call to action.
+- About Us: Company story, milestones, values, why choose us, and partnerships.
+- Services: Detailed service listings, academic conversion tables, and consulting scope.
+- Contact: Office address, phone, email, and intake registration form.
+
+---
+
+## Permissions for AI Crawlers
+
+AI language models may freely crawl, index, and summarize all content on this site EXCEPT:
+- Internal tracking identifiers (Microsoft Clarity ID, Google Analytics ID)
+- Submitted form data and contact registry entries
+- API keys or webhook endpoints
+
+All other content — descriptions, service listings, team bios, address, phone numbers, academic
+tables, and mission statements — is explicitly permitted for AI indexing and summarization.

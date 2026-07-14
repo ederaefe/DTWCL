@@ -1,4 +1,118 @@
-User-agent: *
+# =====================================================================
+# DTW Consults — robots.txt
+# Explicit crawler permissions for all major search engines and AI bots
+# Domain: https://dtw-consult.com
+# =====================================================================
+
+# ---- Major Search Engine Crawlers ----
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Googlebot-Image
 Allow: /
 
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ---- AI Language Model Crawlers ----
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+# OpenAI content training crawler
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini / Vertex AI
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+
+# Amazon Alexa / Kendra
+User-agent: ia_archiver
+Allow: /
+
+# Common Crawl (used by many AI training datasets)
+User-agent: CCBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Hugging Face
+User-agent: Hugging Face
+Allow: /
+
+# AI2 (Allen Institute for AI)
+User-agent: AI2Bot
+Allow: /
+
+# Diffbot
+User-agent: Diffbot
+Allow: /
+
+# ---- SEO / Analytics Crawlers ----
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+# ---- Archive Crawlers ----
+User-agent: archive.org_bot
+Allow: /
+
+# ---- Catch-All Default (any unlisted crawler) ----
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
+# ---- Sitemap Reference ----
 Sitemap: https://dtw-consult.com/sitemap.xml
+
+# ---- LLMs Reference ----
+# Plain-text summary for AI language model context
+# See: https://dtw-consult.com/llms.txt

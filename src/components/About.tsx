@@ -1,27 +1,28 @@
+import { IconPrism, IconCrosshair, IconInterlace, IconSpark, IconNodes, IconTick } from './Icons';
 export default function About() {
   const valuesList = [
     {
-      icon: "🔍",
+      icon: <IconPrism size={28} strokeWidth={1.2} />,
       title: "Uncompromising Integrity",
       desc: "We provide realistic, honest assessments of candidate portfolios. We reject false admission claims, focusing strictly on merit and preparation."
     },
     {
-      icon: "🎯",
+      icon: <IconCrosshair size={28} strokeWidth={1.2} />,
       title: "Academic Rigor",
       desc: "We deliver deep, detailed test preparation and advisory resources. Our methods are built on proven performance, not shortcuts."
     },
     {
-      icon: "🤝",
+      icon: <IconInterlace size={28} strokeWidth={1.2} />,
       title: "Collaborative Timelines",
       desc: "We work directly with candidates and parents to design application milestones, coordinate documents, and manage submission deadlines."
     },
     {
-      icon: "💡",
+      icon: <IconSpark size={28} strokeWidth={1.2} />,
       title: "Adaptive Preparation",
       desc: "We integrate classroom teaching with offline CBT software simulations, adapting standard lessons to active exam conditions."
     },
     {
-      icon: "👥",
+      icon: <IconNodes size={28} strokeWidth={1.2} />,
       title: "Candidate-Centricity",
       desc: "Every pathway we design is calibrated around the student's unique academic, financial, and geographic reality, prioritizing their true growth."
     }
@@ -145,9 +146,9 @@ export default function About() {
               <div 
                 key={idx} 
                 className="value-card"
-                style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '32px 24px', boxShadow: 'var(--shadow-sm)', transition: 'all var(--transition)' }}
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '0px', borderTop: '2px solid rgba(173,129,11,0.3)', padding: '32px 24px', boxShadow: 'var(--shadow-sm)', transition: 'all var(--transition)' }}
               >
-                <div style={{ fontSize: '2rem', marginBottom: '16px' }}>{val.icon}</div>
+                <div style={{ color: 'var(--secondary)', marginBottom: '16px', opacity: 0.85 }}>{val.icon}</div>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: '10px', color: 'var(--secondary)' }}>{val.title}</h3>
                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, lineHeight: '1.6' }}>{val.desc}</p>
               </div>
@@ -171,7 +172,7 @@ export default function About() {
               <div className="why-features" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {whyFeatures.map((feat, idx) => (
                   <div key={idx} className="why-feature" style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <div style={{ color: 'var(--primary-dark)', fontSize: '1.2rem', fontWeight: 'bold' }}>✓</div>
+                    <div style={{ color: 'var(--primary-dark)', flexShrink: 0, marginTop: '2px' }}><IconTick size={18} strokeWidth={2} /></div>
                     <div>
                       <h3 style={{ fontSize: '1.05rem', color: 'var(--secondary)', marginBottom: '4px' }}>{feat.title}</h3>
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>{feat.desc}</p>
