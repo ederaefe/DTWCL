@@ -27,7 +27,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#e8eddf] text-[#242423] font-sans flex flex-col justify-between selection:bg-[#f5cb5c]/20 selection:text-[#242423] antialiased">
+    <div className="min-h-screen bg-cream text-black font-sans flex flex-col justify-between selection:bg-gold/20 selection:text-black antialiased">
       <div>
         {/* Sticky Header Navigation */}
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />

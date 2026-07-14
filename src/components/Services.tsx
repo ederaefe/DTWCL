@@ -79,15 +79,15 @@ export default function Services({ setCurrentPage }: ServicesProps) {
     <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-12 md:pt-20">
       
       {/* Header Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16 border-b border-[#242423]/10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16 border-b border-black/10">
         <div className="lg:col-span-8 space-y-4">
-          <div className="text-xs font-mono tracking-widest text-[#f5cb5c] uppercase">
+          <div className="text-xs font-mono tracking-widest text-gold uppercase">
             INSTITUTIONAL SERVICES MATRIX
           </div>
-          <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-[#242423] tracking-tight">
+          <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
             Consulting Pathways & Scope
           </h1>
-          <p className="font-sans text-base text-[#242423]/70 max-w-2xl leading-relaxed">
+          <p className="font-sans text-base text-black/70 max-w-2xl leading-relaxed">
             We guide candidates through academic, test-taking, and professional milestones with a strict emphasis on structural preparation. Below is a comprehensive declaration of our operational scope, outlining exactly what is included in our consultation processes and, of equal importance, what is explicitly excluded.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
               setCurrentPage('contact');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="bg-[#f5cb5c] text-[#242423] font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-[#cfdbd5] transition uppercase w-full sm:w-auto text-center"
+            className="bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone transition uppercase w-full sm:w-auto text-center"
           >
             REQUEST CONSULTATION DETAIL
           </button>
@@ -105,47 +105,47 @@ export default function Services({ setCurrentPage }: ServicesProps) {
       </div>
 
       {/* Services List (Stacked in sequence, Australian government design system style) */}
-      <div className="divide-y divide-[#242423]/10">
+      <div className="divide-y divide-black/10">
         {services.map((service) => (
           <div 
             key={service.id} 
             id={service.id}
-            className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-[#242423]/[0.01] transition-colors px-2 rounded-xs"
+            className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-black/[0.01] transition-colors px-2 rounded-xs"
           >
             {/* Numeral Column */}
             <div className="lg:col-span-2">
-              <span className="font-fraunces text-5xl md:text-6xl lg:text-7xl font-light text-[#f5cb5c] block select-none">
+              <span className="font-fraunces text-5xl md:text-6xl lg:text-7xl font-light text-gold block select-none">
                 {service.num}
               </span>
             </div>
 
             {/* Service Details Column */}
             <div className="lg:col-span-6 space-y-4">
-              <h2 className="font-fraunces text-2xl md:text-3xl font-medium text-[#242423]">
+              <h2 className="font-fraunces text-2xl md:text-3xl font-medium text-black">
                 {service.title}
               </h2>
-              <p className="font-sans text-[#242423]/80 leading-relaxed text-sm md:text-base">
+              <p className="font-sans text-black/80 leading-relaxed text-sm md:text-base">
                 {service.description}
               </p>
               
               <div className="flex items-center gap-3 pt-2">
-                <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#f5cb5c]" />
-                <span className="font-space text-[10px] font-bold tracking-widest text-[#242423]/60 uppercase">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
+                <span className="font-space text-[10px] font-bold tracking-widest text-black/60 uppercase">
                   {service.shortDescription}
                 </span>
               </div>
             </div>
 
             {/* What is NOT Included Column */}
-            <div className="lg:col-span-4 bg-[#cfdbd5] border border-[#242423]/5 p-6 rounded-xs space-y-4">
-              <div className="flex items-center gap-2 text-rose-800 font-space text-[10px] font-bold tracking-wider uppercase">
-                <ShieldAlert className="h-4 w-4 text-rose-700" />
+            <div className="lg:col-span-4 bg-stone border border-black/5 p-6 rounded-xs space-y-4">
+              <div className="flex items-center gap-2 text-charcoal font-space text-[10px] font-bold tracking-wider uppercase">
+                <ShieldAlert className="h-4 w-4 text-gold" />
                 EXPLICITLY NOT INCLUDED:
               </div>
               <ul className="space-y-3">
                 {service.notIncluded.map((item, idx) => (
-                  <li key={idx} className="flex gap-2 items-start text-xs text-[#242423]/60 leading-relaxed">
-                    <span className="text-rose-600 font-bold mt-0.5">•</span>
+                  <li key={idx} className="flex gap-2 items-start text-xs text-black/60 leading-relaxed">
+                    <span className="text-gold font-bold mt-0.5">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -157,26 +157,26 @@ export default function Services({ setCurrentPage }: ServicesProps) {
       </div>
 
       {/* Services Secondary Scratch Reveal Section */}
-      <div className="mt-16 border-t border-[#242423]/10 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="mt-16 border-t border-black/10 pt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         <div className="lg:col-span-7 space-y-6">
-          <h3 className="font-fraunces text-2xl md:text-3xl font-normal text-[#242423] tracking-tight">
+          <h3 className="font-fraunces text-2xl md:text-3xl font-normal text-black tracking-tight">
             Our Strict Guarantee of Educational Ethics
           </h3>
-          <p className="font-sans text-sm text-[#242423]/70 leading-relaxed">
+          <p className="font-sans text-sm text-black/70 leading-relaxed">
             DTW Consult is founded upon the principle of sustainable and verifiable intellectual advancement. We never offer secondary shortcut shortcuts or participate in examination scams. 
           </p>
-          <p className="font-sans text-sm text-[#242423]/70 leading-relaxed">
+          <p className="font-sans text-sm text-black/70 leading-relaxed">
             Our commitment is to guide, teach, correct, and position candidates so they are capable of securing success on their own merits—which is the only guarantee of surviving and thriving in global colleges or high-level careers.
           </p>
         </div>
 
         <div className="lg:col-span-5">
-          <div className="bg-[#cfdbd5] border border-[#242423]/10 p-6 md:p-8 shadow-sm">
-            <div className="mb-4 text-xs text-[#f5cb5c] font-space font-bold tracking-wider uppercase">
+          <div className="bg-stone border border-black/10 p-6 md:p-8 shadow-sm">
+            <div className="mb-4 text-xs text-gold font-space font-bold tracking-wider uppercase">
               DTW ETHICS RESOLVE
             </div>
-            <div className="font-fraunces text-lg text-[#242423] leading-relaxed italic">
+            <div className="font-fraunces text-lg text-black leading-relaxed italic">
               “No Shortcuts: Under no circumstances does DTW Consult guarantee marks, grades, test scores, admission invitations, or job offers. We train candidates to achieve authentic success through structured academic rigor and elite preparation.”
             </div>
           </div>
