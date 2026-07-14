@@ -4,19 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- 
+      ANALYTICS & SESSION TRACKING:
+      Integrates Microsoft Clarity (ID: xmgo4l74yr) and Google Analytics (ID: G-CRPPHLYPBS) 
+      in the head segment to capture traffic, bounce metrics, and user session recordings.
+    -->
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xmgo4l74yr");
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRPPHLYPBS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CRPPHLYPBS');
+    </script>
+
     <!-- PRIMARY SEO META TAGS -->
     <title>DTW Consults — Strategic Educational &amp; Career Advisory</title>
     <meta name="description" content="DTW Consults is a leading educational and career advisory firm. We guide candidates across West Africa through national exam systems (JAMB, WAEC, NECO) and global study pathways (SAT, GMAT, IELTS, GRE admissions)." />
     <meta name="keywords" content="DTW Consults, DTW Tutorials, Blessing Seun Chukwuka, Educational Consulting Nigeria, JAMB CBT app, WAEC prep, SAT classes Lagos, IELTS test prep, GMAT consulting, Study abroad advisory Lagos, dtwedustore" />
     <meta name="author" content="Blessing Seun Chukwuka" />
-    <link rel="canonical" href="https://dtwlanind.vercel.app/" />
+    <link rel="canonical" href="https://dtw-consult.com" />
     <meta name="robots" content="index, follow" />
 
     <!-- OPEN GRAPH (FACEBOOK & LINKEDIN) -->
     <meta property="og:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
     <meta property="og:description" content="Guiding those Destined To Win toward academic and global career success. Comprehensive advisory from local WAEC/JAMB mocks to international SAT/GMAT credentials." />
-    <meta property="og:image" content="https://dtwlanind.vercel.app/favicon.svg" />
-    <meta property="og:url" content="https://dtwlanind.vercel.app/" />
+    <meta property="og:image" content="https://dtw-consult.com/favicon.svg" />
+    <meta property="og:url" content="https://dtw-consult.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DTW Consults" />
 
@@ -24,7 +48,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="DTW Consults — Strategic Educational &amp; Career Advisory" />
     <meta name="twitter:description" content="Professional educational and career transition advisory for secondary school candidates and postgraduate scholars." />
-    <meta name="twitter:image" content="https://dtwlanind.vercel.app/favicon.svg" />
+    <meta name="twitter:image" content="https://dtw-consult.com/favicon.svg" />
     <meta name="twitter:site" content="@dtwtutorialsng" />
 
     <!-- LINK FAVICON -->
@@ -32,7 +56,7 @@
 
     <!-- 
       STRUCTURED DATA: Schema.org JSON-LD (Parent-Child Organization Setup)
-      Ensures Google search, Gemini, Claude, and Perplexity crawl and index our entity relations.
+      Refitted to use our production domain: dtw-consult.com
     -->
     <script type="application/ld+json">
     {
@@ -40,10 +64,10 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://dtwlanind.vercel.app/#parent-org",
+          "@id": "https://dtw-consult.com/#parent-org",
           "name": "DTW Consults",
-          "url": "https://dtwlanind.vercel.app/",
-          "logo": "https://dtwlanind.vercel.app/favicon.svg",
+          "url": "https://dtw-consult.com/",
+          "logo": "https://dtw-consult.com/favicon.svg",
           "description": "Strategic educational advisory and global career consulting firm bridging West African candidates to international academic pathways.",
           "address": {
             "@type": "PostalAddress",
@@ -67,10 +91,10 @@
         },
         {
           "@type": "Organization",
-          "@id": "https://dtwlanind.vercel.app/#child-org",
+          "@id": "https://dtw-consult.com/#child-org",
           "name": "DTW Tutorials",
           "parentOrganization": {
-            "@id": "https://dtwlanind.vercel.app/#parent-org"
+            "@id": "https://dtw-consult.com/#parent-org"
           },
           "url": "https://dtwtutorials.com",
           "description": "Academic platform providing free STEM tutorial videos, WAEC/NECO prep, and the DTW CBT Practice Application for national exams.",
@@ -81,11 +105,11 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://dtwlanind.vercel.app/#website",
-          "url": "https://dtwlanind.vercel.app/",
+          "@id": "https://dtw-consult.com/#website",
+          "url": "https://dtw-consult.com/",
           "name": "DTW Consults Official Portal",
           "publisher": {
-            "@id": "https://dtwlanind.vercel.app/#parent-org"
+            "@id": "https://dtw-consult.com/#parent-org"
           }
         }
       ]

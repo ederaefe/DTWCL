@@ -14,10 +14,10 @@ export default function Footer({ setCurrentPage }: FooterProps) {
   return (
     <footer id="minimal-footer" className="bg-black text-cream pt-16 pb-12 mt-20 relative z-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start pb-10 border-b border-cream/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 items-start pb-10 border-b border-cream/10">
           
           {/* Logo & Slogan Column */}
-          <div className="space-y-3 md:col-span-2">
+          <div className="space-y-3 sm:col-span-2">
             <div className="font-fraunces text-xl md:text-2xl font-bold tracking-tight text-white">
               DTW Consults
             </div>
@@ -107,14 +107,14 @@ export default function Footer({ setCurrentPage }: FooterProps) {
 
       {/* 
         WHATSAPP FLOATING WIDGET:
-        Fixed helper button utilizing correct brand WhatsApp link (+234 908 509 9582) 
-        and styled using the firconsulting.com layout classes.
+        Fixed helper button (+234 908 509 9582) featuring 
+        constant shadow pulse and active hover zoom effects.
       */}
       <a 
         href="https://wa.me/2349085099582" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group hover:shadow-2xl cursor-pointer"
+        className="animate-pulse-glow fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group hover:shadow-2xl cursor-pointer"
         aria-label="Chat with DTW Consults on WhatsApp"
       >
         <svg 

@@ -1,4 +1,4 @@
-import { ShieldAlert, ExternalLink, ShieldCheck, HelpCircle } from 'lucide-react';
+import { ShieldAlert, ExternalLink, ShieldCheck } from 'lucide-react';
 import { Page, ServiceLine } from '../types';
 
 interface ServicesProps {
@@ -76,12 +76,12 @@ export default function Services({ setCurrentPage }: ServicesProps) {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-12 md:pt-20 space-y-16">
+    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-16">
       
       {/* Header Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16 border-b border-black/10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-12 border-b border-black/10">
         <div className="lg:col-span-8 space-y-4">
-          <div className="text-xs font-mono tracking-widest text-gold uppercase">
+          <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
             INSTITUTIONAL SERVICES MATRIX
           </div>
           <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
@@ -96,7 +96,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             onClick={() => {
               setCurrentPage('contact');
             }}
-            className="bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone transition uppercase w-full sm:w-auto text-center cursor-pointer"
+            className="bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone transition-all duration-250 active:scale-95 btn-active-bounce uppercase w-full sm:w-auto text-center cursor-pointer shadow-sm"
           >
             Request Consultation Detail
           </button>
@@ -109,11 +109,11 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           <div 
             key={service.id} 
             id={service.id}
-            className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start hover:bg-black/[0.01] transition-colors px-2 rounded-xs"
+            className="service-card py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border border-transparent hover:border-black/5 hover:bg-stone/20 transition-all duration-300 px-4 rounded-md"
           >
             {/* Numeral Column */}
             <div className="lg:col-span-2">
-              <span className="font-fraunces text-5xl md:text-6xl lg:text-7xl font-light text-gold block select-none">
+              <span className="service-card-num font-fraunces text-5xl md:text-6xl lg:text-7xl font-light text-gold/75 block select-none">
                 {service.num}
               </span>
             </div>
@@ -136,7 +136,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
             </div>
 
             {/* What is NOT Included Column */}
-            <div className="lg:col-span-4 bg-stone border border-black/5 p-6 rounded-xs space-y-4">
+            <div className="lg:col-span-4 bg-stone/90 border border-black/5 p-6 rounded-xs space-y-4 shadow-sm group hover:border-gold/20 transition-colors duration-355">
               <div className="flex items-center gap-2 text-charcoal font-space text-[10px] font-bold tracking-wider uppercase">
                 <ShieldAlert className="h-4 w-4 text-gold" />
                 EXPLICITLY NOT INCLUDED:
@@ -155,12 +155,8 @@ export default function Services({ setCurrentPage }: ServicesProps) {
         ))}
       </div>
 
-      {/* 
-        AI SEARCH RETRIEVAL & SEMANTIC SEO:
-        Highly structured, factual comparison tables and bullet points 
-        to ensure easy citation and optimal indexing.
-      */}
-      <div className="py-16 border-t border-black/10 space-y-12">
+      {/* Conversion metrics table and lists */}
+      <div className="py-12 border-t border-black/10 space-y-8">
         
         <div className="space-y-2">
           <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
@@ -175,35 +171,35 @@ export default function Services({ setCurrentPage }: ServicesProps) {
         </div>
 
         {/* Semantic HTML5 Data Table for SEO */}
-        <div className="overflow-x-auto border border-black/10 rounded-xs bg-stone/20">
-          <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto border border-black/10 rounded-xs bg-stone/20 shadow-inner">
+          <table className="w-full text-left border-collapse min-w-[600px]">
             <thead>
-              <tr className="bg-stone border-b border-black/15 font-space text-[10px] font-bold tracking-widest text-black uppercase">
-                <th className="p-4 md:p-6">West African Standard</th>
-                <th className="p-4 md:p-6">International Target</th>
-                <th className="p-4 md:p-6">DTW Preparatory Vector</th>
+              <tr className="bg-stone border-b border-black/15 font-space text-[9px] font-bold tracking-widest text-black uppercase">
+                <th className="p-4 md:p-5">West African Standard</th>
+                <th className="p-4 md:p-5">International Target</th>
+                <th className="p-4 md:p-5">DTW Preparatory Vector</th>
               </tr>
             </thead>
             <tbody className="font-sans text-xs md:text-sm text-black/80 divide-y divide-black/10">
-              <tr>
-                <td className="p-4 md:p-6 font-semibold">JAMB UTME Score (Nigeria)</td>
-                <td className="p-4 md:p-6">SAT / ACT Examination</td>
-                <td className="p-4 md:p-6">Weekly quantitative workshops and simulated full-length testing.</td>
+              <tr className="table-row-animate">
+                <td className="p-4 md:p-5 font-semibold">JAMB UTME Score (Nigeria)</td>
+                <td className="p-4 md:p-5">SAT / ACT Examination</td>
+                <td className="p-4 md:p-5">Weekly quantitative workshops and simulated full-length testing.</td>
               </tr>
-              <tr>
-                <td className="p-4 md:p-6 font-semibold">WAEC / NECO SSCE Results</td>
-                <td className="p-4 md:p-6">A-Level / AP Equivalent Placement</td>
-                <td className="p-4 md:p-6">Core physics and math syllabus alignment to bridge curriculum gaps.</td>
+              <tr className="table-row-animate">
+                <td className="p-4 md:p-5 font-semibold">WAEC / NECO SSCE Results</td>
+                <td className="p-4 md:p-5">A-Level / AP Equivalent Placement</td>
+                <td className="p-4 md:p-5">Core physics and math syllabus alignment to bridge curriculum gaps.</td>
               </tr>
-              <tr>
-                <td className="p-4 md:p-6 font-semibold">NUC Accredited Degree (BSc/BA)</td>
-                <td className="p-4 md:p-6">WES / ECE Credential Evaluation</td>
-                <td className="p-4 md:p-6">Transcript translation audit, course conversions, and SOP reviews.</td>
+              <tr className="table-row-animate">
+                <td className="p-4 md:p-5 font-semibold">NUC Accredited Degree (BSc/BA)</td>
+                <td className="p-4 md:p-5">WES / ECE Credential Evaluation</td>
+                <td className="p-4 md:p-5">Transcript translation audit, course conversions, and SOP reviews.</td>
               </tr>
-              <tr>
-                <td className="p-4 md:p-6 font-semibold">Local Corporate Experience</td>
-                <td className="p-4 md:p-6">Global Professional Hiring Grid</td>
-                <td className="p-4 md:p-6">LinkedIn optimization, behavioral interview preparation, and CV rebuilds.</td>
+              <tr className="table-row-animate">
+                <td className="p-4 md:p-5 font-semibold">Local Corporate Experience</td>
+                <td className="p-4 md:p-5">Global Professional Hiring Grid</td>
+                <td className="p-4 md:p-5">LinkedIn optimization, behavioral interview preparation, and CV rebuilds.</td>
               </tr>
             </tbody>
           </table>
@@ -212,11 +208,11 @@ export default function Services({ setCurrentPage }: ServicesProps) {
       </div>
 
       {/* DTW CBT Software App Callout Section */}
-      <div className="py-16 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="py-12 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Software Features & Benefits */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="text-xs font-mono tracking-widest text-gold uppercase">
+          <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
             LOCAL PREP SOFTWARE APPS
           </div>
           <h2 className="font-fraunces text-3xl md:text-4xl font-normal text-black tracking-tight">
@@ -227,16 +223,16 @@ export default function Services({ setCurrentPage }: ServicesProps) {
           </p>
           
           <ul className="space-y-3 font-sans text-xs md:text-sm text-black/75">
-            <li className="flex items-start gap-2">
-              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2 group cursor-default">
+              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
               <span><strong>20,000+ Past Questions:</strong> Instant offline database access containing historical JAMB, WAEC, and NECO exams.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2 group cursor-default">
+              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
               <span><strong>Interactive Mock Simulator:</strong> Mimics the exact UI, timer grids, and calculator tools used in official test centers.</span>
             </li>
-            <li className="flex items-start gap-2">
-              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+            <li className="flex items-start gap-2 group cursor-default">
+              <ShieldCheck className="h-4 w-4 text-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
               <span><strong>Subject Analysis Reports:</strong> Tracks performance and highlights weak subject fields for focused study.</span>
             </li>
           </ul>
@@ -246,7 +242,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
               href="https://www.dtwedustore.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone transition uppercase cursor-pointer"
+              className="inline-flex items-center gap-2 bg-gold text-black font-space text-xs font-bold tracking-wider px-6 py-3.5 hover:bg-stone active:scale-95 btn-active-bounce transition uppercase cursor-pointer shadow-sm"
             >
               Get CBT App on EduStore <ExternalLink className="h-4 w-4" />
             </a>
@@ -255,7 +251,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
 
         {/* Right Column: Visual Box */}
         <div className="lg:col-span-5">
-          <div className="border border-black/10 bg-stone p-8 rounded-xs space-y-6 relative">
+          <div className="border border-black/10 bg-stone p-6 md:p-8 rounded-xs space-y-6 relative transition-transform duration-350 hover:scale-[1.01]">
             <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#242423_1px,transparent_1px),linear-gradient(to_bottom,#242423_1px,transparent_1px)] bg-[size:12px_24px]" />
             <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
               DTW TUTORIALS LOCAL INTEGRITY
@@ -269,7 +265,7 @@ export default function Services({ setCurrentPage }: ServicesProps) {
       </div>
 
       {/* Ethics Resolve Section */}
-      <div className="py-16 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div className="py-12 border-t border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         <div className="lg:col-span-7 space-y-6">
           <h3 className="font-fraunces text-2xl md:text-3xl font-normal text-black tracking-tight">

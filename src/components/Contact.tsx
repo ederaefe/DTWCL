@@ -24,11 +24,11 @@ export default function Contact() {
   };
 
   return (
-    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-12 md:pt-20">
+    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-12">
       
       {/* Header Grid */}
-      <div className="pb-12 border-b border-black/10 space-y-4">
-        <div className="text-xs font-mono tracking-widest text-gold uppercase">
+      <div className="pb-10 border-b border-black/10 space-y-4">
+        <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
           SECURE CLIENT INTAKE
         </div>
         <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
@@ -40,10 +40,10 @@ export default function Contact() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 py-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 py-10">
         
         {/* Left Column: Contact Info and Google Map */}
-        <div className="lg:col-span-5 space-y-10">
+        <div className="lg:col-span-5 space-y-8">
           
           {/* Institutional Contact Block */}
           <div className="space-y-6">
@@ -52,12 +52,12 @@ export default function Contact() {
             </h3>
 
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-space text-[10px] font-bold tracking-wider text-black/50 uppercase">
+                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
                     LAGOS HEADQUARTERS ADDRESS
                   </h4>
                   <p className="font-sans text-xs text-black leading-relaxed mt-1 font-medium">
@@ -68,12 +68,12 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
                   <Mail className="h-4.5 w-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-space text-[10px] font-bold tracking-wider text-black/50 uppercase">
+                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
                     SECURE INQUIRIES
                   </h4>
                   <p className="font-sans text-xs text-black leading-relaxed mt-1">
@@ -83,12 +83,12 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0">
+              <div className="flex items-start gap-4 group">
+                <div className="h-9 w-9 flex items-center justify-center bg-gold/10 text-gold rounded-full shrink-0 group-hover:scale-110 transition-transform duration-200">
                   <Phone className="h-4.5 w-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-space text-[10px] font-bold tracking-wider text-black/50 uppercase">
+                  <h4 className="font-space text-[9px] font-bold tracking-wider text-black/50 uppercase">
                     TELEPHONE DIRECTORY
                   </h4>
                   <p className="font-sans text-xs text-black leading-relaxed mt-1 font-semibold">
@@ -101,7 +101,7 @@ export default function Contact() {
           </div>
 
           {/* Business Hours */}
-          <div className="border border-black/10 p-6 bg-stone space-y-4">
+          <div className="border border-black/10 p-6 bg-stone/70 space-y-4">
             <h4 className="font-space text-xs font-bold tracking-wider text-black uppercase flex items-center gap-2">
               <Clock className="h-4 w-4 text-gold" />
               STANDARD ENGAGEMENT HOURS
@@ -112,22 +112,22 @@ export default function Contact() {
             </p>
           </div>
 
-          {/* Google Maps Location Embedding */}
-          <div className="space-y-4">
+          {/* Google Maps Location Embedding with grayscale transitions */}
+          <div className="space-y-3">
             <h4 className="font-space text-xs font-bold tracking-widest text-black/50 uppercase">
               OFFICE LOCATION MAP
             </h4>
-            <div className="border border-black/10 p-1 bg-stone rounded-xs shadow-sm overflow-hidden">
+            <div className="border border-black/10 p-1 bg-stone rounded-xs shadow-sm overflow-hidden group">
               <iframe 
                 title="DTW Consults Lagos Office Location Map"
                 src="https://maps.google.com/maps?q=Market%20Square,%20Ago%20Palace%20Way,%20Okota,%20Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%" 
-                height="220" 
+                height="200" 
                 style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="filter grayscale opacity-90 hover:grayscale-0 transition-all duration-500 rounded-xs"
+                className="filter grayscale opacity-90 hover:grayscale-0 hover:scale-[1.01] transition-all duration-500 rounded-xs"
               />
             </div>
             <p className="font-sans text-[10px] text-black/50 italic text-center">
@@ -154,7 +154,7 @@ export default function Contact() {
 
         {/* Right Column: Embedded Google Form Visual Mockup */}
         <div className="lg:col-span-7">
-          <div className="border border-black/15 bg-cream p-6 md:p-8 rounded-xs relative">
+          <div className="border border-black/15 bg-cream p-6 md:p-8 rounded-xs relative shadow-xs">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold" />
             
             <div className="mb-6">
@@ -168,7 +168,7 @@ export default function Contact() {
 
             {formSubmitted ? (
               <div className="py-12 flex flex-col items-center text-center space-y-4 animate-fade-in">
-                <div className="h-14 w-14 flex items-center justify-center bg-gold/20 text-gold rounded-full border-2 border-gold">
+                <div className="h-14 w-14 flex items-center justify-center bg-gold/20 text-gold rounded-full border-2 border-gold animate-bounce">
                   <Check className="h-8 w-8" />
                 </div>
                 <h4 className="font-space text-base font-bold tracking-wide text-black uppercase">
@@ -179,7 +179,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="font-space text-xs text-gold hover:underline font-bold uppercase pt-4 cursor-pointer"
+                  className="font-space text-xs text-gold hover:underline font-bold uppercase pt-4 cursor-pointer active:scale-95"
                 >
                   Log Another Inquiry
                 </button>
@@ -187,7 +187,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label htmlFor="name" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
                       Candidate Full Name *
@@ -200,7 +200,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. Chinedu Okafor"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition"
+                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
                     />
                   </div>
 
@@ -216,12 +216,12 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="candidate@domain.com"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition"
+                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label htmlFor="phone" className="block font-space text-[10px] font-bold tracking-wider text-black uppercase">
                       Contact Telephone Number
@@ -233,7 +233,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="+234 908 509 9582"
-                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition"
+                      className="w-full border border-black/15 bg-stone px-4 py-2.5 font-sans text-xs text-black focus:outline-hidden focus:border-gold transition duration-200"
                     />
                   </div>
 
@@ -294,13 +294,13 @@ export default function Contact() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-98 transition duration-150 uppercase text-center cursor-pointer"
+                    className="w-full bg-gold text-black font-space text-xs font-bold tracking-wider py-4 hover:bg-stone active:scale-95 btn-active-bounce transition duration-200 uppercase text-center cursor-pointer shadow-sm"
                   >
                     SUBMIT TO INTAKE REGISTRY
                   </button>
                 </div>
 
-                <div className="flex items-center gap-2 justify-center text-[10px] font-mono text-black/40 uppercase mt-4">
+                <div className="animate-breath flex items-center gap-2 justify-center text-[10px] font-mono text-black/45 uppercase mt-4">
                   <ShieldCheck className="h-4 w-4 text-gold" />
                   SSL Secured • Your academic record remains confidential
                 </div>

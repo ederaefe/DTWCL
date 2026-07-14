@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, GraduationCap, Laptop, ShieldCheck, Youtube, ExternalLink } from 'lucide-react';
+import { ChevronDown, GraduationCap, Laptop, Youtube, ExternalLink } from 'lucide-react';
 
 export default function About() {
   // Accordion state to toggle Mission, Vision, and Values panels
@@ -33,11 +33,11 @@ export default function About() {
   ];
 
   return (
-    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-12 md:pt-20 space-y-16">
+    <section className="mx-auto max-w-7xl px-6 lg:px-12 pt-8 md:pt-16 space-y-16">
       
       {/* Header Block */}
-      <div className="pb-12 border-b border-black/10 space-y-4">
-        <div className="text-xs font-mono tracking-widest text-gold uppercase">
+      <div className="pb-10 border-b border-black/10 space-y-4">
+        <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
           WHO WE ARE &amp; HOW WE PLAN
         </div>
         <h1 className="font-fraunces text-4xl sm:text-5xl font-normal text-black tracking-tight">
@@ -46,11 +46,11 @@ export default function About() {
       </div>
 
       {/* Main Core Identity & Accordion Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-black/10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-black/10 items-start">
         
         {/* Left Column: Parent Brand Content */}
         <div className="lg:col-span-6 space-y-6 font-sans text-sm md:text-base text-black/80 leading-relaxed">
-          <p className="text-black font-semibold text-lg">
+          <p className="text-black font-semibold text-lg leading-snug">
             DTW Consults (Destined To Win) is a premier educational advisory and strategic transition firm.
           </p>
           <p>
@@ -65,21 +65,21 @@ export default function About() {
         </div>
 
         {/* Right Column: Collapsible Accordion (UI Layout Ported from firconsulting.com) */}
-        <div className="lg:col-span-6 space-y-4">
+        <div className="lg:col-span-6 w-full pt-4 lg:pt-0">
           <div className="accordion">
             
             {/* Panel 1: Mission */}
             <div className={`accordion-item ${activePanel === 'mission' ? 'active' : ''}`}>
               <button 
                 onClick={() => togglePanel('mission')}
-                className="accordion-header"
+                className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'mission'}
               >
-                <span>🎯 Our Mission</span>
-                <ChevronDown className="accordion-icon h-5 w-5" />
+                <span className="font-semibold text-sm md:text-base">🎯 Our Mission</span>
+                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
               </button>
               <div className="accordion-body">
-                <p className="pt-2 text-sm text-black/75">
+                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
                   <strong>To empower students and professionals</strong> with academic clarity, global advisory, and structured preparation pathways that drive sustainable career growth, international parity, and lasting placement success.
                 </p>
               </div>
@@ -89,14 +89,14 @@ export default function About() {
             <div className={`accordion-item ${activePanel === 'vision' ? 'active' : ''}`}>
               <button 
                 onClick={() => togglePanel('vision')}
-                className="accordion-header"
+                className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'vision'}
               >
-                <span>🔭 Our Vision</span>
-                <ChevronDown className="accordion-icon h-5 w-5" />
+                <span className="font-semibold text-sm md:text-base">🔭 Our Vision</span>
+                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
               </button>
               <div className="accordion-body">
-                <p className="pt-2 text-sm text-black/75">
+                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
                   <strong>To be the most trusted educational and career advisory bridge</strong> between West Africa and global institutions — renowned for academic integrity, standardized preparation, and transparent, merit-based admissions.
                 </p>
               </div>
@@ -106,14 +106,14 @@ export default function About() {
             <div className={`accordion-item ${activePanel === 'values' ? 'active' : ''}`}>
               <button 
                 onClick={() => togglePanel('values')}
-                className="accordion-header"
+                className="accordion-header focus:outline-hidden"
                 aria-expanded={activePanel === 'values'}
               >
-                <span>💎 Our Core Values</span>
-                <ChevronDown className="accordion-icon h-5 w-5" />
+                <span className="font-semibold text-sm md:text-base">💎 Our Core Values</span>
+                <ChevronDown className="accordion-icon h-5 w-5 shrink-0" />
               </button>
               <div className="accordion-body">
-                <p className="pt-2 text-sm text-black/75">
+                <p className="pt-1 pb-4 text-xs md:text-sm text-black/75">
                   <strong>Integrity, Academic Rigor, Global Parity, Uncompromising Transparency, and Student-Centric Mentorship.</strong> These standards guide every timeline we outline, every document we evaluate, and every candidate we advise.
                 </p>
               </div>
@@ -125,14 +125,14 @@ export default function About() {
       </div>
 
       {/* DTW Tutorials - Child Company Segment */}
-      <div className="py-16 border-b border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="py-12 border-b border-black/10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         
-        {/* Left Column: Context Image with HTB mask style */}
-        <div className="lg:col-span-5 relative order-last lg:order-first">
-          <div className="relative border border-black/10 bg-stone p-2 rounded-xs">
+        {/* Left Column: Context Image Box */}
+        <div className="lg:col-span-5 relative order-last lg:order-first w-full max-w-sm mx-auto lg:max-w-none">
+          <div className="relative border border-black/10 bg-stone p-2 rounded-xs transition-transform duration-300 hover:scale-[1.01]">
             {/* Inner info display card representing the software store */}
             <div className="bg-cream border border-black/10 p-6 md:p-8 space-y-6">
-              <span className="font-space text-[10px] font-bold tracking-widest text-gold uppercase block">
+              <span className="font-space text-[9px] font-bold tracking-widest text-gold uppercase block">
                 CHILD COMPANY PLATFORM
               </span>
               <h4 className="font-fraunces text-2xl font-normal text-black italic">
@@ -145,9 +145,9 @@ export default function About() {
                 href="https://www.dtwedustore.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-space text-xs font-bold tracking-widest text-black hover:text-gold uppercase"
+                className="inline-flex items-center gap-1.5 font-space text-[10px] font-bold tracking-widest text-black hover:text-gold uppercase group"
               >
-                Visit dtwedustore.com <ExternalLink className="h-3 w-3" />
+                Visit dtwedustore.com <ExternalLink className="h-3 w-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
             </div>
             {/* Overlapping small grid background decoration */}
@@ -157,7 +157,7 @@ export default function About() {
 
         {/* Right Column: Historic Background Content */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="text-xs font-mono tracking-widest text-gold uppercase">
+          <div className="text-xs font-mono tracking-widest text-gold uppercase font-bold">
             FOUNDATION &amp; LOCAL IMPACT
           </div>
           <h2 className="font-fraunces text-3xl md:text-4xl font-normal text-black tracking-tight">
@@ -170,25 +170,25 @@ export default function About() {
             Founded by <strong>Blessing Seun Chukwuka</strong>, the DTW Tutorials YouTube initiative has grown to support over <strong>200,000+ students</strong>. We deliver free step-by-step Math and Physics video tutorials, WAEC prep classes, JAMB mock tests, and post-UTME syllabus guides. 
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
               <Youtube className="h-5 w-5 text-gold shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-space text-xs font-bold text-black uppercase">200k+ YouTube</h5>
+                <h5 className="font-space text-[10px] font-bold text-black uppercase">200k+ YouTube</h5>
                 <p className="font-sans text-[11px] text-black/60 mt-1">Free Math &amp; Physics video tutorials.</p>
               </div>
             </div>
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3">
+            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
               <Laptop className="h-5 w-5 text-gold shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-space text-xs font-bold text-black uppercase">CBT Practice</h5>
+                <h5 className="font-space text-[10px] font-bold text-black uppercase">CBT Practice</h5>
                 <p className="font-sans text-[11px] text-black/60 mt-1">Interactive offline prep software.</p>
               </div>
             </div>
-            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3">
+            <div className="border border-black/10 p-4 bg-stone/40 rounded-xs flex items-start gap-3 transition-transform duration-200 hover:scale-[1.02]">
               <GraduationCap className="h-5 w-5 text-gold shrink-0 mt-0.5" />
               <div>
-                <h5 className="font-space text-xs font-bold text-black uppercase">Local Entry</h5>
+                <h5 className="font-space text-[10px] font-bold text-black uppercase">Local Entry</h5>
                 <p className="font-sans text-[11px] text-black/60 mt-1">Comprehensive JAMB, WAEC &amp; NECO prep.</p>
               </div>
             </div>
@@ -197,9 +197,9 @@ export default function About() {
 
       </div>
 
-      {/* Leadership / Founders Grid (UI Adapted from firconsulting.com) */}
-      <div className="py-16">
-        <div className="mb-12 space-y-2">
+      {/* Leadership Grid (UI Adapted from firconsulting.com) */}
+      <div className="py-12">
+        <div className="mb-10 space-y-2">
           <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
             OUR STRATEGIC LEADERSHIP
           </h2>
@@ -212,10 +212,10 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
           
           {/* Founder: Blessing Seun Chukwuka */}
-          <div className="border border-black/10 p-8 bg-stone rounded-xs space-y-6 hover:border-gold transition-all duration-300 shadow-sm relative group">
+          <div className="team-card border border-black/10 p-6 md:p-8 bg-stone rounded-xs space-y-6 shadow-sm relative group">
             <div className="flex items-center gap-6">
               {/* Initials Avatar Card */}
-              <div className="w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner group-hover:bg-gold group-hover:text-black transition-colors duration-300">
+              <div className="team-avatar w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner">
                 BC
               </div>
               <div>
@@ -233,10 +233,10 @@ export default function About() {
           </div>
 
           {/* Member 2: Victor Uyanna */}
-          <div className="border border-black/10 p-8 bg-stone rounded-xs space-y-6 hover:border-gold transition-all duration-300 shadow-sm relative group">
+          <div className="team-card border border-black/10 p-6 md:p-8 bg-stone rounded-xs space-y-6 shadow-sm relative group">
             <div className="flex items-center gap-6">
               {/* Initials Avatar Card */}
-              <div className="w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner group-hover:bg-gold group-hover:text-black transition-colors duration-300">
+              <div className="team-avatar w-16 h-16 rounded-full bg-cream border-2 border-gold flex items-center justify-center font-space text-xl font-bold text-black shrink-0 shadow-inner">
                 VU
               </div>
               <div>
@@ -257,8 +257,8 @@ export default function About() {
       </div>
 
       {/* Brand Pillars Section */}
-      <div className="py-16">
-        <div className="mb-12 space-y-2">
+      <div className="py-12">
+        <div className="mb-10 space-y-2">
           <h2 className="font-space text-xs font-bold tracking-widest text-gold uppercase">
             OUR PRACTICE VECTORS
           </h2>
@@ -268,16 +268,16 @@ export default function About() {
         </div>
 
         {/* List of Core Values */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {coreValues.map((value, idx) => (
             <div 
               key={idx} 
-              className="border border-black/10 p-6 bg-stone space-y-4 hover:border-gold transition duration-200 shadow-xs"
+              className="border border-black/10 p-6 bg-stone space-y-4 hover:border-gold hover:translate-y-[-4px] hover:shadow-xs transition-all duration-300 shadow-xs"
             >
               <div className="font-fraunces text-lg font-bold text-black/35 select-none">
                 0{idx + 1}
               </div>
-              <h3 className="font-space text-xs font-bold tracking-wider text-black uppercase">
+              <h3 className="font-space text-[10px] font-bold tracking-wider text-black uppercase">
                 {value.title}
               </h3>
               <p className="font-sans text-xs text-black/60 leading-relaxed">

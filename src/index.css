@@ -16,17 +16,11 @@
   --color-cream: #e8eddf;
 }
 
-/* --- Animated Background Gradient Battle & Grain Texture --- */
+/* --- MICRO-ANIMATION 1: Shifting Vertical Background Gradient --- */
 @keyframes battleFlow {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
+  0% { background-position: 50% 0%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 50% 0%; }
 }
 
 body {
@@ -41,7 +35,6 @@ body::before {
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
   z-index: 0;
-  /* Shifting white and cream gradient battle */
   background: linear-gradient(180deg, 
     rgba(255, 255, 255, 0.98) 0%, 
     rgba(232, 237, 223, 0.45) 35%, 
@@ -52,6 +45,7 @@ body::before {
   animation: battleFlow 15s ease-in-out infinite;
 }
 
+/* --- MICRO-ANIMATION 2: High-Frequency Micro-Grains Overlay --- */
 body::after {
   content: "";
   position: fixed;
@@ -59,17 +53,26 @@ body::after {
   pointer-events: none;
   z-index: 1;
   opacity: 0.06;
-  /* Premium high-frequency fractal noise SVG overlay */
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Ensure navbar, main, and footer appear above the fixed backgrounds */
+/* Ensure layouts display above the background overlays */
 header, main, footer, nav {
   position: relative;
   z-index: 10;
 }
 
-/* --- Accordion UI Framework (Adapted from firconsulting.com Layout) --- */
+/* --- MICRO-ANIMATION 3: Hero Image Bobbing --- */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+.animate-bob {
+  animation: floating 6s ease-in-out infinite;
+}
+
+/* --- MICRO-ANIMATION 6 & 7 & 8: Accordion Slide & Hover Glow --- */
 .accordion {
   display: flex;
   flex-direction: column;
@@ -89,7 +92,7 @@ header, main, footer, nav {
 
 .accordion-item.active {
   border-color: var(--color-gold);
-  box-shadow: 0 4px 20px rgba(245, 203, 92, 0.12);
+  box-shadow: 0 4px 22px rgba(245, 203, 92, 0.12);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -106,11 +109,13 @@ header, main, footer, nav {
   border: none;
   width: 100%;
   text-align: left;
-  transition: background 0.3s;
+  transition: background 0.3s ease, padding-left 0.3s ease;
 }
 
+/* Header hover glow & sliding indent */
 .accordion-header:hover {
   background: rgba(245, 203, 92, 0.05);
+  padding-left: 28px;
 }
 
 .accordion-icon {
@@ -141,7 +146,123 @@ header, main, footer, nav {
   line-height: 1.6;
 }
 
-/* Fade In Animation Utility */
+/* --- MICRO-ANIMATION 9: Navbar Link Underline Slide-in --- */
+.nav-underline-btn {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-underline-btn::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-gold);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-underline-btn:hover::after {
+  width: 100%;
+}
+
+/* --- MICRO-ANIMATION 10: Navbar Active Button Squish --- */
+.btn-active-bounce {
+  transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-active-bounce:active {
+  transform: scale(0.95);
+}
+
+/* --- MICRO-ANIMATION 11: Mobile Menu Drawer Slide-down --- */
+.mobile-menu-enter {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.mobile-menu-active {
+  max-height: 400px;
+  opacity: 1;
+}
+
+/* --- MICRO-ANIMATION 12 & 13: Team Avatar & Card Elevation --- */
+.team-card {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-avatar {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(36, 36, 35, 0.1);
+  border-color: rgba(245, 203, 92, 0.3);
+}
+
+.team-card:hover .team-avatar {
+  transform: scale(1.1) rotate(5deg);
+  border-color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+/* --- MICRO-ANIMATION 15: Services Numeral Zoom --- */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-num {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .service-card-num {
+  transform: scale(1.08) translateY(-2px);
+  color: var(--color-gold);
+}
+
+/* --- MICRO-ANIMATION 16: Table Row Highlight & Slide --- */
+.table-row-animate {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.table-row-animate:hover {
+  background-color: rgba(245, 203, 92, 0.05);
+}
+
+.table-row-animate td {
+  transition: transform 0.25s ease;
+}
+
+.table-row-animate:hover td:first-child {
+  transform: translateX(4px);
+}
+
+/* --- MICRO-ANIMATION 18 & 19: WhatsApp Widget Pulse & Zoom --- */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite;
+}
+
+/* --- MICRO-ANIMATION 20: Secure SSL Badge Breathing Glow --- */
+@keyframes breathing {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.animate-breath {
+  animation: breathing 3s ease-in-out infinite;
+}
+
+/* --- GLOBAL TRANSITIONS --- */
 .animate-fade-in {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
