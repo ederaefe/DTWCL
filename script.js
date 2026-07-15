@@ -234,6 +234,19 @@ function initFormspreeIntake() {
 function initHeroVideoPlayback() {
   const heroVideo = document.querySelector('.hero-video-bg');
   if (heroVideo) {
-    heroVideo.playbackRate = 0.45; // Smooth slow motion speed
+    const setSpeed = () => {
+      heroVideo.playbackRate = 0.45; // Smooth slow motion speed
+    };
+
+    // Apply speed once metadata has loaded
+    heroVideo.addEventListener('loadedmetadata', setSpeed);
+    
+    // Fallback: apply speed on initial play event
+    heroVideo.addEventListener('play', setSpeed);
+
+    // If metadata is already loaded (cached), apply immediately
+    if (heroVideo.readyState >= 1) {
+      setSpeed();
+    }
   }
 }
