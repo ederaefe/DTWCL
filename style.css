@@ -1087,7 +1087,6 @@ body.preloader-active {
 .preloader-logo {
   width: 6rem;
   height: 6rem;
-  animation: logoPulse 2s ease-in-out infinite alternate;
 }
 
 .preloader-logo svg {
@@ -1095,41 +1094,19 @@ body.preloader-active {
   height: 100%;
 }
 
-@keyframes logoPulse {
-  from {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-  to {
-    transform: scale(1.05);
-    opacity: 1;
-  }
+.preloader-progress-container {
+  width: 180px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 1rem;
 }
 
-.preloader-text-wrapper {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  color: var(--text-light);
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#preloader-text {
-  display: inline-block;
-  min-width: 120px;
-  text-align: center;
-}
-
-.preloader-cursor {
-  animation: cursorBlink 0.8s infinite;
-  color: var(--color-gold);
-  margin-left: 2px;
-}
-
-@keyframes cursorBlink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+.preloader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: var(--color-gold);
+  transition: width 0.1s linear; /* Smooth visual fill */
 }

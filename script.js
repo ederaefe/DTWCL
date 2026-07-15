@@ -258,61 +258,25 @@ function initHeroVideoPlayback() {
  */
 function initPreloader() {
   const preloader = document.getElementById('preloader');
-  const textEl = document.getElementById('preloader-text');
-  if (!preloader || !textEl) return;
+  const bar = document.getElementById('preloader-bar');
+  if (!preloader || !bar) return;
 
-  const targetText = "DTW";
-  const fonts = [
-    "'Gravitas One', cursive",
-    "'Space Grotesk', sans-serif",
-    "'Cinzel', serif",
-    "'Cormorant Garamond', serif",
-    "'Montserrat', sans-serif"
-  ];
-  
-  let fontIndex = 0;
-  let isWriting = true;
-  let charIndex = 0;
-  let cycleCount = 0;
-  const maxCycles = 5; // Rotate through all 5 fonts once
+  let progress = 0;
+  const duration = 3000; // 3 seconds fill duration
+  const intervalTime = 30; // Update every 30ms
+  const step = (intervalTime / duration) * 100;
 
-  function typeEffect() {
-    textEl.style.fontFamily = fonts[fontIndex];
-    
-    if (isWriting) {
-      // Type character by character
-      if (charIndex <= targetText.length) {
-        textEl.textContent = targetText.slice(0, charIndex);
-        charIndex++;
-        setTimeout(typeEffect, 120); // Typing speed
-      } else {
-        // Pause at full word
-        isWriting = false;
-        setTimeout(typeEffect, 500); // Pause at end
-      }
+  const timer = setInterval(() => {
+    progress += step;
+    if (progress >= 100) {
+      progress = 100;
+      bar.style.width = '100%';
+      clearInterval(timer);
+      setTimeout(slideUpPreloader, 200); // Small pause at 100% for visual completion
     } else {
-      // Backspace character by character
-      if (charIndex > 0) {
-        charIndex--;
-        textEl.textContent = targetText.slice(0, charIndex);
-        setTimeout(typeEffect, 70); // Backspacing speed
-      } else {
-        // Switch font and start typing again
-        isWriting = true;
-        fontIndex = (fontIndex + 1) % fonts.length;
-        cycleCount++;
-        
-        if (cycleCount >= maxCycles) {
-          slideUpPreloader();
-        } else {
-          setTimeout(typeEffect, 250); // Pause before next word starts typing
-        }
-      }
+      bar.style.width = `${progress}%`;
     }
-  }
-
-  // Start the typing loop
-  typeEffect();
+  }, intervalTime);
 
   function slideUpPreloader() {
     preloader.classList.add('fade-out');
