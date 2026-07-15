@@ -249,5 +249,43 @@ function initHeroVideoPlayback() {
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
+
+    // ----------------------------------------------------
+    // FALLBACK 2: Auto-Loop Event Reinforcer
+    // ----------------------------------------------------
+    heroVideo.addEventListener('ended', () => {
+      heroVideo.currentTime = 0;
+      heroVideo.play().catch(err => console.log("Loop play blocked:", err));
+    });
+
+    // ----------------------------------------------------
+    // FALLBACK 3: User-Gesture Interaction Autoplay Bypass
+    // ----------------------------------------------------
+    const playAttempt = () => {
+      if (heroVideo.paused) {
+        heroVideo.play()
+          .then(() => {
+            setSpeedAndFade();
+            removeInteractionListeners();
+          })
+          .catch(err => console.log("Interaction play blocked:", err));
+      }
+    };
+
+    const removeInteractionListeners = () => {
+      document.removeEventListener('click', playAttempt);
+      document.removeEventListener('scroll', playAttempt);
+      document.removeEventListener('touchstart', playAttempt);
+    };
+
+    // Check if autoplay succeeded after 1 second
+    setTimeout(() => {
+      if (heroVideo.paused) {
+        // Autoplay was blocked! Bind one-time listeners for first user gesture.
+        document.addEventListener('click', playAttempt, { once: true });
+        document.addEventListener('scroll', playAttempt, { once: true });
+        document.addEventListener('touchstart', playAttempt, { once: true });
+      }
+    }, 1000);
   }
 }
