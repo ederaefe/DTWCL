@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="robots" content="noindex, nofollow" /> <!-- Hidden from search engines -->
+  <title>DTW Consult — Updater Portal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body { background-color: var(--bg-soft); }
+    .updater-wrapper {
+      max-width: 500px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+    }
+    .updater-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .updater-header svg {
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+    }
+    .updater-header h1 {
+      font-size: 1.5rem;
+      color: var(--color-onyx);
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-ash);
+      margin-bottom: 0.5rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-family: inherit;
+      transition: border-color var(--transition-fast);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+    }
+    #status-msg {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+    }
+    .status-success { color: #38a169; }
+    .status-error { color: #e53e3e; }
+  </style>
+</head>
+<body>
+
+  <div class="updater-wrapper">
+    <div class="updater-header">
+      <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"></path>
+      </svg>
+      <h1>Secure Updates Portal</h1>
+    </div>
+
+    <form id="updater-form">
+      <div class="form-group">
+        <label for="passcode">Authentication Passcode *</label>
+        <input type="password" id="passcode" name="passcode" required class="form-control" placeholder="Enter secure pin">
+      </div>
+
+      <div class="form-group">
+        <label for="image">Google Drive Image Link (Optional)</label>
+        <input type="url" id="image" name="image" class="form-control" placeholder="https://drive.google.com/file/d/...">
+      </div>
+
+      <div class="form-group">
+        <label for="text">Update Description *</label>
+        <textarea id="text" name="text" rows="5" required class="form-control" placeholder="What's the latest news?"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="link">Call-to-Action Link (Optional)</label>
+        <input type="url" id="link" name="link" class="form-control" placeholder="https://example.com/apply">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%;" id="submit-btn">Publish to Website</button>
+      
+      <div id="status-msg"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('updater-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const statusMsg = document.getElementById('status-msg');
+      
+      const payload = {
+        passcode: document.getElementById('passcode').value,
+        image: document.getElementById('image').value,
+        text: document.getElementById('text').value,
+        link: document.getElementById('link').value,
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Publishing to GitHub...';
+      statusMsg.style.display = 'none';
+      statusMsg.className = '';
+
+      try {
+        const response = await fetch('/api/add-update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          statusMsg.textContent = 'Update successfully committed! Vercel is deploying it now. Check the updates page in 1-2 minutes.';
+          statusMsg.classList.add('status-success');
+          document.getElementById('updater-form').reset();
+        } else {
+          statusMsg.textContent = result.error || 'Failed to push update.';
+          statusMsg.classList.add('status-error');
+        }
+      } catch (err) {
+        statusMsg.textContent = 'Network error. Make sure the API is deployed.';
+        statusMsg.classList.add('status-error');
+      } finally {
+        statusMsg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Publish to Website';
+      }
+    });
+  </script>
+</body>
+</html>

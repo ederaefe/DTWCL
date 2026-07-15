@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>DTW Consult — Updates &amp; News</title>
+  <meta name="description" content="Stay informed with the latest updates, news, and announcements from DTW Consult." />
+  <link rel="canonical" href="https://dtw-consult.com/updates.html" />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='180' height='180' rx='42' fill='none'/%3E%3Cpath d='M40 40 V140 H70 C105 140 125 120 125 90 C125 60 105 40 70 40 Z' fill='%23FFFF24'/%3E%3Crect x='70' y='70' width='70' height='16' rx='8' fill='%23090A0B'/%3E%3Cpath d='M62 95 L82 140 L100 108 L118 140 L138 95' stroke='%23090A0B' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Updates Feed Specific Styling */
+    .updates-feed {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    .update-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .update-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+    .update-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      background: var(--bg-soft);
+    }
+    .update-content {
+      padding: 2rem;
+    }
+    .update-date {
+      font-size: 0.85rem;
+      color: var(--color-gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .update-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--color-onyx);
+      margin-bottom: 1.5rem;
+    }
+    .update-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .update-link:hover {
+      color: var(--color-onyx);
+    }
+    .skeleton-card {
+      min-height: 200px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+    }
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header-nav">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="180" height="180" rx="42" fill="none"/>
+          <path d="M40 40 V140 H70 C105 140 125 120 125 90 C125 60 105 40 70 40 Z" fill="#FFFF24"/>
+          <rect x="70" y="70" width="70" height="16" rx="8" fill="#090A0B"/>
+          <path d="M62 95 L82 140 L100 108 L118 140 L138 95" stroke="#090A0B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span>DTW CONSULT</span>
+      </a>
+      
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="updates.html" class="nav-link active">Updates</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-primary" style="display: none;">Intake Registry</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="updates.html" class="active">Updates</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="margin-top: 1.5rem; text-align: center;">Intake Registry</a>
+  </div>
+
+  <main>
+    <section class="page-header" style="background: var(--bg-soft); padding: 8rem 0 4rem; text-align: center;">
+      <div class="container">
+        <span class="section-label">Announcements</span>
+        <h1 style="font-size: clamp(2rem, 5vw, 3rem); font-family: 'Gravitas One', cursive; font-weight: 400; margin-bottom: 1rem; color: var(--color-onyx);">
+          Latest Updates
+        </h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+          Stay informed on our newest academic programs, upcoming events, and strategic advisories.
+        </p>
+      </div>
+    </section>
+
+    <section style="background-color: var(--color-ash);">
+      <div class="container" id="updates-container" class="updates-feed">
+        <!-- Skeleton loaders while fetching -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--text-light);">
+            <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+              <rect width="180" height="180" rx="42" fill="none"/>
+              <path d="M40 40 V140 H70 C105 140 125 120 125 90 C125 60 105 40 70 40 Z" fill="#FFFF24"/>
+              <rect x="70" y="70" width="70" height="16" rx="8" fill="#090A0B"/>
+              <path d="M62 95 L82 140 L100 108 L118 140 L138 95" stroke="#090A0B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span>DTW CONSULT</span>
+          </a>
+          <p>An educational and career advisory firm. Guiding candidates from West African secondary classrooms to global pathways.</p>
+        </div>
+        <div class="footer-nav">
+          <h4>Directories</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services Hub</a>
+          <a href="updates.html">Updates</a>
+          <a href="contact.html">Contact Desk</a>
+        </div>
+        <div class="footer-nav">
+          <h4>External Portals</h4>
+          <a href="https://dtwtutorials.com" target="_blank" rel="noopener">DTW Tutorials Blog</a>
+          <a href="https://www.youtube.com/dtwtutorials" target="_blank" rel="noopener">STEM YouTube Channel</a>
+          <a href="https://www.dtwedustore.com" target="_blank" rel="noopener">DTW EduStore</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Headquarters</h4>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"></path></svg>
+            <span>113 Ago Palace Way (beside Market Square), Okota, Lagos State, Nigeria</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0l-7.5-4.615a2.25 2.25 0 01-1.07-1.916V6.75"></path></svg>
+            <span>dtwconsultng@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path></svg>
+            <span>+234 803 873 2879</span>
+          </div>
+          <div class="social-links">
+            <a href="https://web.facebook.com/dtwtutorials/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+            </a>
+            <a href="https://www.youtube.com/dtwtutorials" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"></path><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor"></polygon></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 DTW Consult. All Rights Reserved.</span>
+        <span>Advisory Intake Registry: active</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/2348038732879" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact on WhatsApp">
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.967C16.528 2.015 14.056.991 11.95.991c-5.437 0-9.863 4.374-9.868 9.805a9.691 9.691 0 001.5 5.161l-.98 3.585 3.945-.988z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+  <script>
+    // Utility to convert standard google drive link to direct image link
+    function getDirectImageUrl(url) {
+      if (!url) return '';
+      // Extract the ID from the share link
+      const match = url.match(/\\/d\\/([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+      }
+      return url; // fallback
+    }
+
+    // Format ISO date
+    function formatDate(isoString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(isoString).toLocaleDateString('en-US', options);
+    }
+
+    // Fetch and render updates
+    async function loadUpdates() {
+      const container = document.getElementById('updates-container');
+      try {
+        // Appending timestamp to prevent aggressive caching
+        const res = await fetch('data/updates.json?t=' + new Date().getTime());
+        if (!res.ok) throw new Error("Could not load updates");
+        const updates = await res.json();
+        
+        container.innerHTML = '';
+        container.className = 'updates-feed'; // Assign grid class
+        
+        if (updates.length === 0) {
+          container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">No updates at the moment. Check back soon!</p>';
+          return;
+        }
+
+        updates.forEach(item => {
+          const card = document.createElement('article');
+          card.className = 'update-card animate fade-up';
+          
+          let imgHtml = '';
+          if (item.image) {
+            const directImg = getDirectImageUrl(item.image);
+            imgHtml = `<img src="${directImg}" alt="Update Image" class="update-image" loading="lazy">`;
+          }
+
+          let linkHtml = '';
+          if (item.link) {
+            linkHtml = `
+              <a href="${item.link}" target="_blank" rel="noopener" class="update-link">
+                Read More 
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+            `;
+          }
+
+          card.innerHTML = `
+            ${imgHtml}
+            <div class="update-content">
+              <span class="update-date">${formatDate(item.date)}</span>
+              <p class="update-text">${item.text.replace(/\\n/g, '<br>')}</p>
+              ${linkHtml}
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Trigger the scroll observer for the newly added elements
+        if (typeof initScrollEffects === 'function') {
+          setTimeout(initScrollEffects, 100);
+        }
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadUpdates);
+  </script>
+</body>
+</html>
