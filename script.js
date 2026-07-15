@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollEffects();
   initFAQAccordion();
   initFormspreeIntake();
+  initHeroVideoPlayback();
 });
 
 /**
@@ -224,5 +225,15 @@ function initFormspreeIntake() {
         }
       }
     });
+  }
+}
+
+/**
+ * 5. CINEMATIC HERO VIDEO PLAYBACK CONTROL
+ */
+function initHeroVideoPlayback() {
+  const heroVideo = document.querySelector('.hero-video-bg');
+  if (heroVideo) {
+    heroVideo.playbackRate = 0.45; // Smooth slow motion speed
   }
 }
