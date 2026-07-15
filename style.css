@@ -2,7 +2,7 @@
    DTW CONSULT — MASTER DESIGN SYSTEM & STYLE ARCHITECTURE
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,700&family=Space+Grotesk:wght@700&family=Gravitas+One&family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Gravitas+One&display=swap');
 
 /* 1. DESIGN TOKENS & SYSTEM VARIABLES */
 :root {
@@ -1050,63 +1050,4 @@ select.form-control {
   .footer-bottom {
     flex-direction: row;
   }
-}
-
-/* ==========================================================================
-   10. PREMIUM PRELOADER ARCHITECTURE
-   ========================================================================== */
-body.preloader-active {
-  overflow: hidden;
-}
-
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-onyx); /* Luxury deep black background */
-  z-index: 9999; /* Overlay above everything */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1); /* Slide-up transition */
-}
-
-#preloader.fade-out {
-  transform: translateY(-100%);
-}
-
-.preloader-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-
-.preloader-logo {
-  width: 6rem;
-  height: 6rem;
-}
-
-.preloader-logo svg {
-  width: 100%;
-  height: 100%;
-}
-
-.preloader-progress-container {
-  width: 180px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.12);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-  margin-top: 1rem;
-}
-
-.preloader-progress-bar {
-  width: 0%;
-  height: 100%;
-  background-color: var(--color-gold);
-  transition: width 0.1s linear; /* Smooth visual fill */
 }

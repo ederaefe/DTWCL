@@ -5,7 +5,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initPreloader();
   initNavigation();
   initScrollEffects();
   initFAQAccordion();
@@ -250,41 +249,5 @@ function initHeroVideoPlayback() {
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
-  }
-}
-
-/**
- * 6. PREMIUM LOGO & TYPOGRAPHY PRELOADER
- */
-function initPreloader() {
-  const preloader = document.getElementById('preloader');
-  const bar = document.getElementById('preloader-bar');
-  if (!preloader || !bar) return;
-
-  let progress = 0;
-  const duration = 3000; // 3 seconds fill duration
-  const intervalTime = 30; // Update every 30ms
-  const step = (intervalTime / duration) * 100;
-
-  const timer = setInterval(() => {
-    progress += step;
-    if (progress >= 100) {
-      progress = 100;
-      bar.style.width = '100%';
-      clearInterval(timer);
-      setTimeout(slideUpPreloader, 200); // Small pause at 100% for visual completion
-    } else {
-      bar.style.width = `${progress}%`;
-    }
-  }, intervalTime);
-
-  function slideUpPreloader() {
-    preloader.classList.add('fade-out');
-    document.body.classList.remove('preloader-active');
-    
-    // Completely remove from DOM after slide transition completes
-    setTimeout(() => {
-      preloader.remove();
-    }, 1200);
   }
 }
