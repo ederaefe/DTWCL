@@ -238,6 +238,9 @@ function initHeroVideoPlayback() {
       heroVideo.playbackRate = 0.45; // Smooth slow motion speed
       heroVideo.classList.add('playing'); // Trigger smooth CSS fade-in
     };
+    
+    // Unconditionally make it visible immediately so the user doesn't just see a blank background if autoplay fails
+    setTimeout(() => heroVideo.classList.add('playing'), 100);
 
     // Apply speed and fade once metadata has loaded
     heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
@@ -249,6 +252,8 @@ function initHeroVideoPlayback() {
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
+    
+    heroVideo.play().catch(e => console.log("Initial play blocked", e));
 
     // ----------------------------------------------------
     // FALLBACK 2: Auto-Loop Event Reinforcer
