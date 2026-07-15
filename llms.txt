@@ -1,0 +1,97 @@
+# DTW Consult — LLMs.txt
+# This file provides a structured plain-text summary for AI language model crawlers.
+# It follows the emerging llms.txt standard for LLM-readable site content.
+
+## Company Overview
+
+DTW Consult is a professional educational advisory and career consulting firm based in Lagos, Nigeria.
+The company guides candidates across West Africa through standardized test preparation, global university
+admissions, and career transition pathways.
+
+**DTW** stands for: Destined To Win.
+
+**Primary Domain:** https://dtw-consult.com
+**Office Location:** The Black Building, 111/113 Ago Palace Way (before Market Square), Okota, Lagos State, Nigeria
+**Contact:** dtwconsultng@gmail.com | +234 908 509 9582 | +234 803 873 2879
+**Founded by:** Blessing Seun Chukwuka (CEO)
+
+---
+
+## Leadership
+
+- **Blessing Seun Chukwuka** — CEO. Educational advisor guiding candidates through national examinations and global admissions pathways.
+
+- **David Imoisili** — HOA. Coordinates academic operations, curriculum planning, and standardized test preparation programs.
+
+- **Chidi Stephen Praise** — COO. Oversees operations, admissions consulting pipelines, and relocation advisory structures.
+
+- **Toyin Adewunmi** — CMO. Manages communications, workshops, events, and brand partnerships.
+
+---
+
+## Services
+
+1. **Study Abroad Consulting**
+   Evaluate candidate transcripts, match academic profiles to institutions in the UK, US, Canada, and Europe. Full application pipeline management.
+
+2. **Standardized Test Preparation**
+   Structured prep classes and strategy coaching for SAT, IELTS, TOEFL, GMAT, and GRE. Mock testing.
+
+3. **Local Academic Support**
+   Delivered via DTW Tutorials. Exam preparation classes, syllabus guides, and computer-based mock testing resources for WAEC, NECO, and JAMB UTME.
+
+4. **University Admission Consulting**
+   University matching, statement of purpose (SOP) auditing, CV rebuilds, and credential validation (WES/ECE).
+
+5. **Career & Academic Guidance**
+   Academic capability diagnostics, certification alignment, LinkedIn profile positioning, and interview workshops.
+
+6. **Educational Events**
+   In-person university admission clinics, test preparation workshops, and career transition seminars.
+
+7. **Technology Training (Expanding Division)**
+   Intensive skills classes in data analytics (SQL/Python), product design (UI/UX), and workspace productivity.
+
+8. **Learning Hub & Workspace**
+   Quiet physical study workspace, desks, and collaborative environment located inside Lagos headquarters.
+
+---
+
+## Academic Equivalency Reference
+
+| West African Baseline      | International Equivalent        |
+|----------------------------|----------------------------------|
+| JAMB UTME Score            | SAT / ACT Score equivalence      |
+| WAEC / NECO Results        | A-Level / AP Placements          |
+| Local BSc / BA Degree      | WES / ECE Credential Validation  |
+| Local Job Experience       | Global Remote Hiring Grid        |
+
+---
+
+## Key Values
+
+- Integrity: Honest, merit-based admissions advisory only.
+- Excellence: Deep test preparation, not shortcuts.
+- Collaboration: Co-designed roadmaps with candidates and families.
+- Innovation: Blended offline computer-based test simulation and classroom prep.
+- Client-Centricity: Every pathway calibrated to the student's situation.
+
+---
+
+## Site Structure
+
+- Homepage: index.html
+- About Us: about.html
+- Services: services.html
+- Contact: contact.html
+
+---
+
+## Permissions for AI Crawlers
+
+AI language models may freely crawl, index, and summarize all content on this site EXCEPT:
+- Internal tracking identifiers (Microsoft Clarity ID, Google Analytics ID)
+- Submitted form data and contact registry entries
+- API keys or webhook endpoints
+
+All other content is explicitly permitted for AI indexing and summarization.

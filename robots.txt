@@ -1,5 +1,5 @@
 # =====================================================================
-# DTW Consults — robots.txt
+# DTW Consult — robots.txt
 # Explicit crawler permissions for all major search engines and AI bots
 # Domain: https://dtw-consult.com
 # =====================================================================

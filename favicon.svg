@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Minimalist Premium Geometric Monogram "D" -->
+  
+  <!-- Outer goldenrod primary angle (D stem and curve) -->
+  <path d="M16 12 H32 C44 12 50 18 50 32 C50 46 44 52 32 52 H16 Z" 
+        fill="none" 
+        stroke="#d29e0f" 
+        stroke-width="4.5" 
+        stroke-linejoin="miter" 
+        stroke-linecap="square"/>
+        
+  <!-- Inner dry sage offset accent line -->
+  <path d="M23 20 H31 C38 20 42 24 42 32 C42 40 38 44 31 44 H23 Z" 
+        fill="none" 
+        stroke="#becca4" 
+        stroke-width="2.5" 
+        stroke-linejoin="miter" 
+        stroke-linecap="square"/>
+        
+  <!-- Center alignment dot (representing guidance / objective target) -->
+  <rect x="29" y="30" width="4" height="4" fill="#d29e0f"/>
+</svg>
