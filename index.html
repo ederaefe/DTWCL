@@ -321,7 +321,26 @@
   }
   </script>
 </head>
-<body>
+<body class="preloader-active">
+
+  <!-- ============================================================
+    PRELOADER OVERLAY
+  ============================================================ -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="180" height="180" rx="42" fill="none"/>
+          <path d="M40 40 V140 H70 C105 140 125 120 125 90 C125 60 105 40 70 40 Z" fill="#FFFF24"/>
+          <rect x="70" y="70" width="70" height="16" rx="8" fill="#090A0B"/>
+          <path d="M62 95 L82 140 L100 108 L118 140 L138 95" stroke="#090A0B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="preloader-text-wrapper">
+        <span id="preloader-text"></span><span class="preloader-cursor">|</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================================
     HEADER NAVIGATION
