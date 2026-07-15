@@ -897,6 +897,7 @@ select.form-control {
   height: 3.5rem;
   background-color: #25d366;
   color: #ffffff;
+  border-radius: 50% 50% 50% 0; /* Chat bubble teardrop shape */
   box-shadow: var(--shadow-lg);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -907,7 +908,7 @@ select.form-control {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 50% 50% 50% 0;
   border: 2px solid #25d366;
   opacity: 0;
   animation: whatsapp-pulse 2s infinite ease-out; /* M18: Pulse ring */
