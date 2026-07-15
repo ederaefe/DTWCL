@@ -234,19 +234,20 @@ function initFormspreeIntake() {
 function initHeroVideoPlayback() {
   const heroVideo = document.querySelector('.hero-video-bg');
   if (heroVideo) {
-    const setSpeed = () => {
+    const setSpeedAndFade = () => {
       heroVideo.playbackRate = 0.45; // Smooth slow motion speed
+      heroVideo.classList.add('playing'); // Trigger smooth CSS fade-in
     };
 
-    // Apply speed once metadata has loaded
-    heroVideo.addEventListener('loadedmetadata', setSpeed);
+    // Apply speed and fade once metadata has loaded
+    heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
     
-    // Fallback: apply speed on initial play event
-    heroVideo.addEventListener('play', setSpeed);
+    // Fallback: apply speed and fade on initial play event
+    heroVideo.addEventListener('play', setSpeedAndFade);
 
     // If metadata is already loaded (cached), apply immediately
     if (heroVideo.readyState >= 1) {
-      setSpeed();
+      setSpeedAndFade();
     }
   }
 }

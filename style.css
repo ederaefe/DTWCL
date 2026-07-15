@@ -335,7 +335,12 @@ img, video {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.25; /* Muted video overlay opacity */
+  opacity: 0; /* Hidden initially for smooth fade-in */
+  transition: opacity 2.5s ease-out; /* Premium slow fade-in transition */
+}
+
+.hero-video-bg.playing {
+  opacity: 0.38; /* Slightly brighter target opacity for clearer view */
 }
 
 .hero .container {
