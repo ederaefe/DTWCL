@@ -70,13 +70,18 @@ function handleSpaNavigation(e) {
     return;
   }
 
+  // Split by query parameter first to handle URLs like page.html?query=val
+  const urlParts = href.split('?');
+  const basePath = urlParts[0];
+  const queryStr = urlParts[1] ? `?${urlParts[1]}` : '';
+
   // Handle local pages
-  if (href.endsWith('.html') || href === '/' || href === 'index.html' || !href.includes('.')) {
+  if (basePath.endsWith('.html') || basePath === '/' || basePath === 'index.html' || !basePath.includes('.')) {
     e.preventDefault();
-    const page = (href === '/' || href === 'index.html' || href === '') 
+    const page = (basePath === '/' || basePath === 'index.html' || basePath === '') 
       ? 'home' 
-      : href.replace('.html', '').replace(/^\//, '');
-    navigate(page);
+      : basePath.replace('.html', '').replace(/^\//, '');
+    navigate(page, true, queryStr);
 
     // Auto-close mobile drawer menu if open
     const hamburger = document.querySelector('.hamburger');
@@ -89,7 +94,7 @@ function handleSpaNavigation(e) {
   }
 }
 
-async function navigate(page, pushStateEnabled = true) {
+async function navigate(page, pushStateEnabled = true, queryStr = '') {
   const appContent = document.getElementById('app-content');
   if (!appContent) return;
 
@@ -102,7 +107,7 @@ async function navigate(page, pushStateEnabled = true) {
   if (pageName === 'home') {
     appContent.innerHTML = homeHtml;
     document.title = "DTW Consult — Strategic Educational & Career Advisory | Lagos, Nigeria";
-    if (pushStateEnabled) history.pushState({ page: 'home' }, '', '/');
+    if (pushStateEnabled) history.pushState({ page: 'home' }, '', `/${queryStr}`);
     
     // Re-initialize home-specific interactive modules
     initFAQAccordion();
@@ -139,9 +144,9 @@ async function navigate(page, pushStateEnabled = true) {
     const newTitle = doc.querySelector('title')?.textContent || "DTW Consult";
     document.title = newTitle;
 
-    // Push standard Clean URL history state
+    // Push standard Clean URL history state with query string
     if (pushStateEnabled) {
-      history.pushState({ page: pageName }, '', `/${pageName}`);
+      history.pushState({ page: pageName }, '', `/${pageName}${queryStr}`);
     }
 
     // Reinitialize specific components depending on the loaded page
@@ -280,6 +285,7 @@ function initFAQAccordion() {
  * 5. FORMSPREE INTAKE REGISTRY FORM (CONTACT)
  */
 function initFormspreeIntake() {
+  initCustomDropdowns();
   const intakeForm = document.getElementById('intake-form');
   const formCard = document.querySelector('.form-card');
   
@@ -482,5 +488,72 @@ async function loadUpdates() {
   } catch (err) {
     console.error(err);
     container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
+  }
+}
+
+/**
+ * 7. CUSTOM STYLIZED SELECT DROPDOWNS CONTROLLER
+ */
+function initCustomDropdowns() {
+  const wrappers = document.querySelectorAll('.custom-select-wrapper');
+  
+  wrappers.forEach(wrapper => {
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    const select = wrapper.querySelector('select');
+    const options = wrapper.querySelectorAll('.custom-option');
+    const triggerText = trigger.querySelector('span');
+    
+    // Toggle dropdown panel
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Close other dropdowns first
+      document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+        if (w !== wrapper) w.classList.remove('open');
+      });
+      wrapper.classList.toggle('open');
+    });
+    
+    // Select option logic
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const val = opt.getAttribute('data-value');
+        
+        // Update hidden select
+        if (select) {
+          select.value = val;
+          // Trigger change event just in case
+          select.dispatchEvent(new Event('change'));
+        }
+        
+        // Update trigger text
+        if (triggerText) {
+          triggerText.textContent = opt.textContent;
+        }
+        
+        // Update styling classes
+        options.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        
+        wrapper.classList.remove('open');
+      });
+    });
+  });
+  
+  // Click outside to close dropdowns
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+      w.classList.remove('open');
+    });
+  });
+
+  // Query parameter auto-fill logic for 'service' parameter
+  const params = new URLSearchParams(window.location.search);
+  const selectedService = params.get('service');
+  if (selectedService) {
+    const serviceOption = document.querySelector(`#custom-service-wrapper .custom-option[data-value="${selectedService}"]`);
+    if (serviceOption) {
+      serviceOption.click();
+    }
   }
 }

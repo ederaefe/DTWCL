@@ -130,26 +130,54 @@
 
               <div class="form-group">
                 <label for="service">Primary Service Interest</label>
-                <select id="service" name="service" class="form-control">
-                  <option value="Study Abroad Consulting">Study Abroad Consulting</option>
-                  <option value="Standardized Test Preparation">Standardized Test Preparation</option>
-                  <option value="Local Academic Support">Local Academic Support (WAEC/JAMB/NECO)</option>
-                  <option value="University Admission Consulting">University Admission Consulting</option>
-                  <option value="Career &amp; Academic Guidance">Career &amp; Academic Guidance</option>
-                  <option value="Educational Events">Educational Events</option>
-                  <option value="Technology Training">Technology Training</option>
-                  <option value="Learning Hub &amp; Workspace">Learning Hub &amp; Workspace</option>
-                </select>
+                <div class="custom-select-wrapper" id="custom-service-wrapper">
+                  <select id="service" name="service" style="display: none;" required>
+                    <option value="Study Abroad Consulting">Study Abroad Consulting</option>
+                    <option value="Standardized Test Preparation">Standardized Test Preparation</option>
+                    <option value="Local Academic Support">Local Academic Support</option>
+                    <option value="University Admission Consulting">University Admission Consulting</option>
+                    <option value="Career &amp; Academic Guidance">Career &amp; Academic Guidance</option>
+                    <option value="Educational Events">Educational Events</option>
+                    <option value="Technology Training">Technology Training</option>
+                    <option value="Learning Hub &amp; Workspace">Learning Hub &amp; Workspace</option>
+                  </select>
+                  <div class="custom-select-trigger" id="service-trigger">
+                    <span>Study Abroad Consulting</span>
+                    <div class="arrow"></div>
+                  </div>
+                  <div class="custom-options" id="service-options">
+                    <span class="custom-option selected" data-value="Study Abroad Consulting">Study Abroad Consulting</span>
+                    <span class="custom-option" data-value="Standardized Test Preparation">Standardized Test Preparation</span>
+                    <span class="custom-option" data-value="Local Academic Support">Local Academic Support</span>
+                    <span class="custom-option" data-value="University Admission Consulting">University Admission Consulting</span>
+                    <span class="custom-option" data-value="Career &amp; Academic Guidance">Career &amp; Academic Guidance</span>
+                    <span class="custom-option" data-value="Educational Events">Educational Events</span>
+                    <span class="custom-option" data-value="Technology Training">Technology Training</span>
+                    <span class="custom-option" data-value="Learning Hub &amp; Workspace">Learning Hub &amp; Workspace</span>
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="curriculum">Academic Curriculum Target</label>
-                <select id="curriculum" name="curriculum" class="form-control">
-                  <option value="Both Local &amp; International">Both Local &amp; International</option>
-                  <option value="International Only">International Only (US/UK/Canada matriculation)</option>
-                  <option value="Local West African Only">Local West African Only (WAEC/JAMB pathways)</option>
-                  <option value="Corporate Career Transition Only">Corporate Career Transition Only</option>
-                </select>
+                <div class="custom-select-wrapper" id="custom-curriculum-wrapper">
+                  <select id="curriculum" name="curriculum" style="display: none;" required>
+                    <option value="Both Local &amp; International">Both Local &amp; International</option>
+                    <option value="International Only">International Only (US/UK/Canada matriculation)</option>
+                    <option value="Local West African Only">Local West African Only (WAEC/JAMB pathways)</option>
+                    <option value="Corporate Career Transition Only">Corporate Career Transition Only</option>
+                  </select>
+                  <div class="custom-select-trigger" id="curriculum-trigger">
+                    <span>Both Local &amp; International</span>
+                    <div class="arrow"></div>
+                  </div>
+                  <div class="custom-options" id="curriculum-options">
+                    <span class="custom-option selected" data-value="Both Local &amp; International">Both Local &amp; International</span>
+                    <span class="custom-option" data-value="International Only">International Only (US/UK/Canada matriculation)</span>
+                    <span class="custom-option" data-value="Local West African Only">Local West African Only (WAEC/JAMB pathways)</span>
+                    <span class="custom-option" data-value="Corporate Career Transition Only">Corporate Career Transition Only</span>
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
