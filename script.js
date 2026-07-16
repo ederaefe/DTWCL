@@ -1,72 +1,211 @@
 /**
- * DTW CONSULT — CORE INTERACTION ENGINE
- * Vanilla JS script managing mobile navigation, scroll-reveal transitions,
- * active path indicators, FAQ accordions, and Formspree intake submissions.
+ * DTW CONSULT — CORE INTERACTION & SPA ROUTING ENGINE
+ * Master script managing mobile navigation, dynamic routing (SPA), scroll-reveal transitions,
+ * active path indicators, FAQ accordions, Formspree intake, and background video controls.
  */
 
+// Global cache for the home page content
+let homeHtml = '';
+window.__SPA_ROUTER__ = true;
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Cache the default index.html main container content for instant home page return
+  const appContent = document.getElementById('app-content');
+  if (appContent) {
+    homeHtml = appContent.innerHTML;
+  }
+
+  // Bind Hamburger Drawer triggers
   initNavigation();
+
+  // Initialize Global Scroll Reveal
   initScrollEffects();
-  initFAQAccordion();
-  initFormspreeIntake();
-  initHeroVideoPlayback();
+
+  // Initial routing check (for direct links redirected via query params)
+  const params = new URLSearchParams(window.location.search);
+  const targetPage = params.get('page');
+  if (targetPage) {
+    navigate(targetPage, false);
+    // Replace URL cleanly without query parameters
+    const cleanUrl = targetPage === 'home' || targetPage === 'index' ? '/' : `/${targetPage}`;
+    history.replaceState({ page: targetPage }, '', cleanUrl);
+  } else {
+    // If it's a direct load on the homepage, initialize homepage-specific scripts
+    initFAQAccordion();
+  }
+
+  // Intercept all link clicks for Single Page Application navigation
+  document.addEventListener('click', handleSpaNavigation);
+});
+
+// Listen to browser Back/Forward navigation
+window.addEventListener('popstate', (e) => {
+  const state = e.state;
+  if (state && state.page) {
+    navigate(state.page, false);
+  } else {
+    navigate('home', false);
+  }
 });
 
 /**
- * 1. NAVIGATION CONTROL & MOBILE DRAWER
+ * SPA ROUTER & NAVIGATION ENGINE
  */
-function initNavigation() {
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav a');
-  
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      const isActive = hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-      
-      // Prevent background body scroll when drawer is open
-      document.body.style.overflow = isActive ? 'hidden' : '';
-    });
+function handleSpaNavigation(e) {
+  const link = e.target.closest('a');
+  if (!link) return;
+
+  const href = link.getAttribute('href');
+  if (!href) return;
+
+  // Ignore external links, mailto, tel, hashes, and the admin updater page
+  if (
+    href.startsWith('http') && !href.startsWith(window.location.origin) ||
+    href.startsWith('mailto:') ||
+    href.startsWith('tel:') ||
+    href.startsWith('#') ||
+    href.includes('updater')
+  ) {
+    return;
   }
 
-  // Auto-indicate active page based on current URL path
-  const currentPath = window.location.pathname;
+  // Handle local pages
+  if (href.endsWith('.html') || href === '/' || href === 'index.html' || !href.includes('.')) {
+    e.preventDefault();
+    const page = (href === '/' || href === 'index.html' || href === '') 
+      ? 'home' 
+      : href.replace('.html', '').replace(/^\//, '');
+    navigate(page);
+
+    // Auto-close mobile drawer menu if open
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (hamburger && mobileNav && mobileNav.classList.contains('active')) {
+      hamburger.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+async function navigate(page, pushStateEnabled = true) {
+  const appContent = document.getElementById('app-content');
+  if (!appContent) return;
+
+  // Normalize page name
+  const pageName = page === 'index' ? 'home' : page;
+
+  // Update active links state
+  updateActiveLinks(pageName);
+
+  if (pageName === 'home') {
+    appContent.innerHTML = homeHtml;
+    document.title = "DTW Consult — Strategic Educational & Career Advisory | Lagos, Nigeria";
+    if (pushStateEnabled) history.pushState({ page: 'home' }, '', '/');
+    
+    // Re-initialize home-specific interactive modules
+    initFAQAccordion();
+    initScrollEffects();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  // Show a clean, premium loading indicator
+  appContent.innerHTML = `
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 55vh; background: var(--bg-dark);">
+      <div style="width: 3.5rem; height: 3.5rem; border: 3px solid rgba(210,158,15,0.2); border-top-color: var(--color-gold); border-radius: 50%; animation: spin 0.8s infinite linear;"></div>
+    </div>
+  `;
+
+  try {
+    const response = await fetch(`${pageName}.html`);
+    if (!response.ok) throw new Error("Requested page not found.");
+    const htmlText = await response.text();
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+
+    // Swap only the main content
+    const newMain = doc.querySelector('main');
+    if (newMain) {
+      appContent.innerHTML = newMain.innerHTML;
+    } else {
+      appContent.innerHTML = htmlText;
+    }
+
+    // Set page title
+    const newTitle = doc.querySelector('title')?.textContent || "DTW Consult";
+    document.title = newTitle;
+
+    // Push standard Clean URL history state
+    if (pushStateEnabled) {
+      history.pushState({ page: pageName }, '', `/${pageName}`);
+    }
+
+    // Reinitialize specific components depending on the loaded page
+    if (pageName === 'about') {
+      initHeroVideoPlayback();
+    } else if (pageName === 'contact') {
+      initFormspreeIntake();
+    } else if (pageName === 'updates') {
+      loadUpdates();
+    }
+
+    initScrollEffects();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  } catch (err) {
+    console.error("Navigation error:", err);
+    appContent.innerHTML = `
+      <div style="text-align: center; padding: 6rem 2rem; background: var(--bg-dark); color: #fff;">
+        <h2 style="font-family: 'Gravitas One', cursive; margin-bottom: 1rem; color: #e53e3e;">Page Load Failed</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">${err.message}</p>
+        <button onclick="navigate('home')" class="btn btn-secondary">Return Home</button>
+      </div>
+    `;
+  }
+}
+
+function updateActiveLinks(page) {
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav a');
   navLinks.forEach(link => {
+    link.classList.remove('active');
     const href = link.getAttribute('href');
     if (href) {
-      // Handle homepage variations (index.html, root /, etc.)
-      const isHome = href === 'index.html' || href === './' || href === '/';
-      const isPathHome = currentPath === '/' || currentPath.endsWith('index.html');
-      
-      if (isHome && isPathHome) {
-        link.classList.add('active');
-      } else if (!isHome && href !== '#' && currentPath.endsWith(href)) {
+      const linkPage = href.replace('.html', '').replace(/^\//, '');
+      if (linkPage === page || (page === 'home' && (linkPage === 'index' || linkPage === ''))) {
         link.classList.add('active');
       }
     }
   });
-
-  // Close mobile drawer if user links click
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (hamburger && mobileNav) {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  });
 }
 
 /**
- * 2. SCROLL REVEAL & HEADER STICKY EFFECTS (M4, M19)
+ * 2. HAMBURGER MOBILE NAVIGATION DRAWER
+ */
+function initNavigation() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  
+  if (hamburger && mobileNav) {
+    // Clone hamburger to clear previous event listeners (to prevent memory leaks / double bindings)
+    const newHamburger = hamburger.cloneNode(true);
+    hamburger.parentNode.replaceChild(newHamburger, hamburger);
+
+    newHamburger.addEventListener('click', () => {
+      const isActive = newHamburger.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.style.overflow = isActive ? 'hidden' : '';
+    });
+  }
+}
+
+/**
+ * 3. SCROLL REVEAL & HEADER STICKY EFFECTS
  */
 function initScrollEffects() {
   const header = document.querySelector('.header-nav');
   
-  // Sticky nav header scroll state (M4)
   const handleScroll = () => {
     if (window.scrollY > 20) {
       header?.classList.add('scrolled');
@@ -76,23 +215,20 @@ function initScrollEffects() {
   };
   
   window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Run initially in case page loaded scrolled
+  handleScroll();
 
-  // Scroll reveal IntersectionObserver (M1, M2, M3, M19)
   const animElements = document.querySelectorAll('.animate');
-  
   if ('IntersectionObserver' in window) {
     const observerOptions = {
-      root: null, // relative to document viewport
-      rootMargin: '0px 0px -40px 0px', // trigger slightly before entering view
-      threshold: 0.15 // 15% of element visible
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
     };
     
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // Unobserve once animation is executed to optimize scroll thread
           observer.unobserve(entry.target);
         }
       });
@@ -100,13 +236,12 @@ function initScrollEffects() {
     
     animElements.forEach(el => revealObserver.observe(el));
   } else {
-    // Fallback for older browsers
     animElements.forEach(el => el.classList.add('visible'));
   }
 }
 
 /**
- * 3. FAQ ACCORDION INTERACTION (M13, M14)
+ * 4. FAQ ACCORDION INTERACTION (HOMEPAGE)
  */
 function initFAQAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -119,7 +254,6 @@ function initFAQAccordion() {
       trigger.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Close all other active items
         faqItems.forEach(otherItem => {
           if (otherItem !== item && otherItem.classList.contains('active')) {
             otherItem.classList.remove('active');
@@ -128,13 +262,11 @@ function initFAQAccordion() {
           }
         });
         
-        // Toggle current item
         if (isActive) {
           item.classList.remove('active');
           content.style.maxHeight = '0';
         } else {
           item.classList.add('active');
-          // Dynamically compute size (plus room for padding)
           content.style.maxHeight = content.scrollHeight + 'px';
         }
       });
@@ -143,7 +275,7 @@ function initFAQAccordion() {
 }
 
 /**
- * 4. SECURE INTAKE REGISTRY SUBMISSION (Formspree fetch API)
+ * 5. FORMSPREE INTAKE REGISTRY FORM (CONTACT)
  */
 function initFormspreeIntake() {
   const intakeForm = document.getElementById('intake-form');
@@ -156,12 +288,10 @@ function initFormspreeIntake() {
       const submitBtn = intakeForm.querySelector('button[type="submit"]');
       const submitError = document.getElementById('submit-error');
       
-      // Basic input verification
       const nameVal = document.getElementById('name')?.value;
       const emailVal = document.getElementById('email')?.value;
       if (!nameVal || !emailVal) return;
       
-      // Update UI state to submitting
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting to Registry...';
@@ -171,7 +301,6 @@ function initFormspreeIntake() {
         submitError.style.display = 'none';
       }
       
-      // Package payload dynamically
       const formData = new FormData(intakeForm);
       const dataPayload = {};
       formData.forEach((value, key) => {
@@ -189,7 +318,6 @@ function initFormspreeIntake() {
         });
         
         if (response.ok) {
-          // Success: swap card view to custom verified confirmation screen
           formCard.innerHTML = `
             <div style="text-align: center; padding: 2rem 0;" class="animate visible">
               <div style="color: var(--color-gold); margin-bottom: 1.5rem; display: flex; justify-content: center;">
@@ -209,12 +337,10 @@ function initFormspreeIntake() {
             </div>
           `;
         } else {
-          // Failure response handling
           const errorData = await response.json();
           throw new Error(errorData.error || 'Intake submission failed. Check fields and retry.');
         }
       } catch (err) {
-        // Network/Execution failure handling
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Submit to Intake Registry';
@@ -229,43 +355,32 @@ function initFormspreeIntake() {
 }
 
 /**
- * 5. CINEMATIC HERO VIDEO PLAYBACK CONTROL
+ * 6. CINEMATIC HERO VIDEO PLAYBACK CONTROL (ABOUT)
  */
 function initHeroVideoPlayback() {
   const heroVideo = document.querySelector('.hero-video-bg');
   if (heroVideo) {
     const setSpeedAndFade = () => {
-      heroVideo.playbackRate = 0.45; // Smooth slow motion speed
-      heroVideo.classList.add('playing'); // Trigger smooth CSS fade-in
+      heroVideo.playbackRate = 0.45;
+      heroVideo.classList.add('playing');
     };
     
-    // Unconditionally make it visible immediately so the user doesn't just see a blank background if autoplay fails
     setTimeout(() => heroVideo.classList.add('playing'), 100);
 
-    // Apply speed and fade once metadata has loaded
     heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
-    
-    // Fallback: apply speed and fade on initial play event
     heroVideo.addEventListener('play', setSpeedAndFade);
 
-    // If metadata is already loaded (cached), apply immediately
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
     
     heroVideo.play().catch(e => console.log("Initial play blocked", e));
 
-    // ----------------------------------------------------
-    // FALLBACK 2: Auto-Loop Event Reinforcer
-    // ----------------------------------------------------
     heroVideo.addEventListener('ended', () => {
       heroVideo.currentTime = 0;
       heroVideo.play().catch(err => console.log("Loop play blocked:", err));
     });
 
-    // ----------------------------------------------------
-    // FALLBACK 3: User-Gesture Interaction Autoplay Bypass
-    // ----------------------------------------------------
     const playAttempt = () => {
       if (heroVideo.paused) {
         heroVideo.play()
@@ -283,14 +398,87 @@ function initHeroVideoPlayback() {
       document.removeEventListener('touchstart', playAttempt);
     };
 
-    // Check if autoplay succeeded after 1 second
     setTimeout(() => {
       if (heroVideo.paused) {
-        // Autoplay was blocked! Bind one-time listeners for first user gesture.
         document.addEventListener('click', playAttempt, { once: true });
         document.addEventListener('scroll', playAttempt, { once: true });
         document.addEventListener('touchstart', playAttempt, { once: true });
       }
     }, 1000);
+  }
+}
+
+/**
+ * 7. DYNAMIC ANNOUNCEMENT FEED LOADER (UPDATES)
+ */
+function getDirectImageUrl(url) {
+  if (!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  }
+  return url;
+}
+
+function formatDate(isoString) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(isoString).toLocaleDateString('en-US', options);
+}
+
+async function loadUpdates() {
+  const container = document.getElementById('updates-container');
+  if (!container) return;
+
+  try {
+    const res = await fetch('data/updates.json?t=' + new Date().getTime());
+    if (!res.ok) throw new Error("Could not load updates");
+    const updates = await res.json();
+    
+    container.innerHTML = '';
+    container.className = 'updates-feed';
+    
+    if (updates.length === 0) {
+      container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">No updates at the moment. Check back soon!</p>';
+      return;
+    }
+
+    updates.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'update-card animate fade-up';
+      
+      let imgHtml = '';
+      if (item.image) {
+        const directImg = getDirectImageUrl(item.image);
+        imgHtml = `<img src="${directImg}" alt="Update Image" class="update-image" loading="lazy">`;
+      }
+
+      let linkHtml = '';
+      if (item.link) {
+        linkHtml = `
+          <a href="${item.link}" target="_blank" rel="noopener" class="update-link">
+            Read More 
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+          </a>
+        `;
+      }
+
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="update-content">
+          <span class="update-date">${formatDate(item.date)}</span>
+          <p class="update-text">${item.text.replace(/\n/g, '<br>')}</p>
+          ${linkHtml}
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    if (typeof initScrollEffects === 'function') {
+      setTimeout(initScrollEffects, 100);
+    }
+
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
   }
 }
