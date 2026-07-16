@@ -719,11 +719,21 @@
     );
 
     // ── Passcode Gate ──
-    document.getElementById('gate-form').addEventListener('submit', (e) => {
+    document.getElementById('gate-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const code = document.getElementById('gate-passcode').value;
       const errorDiv = document.getElementById('gate-error');
-      if (code === '7830') {
+      try {
+        const response = await fetch('/api/verify-passcode', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ passcode: code })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.valid) {
+          throw new Error('Invalid passcode');
+        }
+
         unlockedPasscode = code;
         errorDiv.style.display = 'none';
         const gate = document.getElementById('gate-screen');
@@ -734,7 +744,7 @@
           requestAnimationFrame(() => { workspace.classList.add('visible'); });
         });
         loadManagerUpdates();
-      } else {
+      } catch (_) {
         errorDiv.style.display = 'block';
         document.getElementById('gate-passcode').value = '';
       }
