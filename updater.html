@@ -248,6 +248,97 @@
       display: block;
     }
 
+    .manage-section {
+      margin-top: 2.25rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.6rem;
+    }
+    .manage-section h3 {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .manage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 0.2rem;
+    }
+    .manage-card {
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 0.85rem;
+    }
+    .manage-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+    .manage-date {
+      color: #e2e8f0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .manage-text {
+      margin: 0;
+      font-size: 0.88rem;
+      color: #cbd5e0;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .manage-actions {
+      display: flex;
+      gap: 0.45rem;
+      margin-top: 0.6rem;
+    }
+    .btn-manage {
+      border: none;
+      border-radius: 9px;
+      padding: 0.42rem 0.68rem;
+      font-size: 0.77rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-manage:hover { opacity: 0.86; }
+    .btn-edit {
+      background: rgba(219,154,2,0.2);
+      color: #f4c455;
+      border: 1px solid rgba(219,154,2,0.35);
+    }
+    .btn-delete {
+      background: rgba(229,62,98,0.15);
+      color: #fc8181;
+      border: 1px solid rgba(229,62,98,0.3);
+    }
+    .btn-cancel-edit {
+      margin-top: 0.65rem;
+      display: none;
+      border: 1px solid rgba(255,255,255,0.13);
+      color: #cbd5e0;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .manage-empty {
+      margin: 0;
+      color: #a0aec0;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 1.2rem 0.5rem;
+    }
+
     /* ── Help Button (floating ?) ── */
     .help-fab {
       position: fixed;
@@ -471,8 +562,17 @@
           </svg>
           Publish Update
         </button>
+        <button type="button" class="btn-cancel-edit" id="cancel-edit-btn">Cancel editing</button>
         <div id="status-banner" class="status-banner"></div>
       </form>
+
+      <div class="manage-section">
+        <h3>Manage Published Updates</h3>
+        <div id="manager-status" class="status-banner"></div>
+        <div id="updates-manager-list" class="manage-list">
+          <p class="manage-empty">Unlock to load recent updates.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Right: Live Preview -->
@@ -633,6 +733,7 @@
         requestAnimationFrame(() => {
           requestAnimationFrame(() => { workspace.classList.add('visible'); });
         });
+        loadManagerUpdates();
       } else {
         errorDiv.style.display = 'block';
         document.getElementById('gate-passcode').value = '';
@@ -672,10 +773,19 @@
     const imageInput = document.getElementById('image');
     const textInput  = document.getElementById('text');
     const linkInput  = document.getElementById('link');
+    const formEl = document.getElementById('updater-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
+    const statusBanner = document.getElementById('status-banner');
+    const managerStatus = document.getElementById('manager-status');
+    const managerList = document.getElementById('updates-manager-list');
     const previewImg  = document.getElementById('preview-card-img');
     const previewDate = document.getElementById('preview-card-date');
     const previewText = document.getElementById('preview-card-text');
     const previewLink = document.getElementById('preview-card-link');
+    let editingUpdateId = null;
+    const SEND_ICON = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>`;
+    const DEFAULT_SUBMIT_HTML = `${SEND_ICON} Publish Update`;
 
     previewDate.textContent = formatDate(new Date());
 
@@ -707,6 +817,126 @@
     textInput.addEventListener('input', updatePreview);
     linkInput.addEventListener('input', updatePreview);
 
+    function setManagerStatus(message, type = 'success') {
+      managerStatus.textContent = message;
+      managerStatus.className = `status-banner ${type}`;
+      managerStatus.style.display = 'block';
+    }
+
+    function clearManagerStatus() {
+      managerStatus.textContent = '';
+      managerStatus.className = 'status-banner';
+      managerStatus.style.display = 'none';
+    }
+
+    function clearEditState() {
+      editingUpdateId = null;
+      cancelEditBtn.style.display = 'none';
+      submitBtn.innerHTML = DEFAULT_SUBMIT_HTML;
+      formEl.reset();
+      updatePreview();
+    }
+
+    function setEditingState(item) {
+      editingUpdateId = String(item.id);
+      imageInput.value = item.image || '';
+      textInput.value = item.text || '';
+      linkInput.value = item.link || '';
+      submitBtn.innerHTML = `${SEND_ICON} Save Changes`;
+      cancelEditBtn.style.display = 'inline-block';
+      updatePreview();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      clearManagerStatus();
+      setManagerStatus('Editing selected update. Change fields and click "Save Changes".', 'success');
+    }
+
+    function renderManagerList(updates) {
+      managerList.innerHTML = '';
+      if (!updates.length) {
+        managerList.innerHTML = '<p class="manage-empty">No published updates found.</p>';
+        return;
+      }
+
+      updates.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'manage-card';
+
+        const meta = document.createElement('div');
+        meta.className = 'manage-meta';
+
+        const date = document.createElement('span');
+        date.className = 'manage-date';
+        date.textContent = formatDate(new Date(item.date));
+        meta.appendChild(date);
+
+        card.appendChild(meta);
+
+        const text = document.createElement('p');
+        text.className = 'manage-text';
+        const textValue = (item.text || '').trim();
+        text.textContent = textValue.length > 180 ? `${textValue.slice(0, 177)}...` : textValue || '(No text)';
+        card.appendChild(text);
+
+        const actions = document.createElement('div');
+        actions.className = 'manage-actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.type = 'button';
+        editBtn.className = 'btn-manage btn-edit';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => setEditingState(item));
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.type = 'button';
+        deleteBtn.className = 'btn-manage btn-delete';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => deleteUpdate(item));
+
+        actions.appendChild(editBtn);
+        actions.appendChild(deleteBtn);
+        card.appendChild(actions);
+        managerList.appendChild(card);
+      });
+    }
+
+    async function loadManagerUpdates() {
+      managerList.innerHTML = '<p class="manage-empty">Loading updates...</p>';
+      try {
+        const res = await fetch('data/updates.json?t=' + Date.now());
+        if (!res.ok) throw new Error('Unable to load updates');
+        const updates = await res.json();
+        renderManagerList(Array.isArray(updates) ? updates : []);
+      } catch (error) {
+        managerList.innerHTML = '<p class="manage-empty">Failed to load updates list.</p>';
+      }
+    }
+
+    async function deleteUpdate(item) {
+      const shouldDelete = window.confirm('Delete this update permanently?');
+      if (!shouldDelete) return;
+      clearManagerStatus();
+      try {
+        const response = await fetch('/api/delete-update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            passcode: unlockedPasscode,
+            id: String(item.id)
+          })
+        });
+        const result = await response.json();
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to delete update');
+        }
+
+        if (editingUpdateId === String(item.id)) clearEditState();
+        await loadManagerUpdates();
+        setManagerStatus('Update deleted successfully.', 'success');
+      } catch (error) {
+        setManagerStatus(error.message || 'Failed to delete update.', 'error');
+      }
+    }
+
     // ── Help Drawer Toggle ──
     const helpFab     = document.getElementById('help-fab');
     const helpOverlay = document.getElementById('help-overlay');
@@ -729,50 +959,56 @@
     helpOverlay.addEventListener('click', closeDrawer);
 
     // ── Form Submission ──
-    const SEND_ICON = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>`;
+    cancelEditBtn.addEventListener('click', () => {
+      clearEditState();
+      clearManagerStatus();
+    });
 
-    document.getElementById('updater-form').addEventListener('submit', async (e) => {
+    formEl.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn    = document.getElementById('submit-btn');
-      const banner = document.getElementById('status-banner');
 
       const payload = {
         passcode: unlockedPasscode,
+        id: editingUpdateId,
         image: normalizeImageUrl(imageInput.value.trim()),
         text:  textInput.value,
         link:  linkInput.value.trim()
       };
 
-      btn.disabled = true;
-      btn.innerHTML = 'Publishing Announcement...';
-      banner.style.display = 'none';
-      banner.className = 'status-banner';
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = editingUpdateId ? 'Saving Changes...' : 'Publishing Announcement...';
+      statusBanner.style.display = 'none';
+      statusBanner.className = 'status-banner';
 
       try {
-        const response = await fetch('/api/add-update', {
+        const response = await fetch(editingUpdateId ? '/api/edit-update' : '/api/add-update', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
         const result = await response.json();
         if (response.ok) {
-          banner.textContent = 'Announcement successfully published! Vercel is deploying it now. Check the updates feed in 1–2 minutes.';
-          banner.classList.add('success');
-          document.getElementById('updater-form').reset();
-          updatePreview();
+          statusBanner.textContent = editingUpdateId
+            ? 'Announcement updated successfully.'
+            : 'Announcement successfully published! Vercel is deploying it now. Check the updates feed in 1–2 minutes.';
+          statusBanner.classList.add('success');
+          clearEditState();
+          await loadManagerUpdates();
+          clearManagerStatus();
         } else {
-          banner.textContent = result.error || 'Failed to publish. Verify environment variables.';
-          banner.classList.add('error');
+          statusBanner.textContent = result.error || 'Failed to publish. Verify environment variables.';
+          statusBanner.classList.add('error');
         }
       } catch (err) {
-        banner.textContent = 'API network failure. Verify Vercel deployment logs.';
-        banner.classList.add('error');
+        statusBanner.textContent = 'API network failure. Verify Vercel deployment logs.';
+        statusBanner.classList.add('error');
       } finally {
-        banner.style.display = 'block';
-        btn.disabled = false;
-        btn.innerHTML = `${SEND_ICON} Publish Update`;
+        statusBanner.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = editingUpdateId ? `${SEND_ICON} Save Changes` : DEFAULT_SUBMIT_HTML;
       }
     });
+
   </script>
 </body>
 </html>
