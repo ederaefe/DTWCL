@@ -463,21 +463,45 @@ img, video {
 }
 
 /* Team Member Cards (M11: Scale photo, M12: Card border) */
+.team-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+.team-ceo-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.team-ceo-row .team-card {
+  width: 100%;
+  max-width: 280px;
+}
+
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2.5rem 2rem;
+  width: 100%;
 }
 
 .team-card {
   background-color: var(--bg-primary);
   border: var(--border-light);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   transition: all var(--transition-normal);
 }
 
 .team-card:hover {
   border-color: var(--color-gold);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .team-image-container {
