@@ -368,8 +368,16 @@ function initFormspreeIntake() {
 function initHeroVideoPlayback() {
   const heroVideo = document.querySelector('.hero-video-bg');
   if (heroVideo) {
+    // Explicitly enforce muted properties to satisfy strict autoplay engines
+    heroVideo.muted = true;
+    heroVideo.setAttribute('muted', '');
+
     const setSpeedAndFade = () => {
-      heroVideo.playbackRate = 0.45;
+      try {
+        heroVideo.playbackRate = 0.45;
+      } catch (err) {
+        console.warn("Playback rate adjustment delayed:", err);
+      }
       heroVideo.classList.add('playing');
     };
     
@@ -377,12 +385,15 @@ function initHeroVideoPlayback() {
 
     heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
     heroVideo.addEventListener('play', setSpeedAndFade);
+    heroVideo.addEventListener('canplay', setSpeedAndFade);
 
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
     
-    heroVideo.play().catch(e => console.log("Initial play blocked", e));
+    heroVideo.play()
+      .then(setSpeedAndFade)
+      .catch(e => console.log("Initial autoplay blocked, waiting for interaction", e));
 
     heroVideo.addEventListener('ended', () => {
       heroVideo.currentTime = 0;
@@ -391,6 +402,7 @@ function initHeroVideoPlayback() {
 
     const playAttempt = () => {
       if (heroVideo.paused) {
+        heroVideo.muted = true;
         heroVideo.play()
           .then(() => {
             setSpeedAndFade();
@@ -412,7 +424,7 @@ function initHeroVideoPlayback() {
         document.addEventListener('scroll', playAttempt, { once: true });
         document.addEventListener('touchstart', playAttempt, { once: true });
       }
-    }, 1000);
+    }, 500);
   }
 }
 
