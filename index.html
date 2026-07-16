@@ -8,41 +8,39 @@
   <!-- ============================================================
     ANALYTICS & SESSION TRACKING (Preserved)
   ============================================================ -->
-  <div data-nosnippet style="display:none">
-    <!-- Microsoft Clarity — Session Recording (Dynamic non-blocking loader) -->
-    <script type="text/javascript">
-      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
-      (function () {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = "https://www.clarity.ms/tag/xmgo4l74yr";
-        script.onerror = function () {
-          console.warn("Microsoft Clarity bypassed by client. Bypassing tracking load.");
-        };
-        const firstScript = document.getElementsByTagName('script')[0];
-        firstScript.parentNode.insertBefore(script, firstScript);
-      })();
-    </script>
+  <!-- Microsoft Clarity — Session Recording (Dynamic non-blocking loader) -->
+  <script type="text/javascript" data-nosnippet>
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    (function () {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = "https://www.clarity.ms/tag/xmgo4l74yr";
+      script.onerror = function () {
+        console.warn("Microsoft Clarity bypassed by client. Bypassing tracking load.");
+      };
+      const firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+  </script>
 
-    <!-- Google Analytics 4 — Traffic Measurement (Dynamic non-blocking loader) -->
-    <script type="text/javascript">
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function () { dataLayer.push(arguments); };
-      gtag('js', new Date());
-      gtag('config', 'G-CRPPHLYPBS');
+  <!-- Google Analytics 4 — Traffic Measurement (Dynamic non-blocking loader) -->
+  <script type="text/javascript" data-nosnippet>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-CRPPHLYPBS');
 
-      (function () {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-CRPPHLYPBS";
-        script.onerror = function () {
-          console.warn("Google Analytics bypassed by client. Bypassing tracking load.");
-        };
-        const firstScript = document.getElementsByTagName('script')[0];
-        firstScript.parentNode.insertBefore(script, firstScript);
-      })();
-    </script>
-  </div>
+    (function () {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-CRPPHLYPBS";
+      script.onerror = function () {
+        console.warn("Google Analytics bypassed by client. Bypassing tracking load.");
+      };
+      const firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(script, firstScript);
+    })();
+  </script>
 
   <!-- ============================================================
     PRIMARY SEO META TAGS
