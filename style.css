@@ -226,9 +226,12 @@ img, video {
   color: var(--color-onyx);
 }
 
-.logo svg {
+.logo svg,
+.logo-img {
   width: 2.25rem;
   height: 2.25rem;
+  object-fit: contain;
+  border-radius: 6px;
 }
 
 .nav-menu {
