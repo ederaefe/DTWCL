@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     // If it's a direct load on the homepage, initialize homepage-specific scripts
     initFAQAccordion();
+    initHeroVideoPlayback();
   }
 
   // Intercept all link clicks for Single Page Application navigation
@@ -106,6 +107,7 @@ async function navigate(page, pushStateEnabled = true) {
     // Re-initialize home-specific interactive modules
     initFAQAccordion();
     initScrollEffects();
+    initHeroVideoPlayback();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
   }
@@ -144,7 +146,7 @@ async function navigate(page, pushStateEnabled = true) {
 
     // Reinitialize specific components depending on the loaded page
     if (pageName === 'about') {
-      initHeroVideoPlayback();
+      // About page no longer has video
     } else if (pageName === 'contact') {
       initFormspreeIntake();
     } else if (pageName === 'updates') {
