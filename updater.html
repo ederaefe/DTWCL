@@ -14,9 +14,8 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    :root {
-      --font-outfit: 'Outfit', sans-serif;
-    }
+    :root { --font-outfit: 'Outfit', sans-serif; }
+
     body {
       background: radial-gradient(circle at 50% 50%, rgba(21, 23, 26, 0.98) 0%, #090a0b 100%);
       color: #f7fafc;
@@ -29,6 +28,7 @@
       overflow-x: hidden;
     }
 
+    /* ── Gate Screen ── */
     .gate-screen {
       position: fixed;
       top: 0; left: 0;
@@ -39,7 +39,7 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
     }
     .gate-screen.unlocked {
       opacity: 0;
@@ -47,20 +47,20 @@
       transform: scale(1.05);
     }
     .gate-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255,255,255,0.03);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.05);
       border-radius: 24px;
       padding: 3.5rem 2.5rem;
       width: 90%;
       max-width: 440px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     }
     .gate-logo {
       width: 80px; height: 80px;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 4px 12px rgba(219, 154, 2, 0.3));
+      filter: drop-shadow(0 4px 12px rgba(219,154,2,0.3));
     }
     .gate-card h1 {
       font-family: 'Gravitas One', cursive;
@@ -75,10 +75,11 @@
       margin-bottom: 2.5rem;
     }
 
+    /* ── Admin Workspace ── */
     .admin-workspace {
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s, transform 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s;
       width: 95%;
       max-width: 1200px;
       margin: 2rem auto;
@@ -86,19 +87,15 @@
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-    .admin-workspace.visible {
-      display: grid;
-      opacity: 1;
-      transform: scale(1);
-    }
+    .admin-workspace.visible { display: grid; opacity: 1; transform: scale(1); }
     @media (min-width: 992px) {
       .admin-workspace { grid-template-columns: 1.1fr 0.9fr; }
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255,255,255,0.02);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255,255,255,0.04);
       border-radius: 24px;
       padding: 2.5rem;
       box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -120,6 +117,7 @@
     }
     .panel-header h2 span { color: var(--color-gold); }
 
+    /* ── Forms ── */
     .form-group { margin-bottom: 1.75rem; }
     .form-group label {
       display: block;
@@ -132,33 +130,27 @@
     }
     .form-control-dark {
       width: 100%;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
       padding: 0.9rem 1.1rem;
       color: #fff;
       font-family: var(--font-outfit);
       font-size: 0.95rem;
-      transition: all var(--transition-fast);
+      transition: all 0.2s;
       box-sizing: border-box;
     }
     .form-control-dark:focus {
       outline: none;
       border-color: var(--color-gold);
-      box-shadow: 0 0 0 3px rgba(219, 154, 2, 0.15);
-      background: rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 0 3px rgba(219,154,2,0.15);
+      background: rgba(0,0,0,0.35);
     }
     textarea.form-control-dark { resize: none; }
 
-    .preview-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .preview-sticky {
-      position: sticky;
-      top: 2rem;
-    }
+    /* ── Preview ── */
+    .preview-container { display: flex; flex-direction: column; }
+    .preview-sticky { position: sticky; top: 2rem; }
     .preview-header {
       display: flex;
       justify-content: space-between;
@@ -167,17 +159,17 @@
     }
     .preview-badge {
       font-size: 0.75rem;
-      background: rgba(219, 154, 2, 0.1);
+      background: rgba(219,154,2,0.1);
       color: var(--color-gold);
       padding: 0.35rem 0.75rem;
       border-radius: 20px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border: 1px solid rgba(219, 154, 2, 0.2);
+      border: 1px solid rgba(219,154,2,0.2);
     }
 
-    /* Placeholder image slot */
+    /* ── Image Slot ── */
     .preview-img-wrapper {
       position: relative;
       width: 100%;
@@ -188,8 +180,7 @@
     .preview-img-wrapper img.update-image {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       z-index: 2;
       display: none;
@@ -203,12 +194,12 @@
       z-index: 1;
     }
     .img-placeholder svg {
-      width: 64px;
-      height: 64px;
+      width: 64px; height: 64px;
       opacity: 0.9;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
     }
 
+    /* ── Buttons ── */
     .btn-gold {
       background: var(--color-gold);
       color: #090a0b;
@@ -219,7 +210,7 @@
       border-radius: 12px;
       border: none;
       cursor: pointer;
-      transition: all var(--transition-fast);
+      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -229,11 +220,12 @@
     .btn-gold:hover:not(:disabled) {
       background: #f0b429;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(219, 154, 2, 0.35);
+      box-shadow: 0 8px 20px rgba(219,154,2,0.35);
     }
     .btn-gold:active:not(:disabled) { transform: translateY(0); }
     .btn-gold:disabled { opacity: 0.6; cursor: not-allowed; }
 
+    /* ── Status ── */
     .status-banner {
       padding: 1rem 1.25rem;
       border-radius: 12px;
@@ -244,34 +236,205 @@
       display: none;
     }
     .status-banner.success {
-      background: rgba(56, 161, 105, 0.15);
-      border: 1px solid rgba(56, 161, 105, 0.3);
+      background: rgba(56,161,105,0.15);
+      border: 1px solid rgba(56,161,105,0.3);
       color: #48bb78;
       display: block;
     }
     .status-banner.error {
-      background: rgba(229, 62, 98, 0.15);
-      border: 1px solid rgba(229, 62, 98, 0.3);
+      background: rgba(229,62,98,0.15);
+      border: 1px solid rgba(229,62,98,0.3);
       color: #f56565;
       display: block;
+    }
+
+    /* ── Help Button (floating ?) ── */
+    .help-fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      color: #090a0b;
+      font-family: var(--font-outfit);
+      font-size: 1.3rem;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      box-shadow: 0 4px 20px rgba(219,154,2,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .help-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(219,154,2,0.55);
+    }
+
+    /* ── Help Drawer ── */
+    .help-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+    .help-overlay.open { opacity: 1; pointer-events: all; }
+
+    .help-drawer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #13151a;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px 24px 0 0;
+      padding: 2rem 2rem 3rem;
+      z-index: 400;
+      max-height: 80vh;
+      overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .help-drawer.open { transform: translateY(0); }
+
+    .drawer-handle {
+      width: 40px; height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      margin: 0 auto 1.75rem;
+    }
+    .drawer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .drawer-top h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+    .drawer-close {
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: #a0aec0;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .drawer-close:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    .help-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .help-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .help-section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+    }
+    .help-section-title .source-icon {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .help-steps { list-style: none; padding: 0; margin: 0 0 1rem; }
+    .help-steps li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      color: #cbd5e0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .step-num {
+      min-width: 22px; height: 22px;
+      background: rgba(219,154,2,0.15);
+      color: var(--color-gold);
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .example-url {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem;
+      color: #68d391;
+      font-family: monospace;
+      word-break: break-all;
+      margin-top: 0.5rem;
+    }
+
+    .help-note {
+      background: rgba(219,154,2,0.07);
+      border-left: 3px solid rgba(219,154,2,0.4);
+      border-radius: 0 8px 8px 0;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      color: #e2c97e;
+      line-height: 1.5;
+      margin-top: 0.75rem;
+    }
+    .help-warning {
+      background: rgba(229,62,98,0.07);
+      border-left: 3px solid rgba(229,62,98,0.35);
+      border-radius: 0 8px 8px 0;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      color: #fc8181;
+      line-height: 1.5;
+      margin-top: 0.75rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. Passcode Gate Screen -->
+  <!-- 1. Gate Screen -->
   <div class="gate-screen" id="gate-screen">
     <div class="gate-card">
       <img src="assets/logo.svg?v=2" alt="DTW Logo" class="gate-logo">
       <h1>DTW CONSULT</h1>
       <p>Enter the administrator pin to publish announcements.</p>
       <form id="gate-form">
-        <div class="form-group" style="margin-bottom: 1.5rem;">
+        <div class="form-group" style="margin-bottom:1.5rem;">
           <input type="password" id="gate-passcode" class="form-control-dark" required placeholder="••••"
-            style="text-align: center; letter-spacing: 8px; font-size: 1.5rem;" maxlength="4">
+            style="text-align:center;letter-spacing:8px;font-size:1.5rem;" maxlength="4">
         </div>
-        <button type="submit" class="btn-gold" style="padding: 0.8rem 1.5rem; font-size: 0.95rem;">Unlock Portal</button>
-        <div id="gate-error" style="color: #f56565; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; display: none;">
+        <button type="submit" class="btn-gold" style="padding:0.8rem 1.5rem;font-size:0.95rem;">Unlock Portal</button>
+        <div id="gate-error" style="color:#f56565;font-size:0.85rem;font-weight:600;margin-top:1rem;display:none;">
           Invalid passcode. Access denied.
         </div>
       </form>
@@ -281,15 +444,16 @@
   <!-- 2. Admin Workspace -->
   <div class="admin-workspace" id="admin-workspace">
 
-    <!-- Left Column: Input Panel -->
+    <!-- Left: Input Panel -->
     <div class="glass-panel">
       <div class="panel-header">
         <h2><span>Publish</span> News & Updates</h2>
       </div>
       <form id="updater-form">
         <div class="form-group">
-          <label for="image">Google Drive Share Link (Optional Image)</label>
-          <input type="url" id="image" class="form-control-dark" placeholder="https://drive.google.com/file/d/...">
+          <label for="image">Image Link — Google Drive, ImgBB, Cloudinary or any public image URL (Optional)</label>
+          <input type="url" id="image" class="form-control-dark"
+            placeholder="Paste any image link or right-click → Copy image address...">
         </div>
         <div class="form-group">
           <label for="text">Announcement Body *</label>
@@ -303,7 +467,7 @@
         <button type="submit" class="btn-gold" id="submit-btn">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
-              d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"></path>
+              d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/>
           </svg>
           Publish Update
         </button>
@@ -311,29 +475,23 @@
       </form>
     </div>
 
-    <!-- Right Column: Live Preview -->
+    <!-- Right: Live Preview -->
     <div class="preview-container">
       <div class="preview-sticky">
         <div class="preview-header">
-          <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0;">Live Feed Preview</h3>
+          <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin:0;">Live Feed Preview</h3>
           <span class="preview-badge">Updates Page Rendering</span>
         </div>
+        <div class="updates-feed" style="padding:0;max-width:100%;">
+          <article class="update-card" style="box-shadow:0 10px 30px rgba(0,0,0,0.3);border-radius:12px;overflow:hidden;">
 
-        <div class="updates-feed" style="padding: 0; max-width: 100%;">
-          <article class="update-card" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 12px; overflow: hidden;">
-
-            <!-- Image wrapper: placeholder always visible, real img overlays on load -->
             <div class="preview-img-wrapper">
               <div class="img-placeholder" id="img-placeholder">
-                <!-- Background pattern injected by JS -->
-                <!-- Gold DTW logomark SVG -->
+                <!-- DTW gold logomark -->
                 <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- D -->
                   <path d="M10 20 H22 C32 20 38 28 38 40 C38 52 32 60 22 60 H10 Z" fill="#DB9A02"/>
                   <path d="M17 28 H21 C27 28 30 33 30 40 C30 47 27 52 21 52 H17 Z" fill="#090a0b"/>
-                  <!-- T -->
                   <path d="M42 20 H70 V27 H60 V60 H52 V27 H42 Z" fill="#DB9A02"/>
-                  <!-- W -->
                   <path d="M10 65 L16 80 L22 68 L28 80 L34 65 H29 L22 76 L16 65 Z" fill="#DB9A02"/>
                 </svg>
               </div>
@@ -341,16 +499,17 @@
                 onerror="this.style.display='none'; document.getElementById('img-placeholder').style.display='flex';">
             </div>
 
-            <div class="update-content" style="background: #111315; border-top: 1px solid rgba(255,255,255,0.03); padding: 1.25rem;">
+            <div class="update-content"
+              style="background:#111315;border-top:1px solid rgba(255,255,255,0.03);padding:1.25rem;">
               <span class="update-date" id="preview-card-date"></span>
               <p class="update-text" id="preview-card-text"
-                style="color: #cbd5e0; min-height: 4.5rem; margin: 0.5rem 0;">
+                style="color:#cbd5e0;min-height:4.5rem;margin:0.5rem 0;">
                 Draft announcement preview text will appear here in real time...
               </p>
-              <a href="#" id="preview-card-link" target="_blank" class="update-link" style="display: none;">
+              <a href="#" id="preview-card-link" target="_blank" class="update-link" style="display:none;">
                 Read More
                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </a>
             </div>
@@ -362,49 +521,117 @@
 
   </div>
 
+  <!-- Floating Help Button -->
+  <button class="help-fab" id="help-fab" aria-label="Image link help">?</button>
+
+  <!-- Help Overlay -->
+  <div class="help-overlay" id="help-overlay"></div>
+
+  <!-- Help Drawer -->
+  <div class="help-drawer" id="help-drawer" role="dialog" aria-modal="true" aria-label="Image link instructions">
+    <div class="drawer-handle"></div>
+    <div class="drawer-top">
+      <h2>How to Get Your Image Link</h2>
+      <button class="drawer-close" id="drawer-close" aria-label="Close">✕</button>
+    </div>
+
+    <!-- Section 1: Google Drive -->
+    <div class="help-section">
+      <div class="help-section-title">
+        <span class="source-icon" style="background:rgba(66,133,244,0.15);color:#4285f4;">G</span>
+        Google Drive
+      </div>
+      <ul class="help-steps">
+        <li><span class="step-num">1</span> Upload your image to Google Drive.</li>
+        <li><span class="step-num">2</span> Right-click the file and select <strong style="color:#fff;">Share</strong>.</li>
+        <li><span class="step-num">3</span> Under "General access", change it from <em>Restricted</em> to <strong style="color:#fff;">Anyone with the link</strong>.</li>
+        <li><span class="step-num">4</span> Click <strong style="color:#fff;">Copy link</strong> and paste it here.</li>
+        <li><span class="step-num">5</span> Any Drive URL format works — the portal normalizes it automatically.</li>
+      </ul>
+      <div class="example-url">https://drive.google.com/file/d/1aBcDeFgHiJkLmNoPqRsTuVwXyZ/view?usp=sharing</div>
+      <div class="help-note">The portal converts your Drive link to a thumbnail format automatically. You don't need to edit the URL.</div>
+    </div>
+
+    <!-- Section 2: ImgBB -->
+    <div class="help-section">
+      <div class="help-section-title">
+        <span class="source-icon" style="background:rgba(0,180,120,0.15);color:#00b478;">BB</span>
+        ImgBB (Free Image Hosting)
+      </div>
+      <ul class="help-steps">
+        <li><span class="step-num">1</span> Go to <strong style="color:#fff;">imgbb.com</strong> and upload your image — no account needed.</li>
+        <li><span class="step-num">2</span> After upload, you'll see several link options.</li>
+        <li><span class="step-num">3</span> Copy the <strong style="color:#fff;">Direct Link</strong> (not the viewer page URL).</li>
+        <li><span class="step-num">4</span> Paste it here — it works immediately.</li>
+      </ul>
+      <div class="example-url">https://i.ibb.co/xxxxxx/your-image-name.jpg</div>
+      <div class="help-note">ImgBB direct links are the most reliable option. Recommended for announcements that need to stay live long-term.</div>
+    </div>
+
+    <!-- Section 3: Cloudinary -->
+    <div class="help-section">
+      <div class="help-section-title">
+        <span class="source-icon" style="background:rgba(58,138,255,0.15);color:#3a8aff;">CL</span>
+        Cloudinary
+      </div>
+      <ul class="help-steps">
+        <li><span class="step-num">1</span> Log into your Cloudinary account and go to <strong style="color:#fff;">Media Library</strong>.</li>
+        <li><span class="step-num">2</span> Click your image and select <strong style="color:#fff;">Copy URL</strong>.</li>
+        <li><span class="step-num">3</span> Make sure the URL ends in a file extension like <code style="color:#68d391;">.jpg</code>, <code style="color:#68d391;">.png</code>, or <code style="color:#68d391;">.webp</code>.</li>
+        <li><span class="step-num">4</span> Paste it here — it passes through directly.</li>
+      </ul>
+      <div class="example-url">https://res.cloudinary.com/your-cloud-name/image/upload/v1234567890/sample.jpg</div>
+    </div>
+
+    <!-- Section 4: Direct / Right-Click Image URLs -->
+    <div class="help-section">
+      <div class="help-section-title">
+        <span class="source-icon" style="background:rgba(159,122,234,0.15);color:#9f7aea;">↗</span>
+        Any Public Image on the Web
+      </div>
+      <ul class="help-steps">
+        <li><span class="step-num">1</span> Find any image on the web — Google Images, Wikipedia, a news site, anywhere.</li>
+        <li><span class="step-num">2</span> Right-click the image.</li>
+        <li><span class="step-num">3</span> Select <strong style="color:#fff;">Copy image address</strong> (Chrome) or <strong style="color:#fff;">Copy image link</strong> (Firefox/Safari).</li>
+        <li><span class="step-num">4</span> Paste it here — if the image is publicly accessible, it will load instantly.</li>
+      </ul>
+      <div class="example-url">https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-ant.jpg</div>
+      <div class="help-warning">⚠️ Some websites block external image loading (hotlink protection). If the preview shows the placeholder instead of the image, use ImgBB or Google Drive to re-host it.</div>
+    </div>
+
+  </div>
+
   <script>
     let unlockedPasscode = '';
 
-    // 5 distinct placeholder background patterns (random per load)
+    // ── Random placeholder background pattern ──
     const placeholderPatterns = [
-      // Deep teal diagonal stripes
-      `background: #0d2b2b; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 12px);`,
-      // Burgundy dot grid
-      `background: #2b0d1a; background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 16px 16px;`,
-      // Dark olive chevron
-      `background: #1a1f0a; background-image: repeating-linear-gradient(-45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 12px), repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 2px, transparent 2px, transparent 12px);`,
-      // Deep navy crosshatch
-      `background: #0a0f2b; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 18px);`,
-      // Plum wave
-      `background: #1e0a2b; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 16px);`
+      `background:#0d2b2b;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 2px,transparent 2px,transparent 12px);`,
+      `background:#2b0d1a;background-image:radial-gradient(circle,rgba(255,255,255,0.12) 1px,transparent 1px);background-size:16px 16px;`,
+      `background:#1a1f0a;background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 2px,transparent 2px,transparent 12px),repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 2px,transparent 2px,transparent 12px);`,
+      `background:#0a0f2b;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.05) 0px,rgba(255,255,255,0.05) 1px,transparent 1px,transparent 18px),repeating-linear-gradient(90deg,rgba(255,255,255,0.05) 0px,rgba(255,255,255,0.05) 1px,transparent 1px,transparent 18px);`,
+      `background:#1e0a2b;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 2px,transparent 2px,transparent 16px);`
     ];
-
-    // Pick one randomly and apply to placeholder
-    const chosenPattern = placeholderPatterns[Math.floor(Math.random() * placeholderPatterns.length)];
     const placeholder = document.getElementById('img-placeholder');
-    placeholder.setAttribute('style', `position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; ${chosenPattern}`);
+    const chosenPattern = placeholderPatterns[Math.floor(Math.random() * placeholderPatterns.length)];
+    placeholder.setAttribute('style',
+      `position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;${chosenPattern}`
+    );
 
-    // Passcode Gate
+    // ── Passcode Gate ──
     document.getElementById('gate-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const code = document.getElementById('gate-passcode').value;
       const errorDiv = document.getElementById('gate-error');
-
       if (code === '7830') {
         unlockedPasscode = code;
         errorDiv.style.display = 'none';
-
         const gate = document.getElementById('gate-screen');
         const workspace = document.getElementById('admin-workspace');
-
         gate.classList.add('unlocked');
-
-        // FIX: use rAF double-tick so display:grid is painted before opacity transition fires
         workspace.style.display = 'grid';
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            workspace.classList.add('visible');
-          });
+          requestAnimationFrame(() => { workspace.classList.add('visible'); });
         });
       } else {
         errorDiv.style.display = 'block';
@@ -412,24 +639,39 @@
       }
     });
 
-    // Google Drive URL → direct image URL
-    function getDirectImageUrl(url) {
+    // ── Smart Image URL Normalizer ──
+    function normalizeImageUrl(url) {
       if (!url) return '';
-      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-      if (match && match[1]) {
-        return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+      url = url.trim();
+
+      // Google Drive — all variants → thumbnail format
+      const driveMatch = url.match(/(?:drive\.google\.com|docs\.google\.com).*?\/d\/([a-zA-Z0-9_-]+)/)
+        || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (driveMatch && driveMatch[1]) {
+        return `https://drive.google.com/thumbnail?id=${driveMatch[1]}&sz=w1200`;
       }
+
+      // ImgBB direct link — passthrough
+      if (url.includes('i.ibb.co') || url.includes('ibb.co')) return url;
+
+      // Cloudinary — passthrough
+      if (url.includes('cloudinary.com')) return url;
+
+      // Any direct image URL (extension-based) — passthrough
+      if (/\.(jpg|jpeg|png|webp|gif|avif|svg|bmp)(\?.*)?$/i.test(url)) return url;
+
+      // Fallback — attempt as-is
       return url;
     }
 
+    // ── Date ──
     function formatDate(date) {
-      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      return date.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
     }
 
     const imageInput = document.getElementById('image');
     const textInput  = document.getElementById('text');
     const linkInput  = document.getElementById('link');
-
     const previewImg  = document.getElementById('preview-card-img');
     const previewDate = document.getElementById('preview-card-date');
     const previewText = document.getElementById('preview-card-text');
@@ -437,13 +679,13 @@
 
     previewDate.textContent = formatDate(new Date());
 
+    // ── Live Preview Sync ──
     function updatePreview() {
       const rawImg = imageInput.value.trim();
       if (rawImg) {
-        const directUrl = getDirectImageUrl(rawImg);
-        previewImg.src = directUrl;
+        const resolved = normalizeImageUrl(rawImg);
+        previewImg.src = resolved;
         previewImg.style.display = 'block';
-        // placeholder stays underneath; onerror will re-show it if image fails
         placeholder.style.display = 'none';
       } else {
         previewImg.style.display = 'none';
@@ -465,8 +707,29 @@
     textInput.addEventListener('input', updatePreview);
     linkInput.addEventListener('input', updatePreview);
 
-    // Submission
-    const SEND_ICON = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"></path></svg>`;
+    // ── Help Drawer Toggle ──
+    const helpFab     = document.getElementById('help-fab');
+    const helpOverlay = document.getElementById('help-overlay');
+    const helpDrawer  = document.getElementById('help-drawer');
+    const drawerClose = document.getElementById('drawer-close');
+
+    function openDrawer() {
+      helpOverlay.classList.add('open');
+      helpDrawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      helpOverlay.classList.remove('open');
+      helpDrawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    helpFab.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    helpOverlay.addEventListener('click', closeDrawer);
+
+    // ── Form Submission ──
+    const SEND_ICON = `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>`;
 
     document.getElementById('updater-form').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -475,7 +738,7 @@
 
       const payload = {
         passcode: unlockedPasscode,
-        image: imageInput.value.trim(),
+        image: normalizeImageUrl(imageInput.value.trim()),
         text:  textInput.value,
         link:  linkInput.value.trim()
       };
@@ -491,16 +754,14 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
         const result = await response.json();
-
         if (response.ok) {
           banner.textContent = 'Announcement successfully published! Vercel is deploying it now. Check the updates feed in 1–2 minutes.';
           banner.classList.add('success');
           document.getElementById('updater-form').reset();
           updatePreview();
         } else {
-          banner.textContent = result.error || 'Failed to publish announcement. Verify environment variables.';
+          banner.textContent = result.error || 'Failed to publish. Verify environment variables.';
           banner.classList.add('error');
         }
       } catch (err) {
