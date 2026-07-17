@@ -5,6 +5,144 @@
 </script>
 <title>DTW Consult — Updates &amp; News</title>
 
+  <style>
+    /* Premium News Grid Layout & Interactions */
+    .updates-feed {
+      max-width: 1200px !important;
+      padding: 4rem 1.5rem !important;
+    }
+
+    @media (min-width: 768px) {
+      .updates-feed {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)) !important;
+        gap: 2.5rem !important;
+      }
+      
+      /* Make the first update card a large "Featured" article for visual hierarchy */
+      .updates-feed article:first-of-type.has-image {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2.5rem;
+        align-items: stretch;
+      }
+      
+      .updates-feed article:first-of-type.has-image .update-image {
+        height: 100% !important;
+        min-height: 380px;
+        border-radius: 16px 0 0 16px;
+      }
+      
+      .updates-feed article:first-of-type.has-image .update-content {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    
+    .update-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .update-image {
+      cursor: zoom-in;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s;
+    }
+    
+    .update-image:hover {
+      transform: scale(1.02);
+      filter: brightness(0.95);
+    }
+    
+    .update-text-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    
+    .toggle-text-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-gold);
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      transition: color var(--transition-fast);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .toggle-text-btn:hover {
+      color: var(--color-onyx);
+    }
+    
+    /* Image Modal (Lightbox) */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(8, 9, 10, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .image-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.92);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .image-modal.active .modal-content {
+      transform: scale(1);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: #fff;
+      font-size: 1.75rem;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: background 0.2s, transform 0.2s;
+    }
+    
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+  </style>
+
   <main>
     <section class="page-header" style="background: var(--bg-soft); padding: 8rem 0 4rem; text-align: center;">
       <div class="container">
@@ -19,20 +157,25 @@
     </section>
 
     <section style="background-color: var(--color-ash);">
-      <div class="container" id="updates-container" class="updates-feed">
+      <div class="container updates-feed" id="updates-container">
         <!-- Skeleton loaders while fetching -->
         <div class="skeleton-card"></div>
         <div class="skeleton-card"></div>
       </div>
     </section>
+
+    <!-- Image Lightbox Modal -->
+    <div id="image-modal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img class="modal-content" id="modal-img" alt="Enlarged Update Image">
+    </div>
   </main>
 
   <script>
     // Utility to convert standard google drive link to direct image link
     function getDirectImageUrl(url) {
       if (!url) return '';
-      // Extract the ID from the share link
-      const match = url.match(/\\/d\\/([a-zA-Z0-9_-]+)/);
+      const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
       if (match && match[1]) {
         return `https://drive.google.com/uc?export=view&id=${match[1]}`;
       }
@@ -49,13 +192,11 @@
     async function loadUpdates() {
       const container = document.getElementById('updates-container');
       try {
-        // Appending timestamp to prevent aggressive caching
         const res = await fetch('data/updates.json?t=' + new Date().getTime());
         if (!res.ok) throw new Error("Could not load updates");
         const updates = await res.json();
         
         container.innerHTML = '';
-        container.className = 'updates-feed'; // Assign grid class
         
         if (updates.length === 0) {
           container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">No updates at the moment. Check back soon!</p>';
@@ -68,6 +209,7 @@
           
           let imgHtml = '';
           if (item.image) {
+            card.classList.add('has-image');
             const directImg = getDirectImageUrl(item.image);
             imgHtml = `<img src="${directImg}" alt="Update Image" class="update-image" loading="lazy">`;
           }
@@ -82,18 +224,36 @@
             `;
           }
 
+          // Truncate text if it is long
+          const isLongText = item.text.length > 280;
+          let textContentHtml = '';
+          
+          if (isLongText) {
+            const excerpt = item.text.slice(0, 260) + '...';
+            const fullText = item.text.replace(/\n/g, '<br>');
+            textContentHtml = `
+              <div class="update-text-wrapper collapsed">
+                <p class="update-text excerpt">${excerpt}</p>
+                <p class="update-text full" style="display: none;">${fullText}</p>
+                <button class="toggle-text-btn">Read full text</button>
+              </div>
+            `;
+          } else {
+            textContentHtml = `<p class="update-text">${item.text.replace(/\n/g, '<br>')}</p>`;
+          }
+
           card.innerHTML = `
             ${imgHtml}
             <div class="update-content">
               <span class="update-date">${formatDate(item.date)}</span>
-              <p class="update-text">${item.text.replace(/\\n/g, '<br>')}</p>
+              ${textContentHtml}
               ${linkHtml}
             </div>
           `;
           container.appendChild(card);
         });
 
-        // Trigger the scroll observer for the newly added elements
+        // Trigger scroll animations
         if (typeof initScrollEffects === 'function') {
           setTimeout(initScrollEffects, 100);
         }
@@ -103,6 +263,64 @@
         container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
       }
     }
+
+    // Modal elements and click handling
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeModal = document.querySelector('.close-modal');
+
+    function openImageModal(src) {
+      modalImg.src = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Setup event delegation on updates container
+    const container = document.getElementById('updates-container');
+    container.addEventListener('click', (e) => {
+      // Toggle read more/less
+      if (e.target.classList.contains('toggle-text-btn')) {
+        const wrapper = e.target.closest('.update-text-wrapper');
+        const excerpt = wrapper.querySelector('.excerpt');
+        const full = wrapper.querySelector('.full');
+        const isCollapsed = wrapper.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+          excerpt.style.display = 'none';
+          full.style.display = 'block';
+          e.target.textContent = 'Show less';
+          wrapper.classList.remove('collapsed');
+        } else {
+          excerpt.style.display = 'block';
+          full.style.display = 'none';
+          e.target.textContent = 'Read full text';
+          wrapper.classList.add('collapsed');
+        }
+      }
+      
+      // Zoom image on click
+      if (e.target.classList.contains('update-image')) {
+        openImageModal(e.target.src);
+      }
+    });
+
+    // Close modal handlers
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target.classList.contains('close-modal')) {
+        closeImageModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      }
+    });
 
     loadUpdates();
   </script>
