@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -5,7 +7,12 @@ export default async function handler(req, res) {
 
   const { passcode, id, image, text, link } = req.body || {};
 
-  if (passcode !== process.env.UPDATER_PASSCODE) {
+  const expected = process.env.UPDATER_PASSCODE || '';
+  const input = passcode || '';
+  const expectedBuffer = Buffer.from(expected);
+  const inputBuffer = Buffer.from(input);
+
+  if (expectedBuffer.length !== inputBuffer.length || !crypto.timingSafeEqual(inputBuffer, expectedBuffer)) {
     return res.status(401).json({ error: 'Unauthorized: Invalid passcode' });
   }
 

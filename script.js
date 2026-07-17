@@ -65,7 +65,8 @@ function handleSpaNavigation(e) {
     href.startsWith('mailto:') ||
     href.startsWith('tel:') ||
     href.startsWith('#') ||
-    href.includes('updater')
+    href.includes('updater') ||
+    href.includes('dtw-admin-secure')
   ) {
     return;
   }
