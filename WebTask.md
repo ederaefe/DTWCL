@@ -4,21 +4,39 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 📋 Phase 1: Project Initialization & Directory Architecture
-- [ ] **Define Directory Structures & Scoping:**
-  - [ ] Initialize git tracking (`git init`) and map branch tracking (`main`).
-  - [ ] Set up basic asset directories: `/assets` (video, images, svg, icons), `/api` (for serverless hooks), `/data` (local databases).
-  - [ ] Create core configuration files: `.gitignore`, `vercel.json` (routing/headers config), `package.json` (Node execution environments).
-  - [ ] Create baseline document anchors: `index.html`, `about.html`, `services.html`, `contact.html`, `updates.html`, `updater.html`.
-- [ ] **Integrate Web Assets & Placeholders:**
-  - [ ] Design and save brand vectors: `logo.svg`, `favicon.svg`.
-  - [ ] Compile high-resolution images and convert assets to web-optimized formats (WebP for images, MP4 for video).
-  - [ ] Generate standard favicon sizes and save as `logo.ico`.
+## 📋 Phase 1: Pre-Development, Planning & Design Handoff
+- [ ] **Define Project Specifications & Requirements (PRD):**
+  - [ ] Write a Product Requirements Document (PRD) detailing scope, features, target demographics, and success metrics.
+  - [ ] Set up user personas and map user flows (e.g., from search click -> landing page -> form intake).
+- [ ] **Establish UI/UX Design System:**
+  - [ ] Review high-fidelity wireframes and mockups (Figma, Adobe XD, Sketch).
+  - [ ] Audit design assets for color accessibility (ensuring high contrast ratios) and typography consistency.
+  - [ ] Define the component library interface inventory (buttons, cards, inputs, navigation, overlays).
+- [ ] **Conduct Content & SEO Architecture Scoping:**
+  - [ ] Plan page hierarchy, navigation menu groupings, and directory structures.
+  - [ ] Create an organic keyword strategy document containing high-volume, low-competition search phrases.
+  - [ ] Draft high-quality page copywriting focusing on user-engagement hooks and clarity.
 
 ---
 
-## 🎨 Phase 2: Master Design System & Typography (Vanilla CSS)
-- [ ] **Define Global Tokens (`:root`):**
+## 🛠️ Phase 2: Project Initialization, Repository Setup & Coding Standards
+- [ ] **Configure Git Repository & Branching Strategy:**
+  - [ ] Initialize git tracking (`git init`) and map branch tracking (`main`).
+  - [ ] Set up repository branching models (Git-Flow: `main` for production, `develop` for integration, `feature/` for tasks, `hotfix/` for live patches).
+  - [ ] Configure a detailed `.gitignore` file to prevent committing local secrets, packages, node modules, and system files.
+- [ ] **Establish Developer Tooling & Linting:**
+  - [ ] Initialize `package.json` for managing dev dependencies and automated scripts.
+  - [ ] Configure code style rules with **ESLint** (JS parsing syntax) and **Prettier** (formatting rules).
+  - [ ] Set up **Husky** and **lint-staged** to run pre-commit hooks (validating formatting and syntax before allowing commits).
+  - [ ] Adopt **Conventional Commits** formatting standards (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`).
+- [ ] **Structure Directories & Baseline Files:**
+  - [ ] Create baseline assets folders: `/assets` (video, images, svg, icons), `/api` (for serverless hooks), `/data` (local databases).
+  - [ ] Create baseline document anchors: `index.html`, `about.html`, `services.html`, `contact.html`, `updates.html`, `updater.html`.
+
+---
+
+## 🎨 Phase 3: Master Design System & Typography (Vanilla CSS)
+- [ ] **Define Global Design System Tokens (`:root`):**
   - [ ] Set up a curated brand color palette: Primary (brand color), Secondary (accent gold), Neutral (onyx, ash, graphite).
   - [ ] Declare semantic color mappings for theme consistency: text, background, cards, boundaries, and highlights.
   - [ ] Set global border rules: strict geometric corners (`border-radius: 0px` for brutalist styling, or rounded variables for components).
@@ -32,12 +50,12 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🏗️ Phase 3: Page Layouts & Component Development
+## 🏗️ Phase 4: Page Layouts & Component Development
 - [ ] **Design Header & Global Navigation:**
   - [ ] Set up a fixed top header layout with a transparent glassmorphism blur backdrop (`backdrop-filter: blur(12px)`).
   - [ ] Create a responsive navigation bar including logo vector integration and text anchors.
   - [ ] Develop a mobile drawer overlay (hamburger menu button and sliding panel).
-- [ ] **Design Hero Section (Background Video & Text Layering):**
+- [ ] **Design Hero Section (Background Media & Text Layering):**
   - [ ] Implement a full-screen or section-fit absolute hero video background.
   - [ ] Layer text headings, descriptive copy, and call-to-action (CTA) buttons on top of the media.
 - [ ] **Structure Content Layouts & Cards:**
@@ -50,7 +68,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🔄 Phase 4: Single-Page Application (SPA) Routing Engine
+## 🔄 Phase 5: Single-Page Application (SPA) Routing Engine
 - [ ] **Build the JavaScript Router (`script.js`):**
   - [ ] Cache primary HTML layouts in local variables or separate files on initial load.
   - [ ] Set up an interceptor mapping on `document.body` click events to capture anchor `href` navigations.
@@ -67,7 +85,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## ⚡ Phase 5: Scroll Reveal Animations & Micro-Interactivity
+## ⚡ Phase 6: Scroll Reveal Animations & Micro-Interactivity
 - [ ] **Implement Scroll-Observer Animations:**
   - [ ] Write CSS animation entry classes (`.animate`, `.fade-in`, `.fade-left`, `.fade-right`).
   - [ ] Set up initial hidden offsets: `opacity: 0`, `transform: translateY(20px)` or translations for left/right directions.
@@ -80,7 +98,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🎬 Phase 6: Video Player Engineering & Debugging
+## 🎬 Phase 7: Multimedia Assets & Video Player Debugging
 - [ ] **Configure HTML5 Video Settings:**
   - [ ] Define core attributes: `autoplay`, `muted`, `loop`, `playsinline`.
   - [ ] Avoid fake/renamed asset containers (e.g. renaming `.mp4` to `.webm` without transcoding) to prevent browser decoder crashes.
@@ -93,7 +111,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🔍 Phase 7: Advanced SEO Metadata & Dublin Core Rules
+## 🔍 Phase 8: Advanced SEO Metadata & Dublin Core Rules
 - [ ] **Implement Page Header Descriptions & Keywords:**
   - [ ] Create a unique, descriptive page title (`<title>`) mapping core brand adjectives.
   - [ ] Write a search description meta tag containing key local regions and primary services (under 160 characters).
@@ -114,7 +132,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 📊 Phase 8: Structured Schema Markup (JSON-LD)
+## 📊 Phase 9: Structured Schema Markup (JSON-LD)
 - [ ] **Author the Parent Entity Schema Graph:**
   - [ ] Create a `<script type="application/ld+json">` tag containing a structured `@graph`.
   - [ ] Define the organization entity (`@type: "Organization"`, `@id: ".../#parent-org"`).
@@ -126,7 +144,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🤖 Phase 9: AI Crawler Directives (robots.txt & llms.txt)
+## 🤖 Phase 10: AI Crawler Directives (robots.txt & llms.txt)
 - [ ] **Establish Crawl Permissions (`robots.txt`):**
   - [ ] Declare standard directives (`User-agent: *`, `Allow: /`, `Disallow: /api/`).
   - [ ] Add specific mapping and permission sets for modern AI crawlers: `OAI-SearchBot`, `Applebot-Extended`, `Claude-Web`, `Meta-ExternalAgent`.
@@ -141,7 +159,49 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 💬 Phase 10: Chatbot-Style Pre-Registration Widget
+## ♿ Phase 11: Web Accessibility Compliance (a11y - WCAG 2.1 AA)
+- [ ] **Setup Semantic Landmarks:**
+  - [ ] Wrap page structures in semantic HTML5 elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`, `<aside>`.
+  - [ ] Ensure only a single `<h1>` tag exists on the page representing the core page topic.
+- [ ] **Implement Keyboard Navigability & Visual Focus:**
+  - [ ] Verify tab indices: All interactive elements must be focusable using keyboard `TAB` cycles.
+  - [ ] Apply clear focus indicators using CSS `:focus-visible` outlines (never completely suppress focus outlines without a visible alternative).
+- [ ] **Add ARIA States & Alternate Descriptions:**
+  - [ ] Provide `alt` text parameters on all `<img>` assets; use empty alt tags (`alt=""`) on decorative-only icons.
+  - [ ] Bind ARIA descriptors to custom dropdown controls and navigation triggers (`aria-expanded`, `aria-label`, `aria-controls`).
+  - [ ] Configure screen reader accessibility helpers (`aria-live="polite"`) on form success messages and dynamic updates.
+
+---
+
+## 📈 Phase 12: Performance Auditing & Asset Optimization
+- [ ] **Optimize Asset Media Compression:**
+  - [ ] Compress SVG vectors (remove unnecessary paths and editor metadata using **SVGO**).
+  - [ ] Optimize images to modern formats (WebP, AVIF) and compress them using tools like Squoosh or TinyPNG.
+  - [ ] Run video compression passes on backgrounds using **FFmpeg** to minimize file sizes (ensuring backgrounds stay below 2MB).
+- [ ] **Optimize Core Web Vitals:**
+  - [ ] Add explicit width and height dimensions to all images and video tags to prevent **Cumulative Layout Shift (CLS)**.
+  - [ ] Configure CSS loading fonts with `font-display: swap` to bypass FOIT (Flash of Invisible Text) blocks.
+  - [ ] Minify CSS styles and Javascript scripts.
+- [ ] **Perform Lighthouse Audits:**
+  - [ ] Execute Google Lighthouse audits under simulated mobile viewport constraints.
+  - [ ] Verify scores achieve **90+** targets across all parameters: Performance, Accessibility, Best Practices, and SEO.
+
+---
+
+## 🛡️ Phase 13: Security Best Practices & Web Headers
+- [ ] **Configure Host Security Headers (`vercel.json` or server config):**
+  - [ ] Set X-Frame-Options (`DENY` or `SAMEORIGIN`) to block clickjacking attacks.
+  - [ ] Configure X-Content-Type-Options (`nosniff`) to block MIME sniffing exploits.
+  - [ ] Define X-XSS-Protection rules.
+  - [ ] Implement a strict **Referrer-Policy** (e.g. `strict-origin-when-cross-origin`).
+- [ ] **Secure SSL Certificates & Canonical Redirects:**
+  - [ ] Enforce automated HTTPS redirection.
+  - [ ] Configure domain canonical mapping (redirecting all non-www inquiries to www domains, or vice versa, to eliminate split search equity).
+  - [ ] Implement Subresource Integrity (SRI) hashes on all external CSS frameworks or scripts fetched via third-party CDNs.
+
+---
+
+## 💬 Phase 14: Chatbot-Style Pre-Registration Widget
 - [ ] **Build Widget HTML & CSS:**
   - [ ] Insert widget containers at the bottom of the body.
   - [ ] Design the floating button as a circle (`border-radius: 50%`) with a brand background and custom SVG icon.
@@ -155,7 +215,7 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 📨 Phase 11: Multi-Channel Form Submission & Resilience
+## 📨 Phase 15: Multi-Channel Form Submission & Resilience
 - [ ] **Configure Parallel AJAX Submission Engine:**
   - [ ] Intercept form submissions via Javascript `e.preventDefault()`.
   - [ ] Package input data to a JSON object payload.
@@ -173,7 +233,23 @@ This document is a comprehensive, step-by-step master checklist and template out
 
 ---
 
-## 🚀 Phase 12: Verification, Verification Testing & DNS Release
+## 📊 Phase 16: GDPR/Consent Management & Analytics Hookups
+- [ ] **Implement Cookie Consent Banner:**
+  - [ ] Design a subtle, non-intrusive cookie consent banner mapping GDPR and CCPA guidelines.
+  - [ ] Allow users to explicitly accept or reject non-essential cookies (analytics and advertising tracking).
+  - [ ] Store user preferences in `localStorage` to prevent reappearance of banner on subsequent pages.
+- [ ] **Hook Up Analytics Platforms:**
+  - [ ] Configure **Google Analytics (GA4)** global site tags using Google Tag Manager hooks.
+  - [ ] Set up **Microsoft Clarity** tracking keys for session recording heatmaps.
+  - [ ] Programmatically wrap analytics tracking setups in checks that wait for cookie consent approval (respecting user privacy selections).
+
+---
+
+## 🚀 Phase 17: Release Pipeline, CI/CD, & Long-Term Maintenance
+- [ ] **Setup Automated Deployment Pipelines:**
+  - [ ] Connect the GitHub repository to the hosting platform (Vercel, Netlify, or AWS Amplify).
+  - [ ] Configure CI/CD automated triggers (generating preview builds for every pull request branch and deploying to main production on merge).
+  - [ ] Configure custom domain routing.
 - [ ] **Run Code Verification Scripts:**
   - [ ] Write a validation script (`validate.js`) to parse files and test assertions.
   - [ ] Assert JSON-LD schema parsing, structural keys, sameAs arrays, and links.
@@ -187,7 +263,7 @@ This document is a comprehensive, step-by-step master checklist and template out
     *   **Type:** `CNAME`
     *   **Host/Label:** `<verification-code>`
     *   **Destination:** `gv-....dv.googlehosted.com`
-- [ ] **Stage & Release Changes:**
-  - [ ] Run `git status` to track files.
-  - [ ] Stage all updates (`git add .`) and commit with clean, descriptive logs.
-  - [ ] Push to production branch (`git push origin main`) to trigger Vercel/CDN deployment.
+- [ ] **Conduct Long-Term Maintenance:**
+  - [ ] Schedule monthly automated dependency audits (`npm audit` or Dependabot configurations) to scan for vulnerabilities.
+  - [ ] Monitor analytics dashboards for indexing errors, crawl blockages, and conversion drops.
+  - [ ] Periodically execute visual regression checks to verify layout integrity across browser upgrades.
