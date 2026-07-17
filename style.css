@@ -319,6 +319,16 @@ img, video {
   padding-bottom: 6rem;
 }
 
+/* Premium linear-gradient overlay to fade the background video smoothly into the page body */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.1) 40%, var(--bg-dark) 96%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Subtle geometric background overlay */
 
 
