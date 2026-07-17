@@ -956,6 +956,107 @@ select.form-control {
   }
 }
 
+/* 13.5. PRE-REGISTRATION FORM FLOAT BUTTON & POPUP PROMPT */
+.form-float {
+  position: fixed;
+  bottom: 5.75rem; /* Leaves clear spacing above the WhatsApp button */
+  right: 1.5rem;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--color-gold);
+  color: #ffffff;
+  border-radius: 50% 50% 0 50%; /* Chat bubble tear shape, pointing down-left */
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.form-float::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 0 50%;
+  border: 2px solid var(--color-gold);
+  opacity: 0;
+  animation: form-pulse 2.5s infinite ease-out; /* Micro-pulse */
+}
+
+.form-float:hover {
+  transform: scale(1.08);
+  background-color: #c0900e;
+}
+
+@keyframes form-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.form-float-prompt {
+  position: fixed;
+  bottom: 5.75rem;
+  right: 5.75rem;
+  z-index: 999;
+  width: 16rem;
+  padding: 0.85rem 1.15rem;
+  background-color: var(--color-onyx);
+  color: #ffffff;
+  border: 1px solid var(--color-gold);
+  border-radius: 0.75rem 0.75rem 0 0.75rem;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.825rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.form-float-prompt.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.form-float-prompt::after {
+  content: '';
+  position: absolute;
+  bottom: 0.75rem;
+  right: -0.5rem;
+  border-width: 0.5rem 0 0.5rem 0.5rem;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--color-onyx);
+  display: block;
+  width: 0;
+}
+
+.form-prompt-close {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.form-prompt-close:hover {
+  color: #ffffff;
+}
+
 /* 14. VIEWPORT TRIGGERS (Scroll Reveal Animations) */
 .animate {
   opacity: 0;

@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroVideoPlayback();
   }
 
+  // Initialize floating pre-registration assessment prompt
+  initPreRegistrationPrompt();
+
   // Intercept all link clicks for Single Page Application navigation
   document.addEventListener('click', handleSpaNavigation);
 });
@@ -567,5 +570,28 @@ function initCustomDropdowns() {
     if (serviceOption) {
       serviceOption.click();
     }
+  }
+}
+
+/**
+ * 10. FLOATING PRE-REGISTRATION PROMPT BUBBLE ENGINE
+ */
+function initPreRegistrationPrompt() {
+  const prompt = document.getElementById('form-prompt');
+  const closeBtn = document.getElementById('close-form-prompt');
+
+  if (prompt && closeBtn) {
+    // Show prompt after 2.5 seconds if not closed during this session
+    if (!sessionStorage.getItem('dtw_form_prompt_closed')) {
+      setTimeout(() => {
+        prompt.classList.add('active');
+      }, 2500);
+    }
+
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      prompt.classList.remove('active');
+      sessionStorage.setItem('dtw_form_prompt_closed', 'true');
+    });
   }
 }
