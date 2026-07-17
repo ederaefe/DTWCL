@@ -319,7 +319,28 @@ function initFormspreeIntake() {
       });
       
       try {
-        const response = await fetch('https://formspree.io/f/mzdnzael', {
+        // Fire FormSubmit backup endpoint 1 (dtwconsultng@gmail.com)
+        const formSubmit1Promise = fetch('https://formsubmit.co/ajax/dtwconsultng@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dataPayload)
+        }).catch(err => console.warn('FormSubmit backup 1 error:', err));
+
+        // Fire FormSubmit backup endpoint 2 (dtwtutorialsng@gmail.com)
+        const formSubmit2Promise = fetch('https://formsubmit.co/ajax/dtwtutorialsng@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(dataPayload)
+        }).catch(err => console.warn('FormSubmit backup 2 error:', err));
+
+        // Fire primary Formspree endpoint
+        const formspreePromise = fetch('https://formspree.io/f/mzdnzael', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -327,6 +348,13 @@ function initFormspreeIntake() {
           },
           body: JSON.stringify(dataPayload)
         });
+
+        // Await all submissions in parallel; resolve Formspree first for flow control
+        const [response] = await Promise.all([
+          formspreePromise,
+          formSubmit1Promise,
+          formSubmit2Promise
+        ]);
         
         if (response.ok) {
           formCard.innerHTML = `
