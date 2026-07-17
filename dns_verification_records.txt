@@ -1,0 +1,11 @@
+Google Search Console / Workspace Domain DNS Verification Record
+================================================================
+
+Configure the following CNAME record in your domain registrar or DNS manager (e.g., Cloudflare, Namecheap, GoDaddy, or Vercel DNS) to verify ownership of the domain dtw-consult.com.
+
+Record Details:
+---------------
+Type:               CNAME
+Label/Host/Name:    yga42oqzh2iv
+Destination/Target: gv-iq7y7y4wrvhwmz.dv.googlehosted.com
+TTL:                1 Hour / Auto
