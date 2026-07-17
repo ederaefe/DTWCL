@@ -581,15 +581,25 @@ function initPreRegistrationPrompt() {
   const closeBtn = document.getElementById('close-form-prompt');
 
   if (prompt && closeBtn) {
+    let autoCloseTimeout;
+
     // Show prompt after 2.5 seconds if not closed during this session
     if (!sessionStorage.getItem('dtw_form_prompt_closed')) {
       setTimeout(() => {
         prompt.classList.add('active');
+        
+        // Auto close after 7 seconds (7000ms)
+        autoCloseTimeout = setTimeout(() => {
+          prompt.classList.remove('active');
+        }, 7000);
       }, 2500);
     }
 
     closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      if (autoCloseTimeout) {
+        clearTimeout(autoCloseTimeout);
+      }
       prompt.classList.remove('active');
       sessionStorage.setItem('dtw_form_prompt_closed', 'true');
     });
