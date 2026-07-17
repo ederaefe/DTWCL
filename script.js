@@ -101,6 +101,18 @@ async function navigate(page, pushStateEnabled = true, queryStr = '') {
   const appContent = document.getElementById('app-content');
   if (!appContent) return;
 
+  // Explicitly pause and unload any playing video to prevent background playback memory leaks
+  const activeVideo = appContent.querySelector('video');
+  if (activeVideo) {
+    try {
+      activeVideo.pause();
+      activeVideo.src = "";
+      activeVideo.load();
+    } catch (e) {
+      console.warn("Video cleanup failed:", e);
+    }
+  }
+
   // Normalize page name
   const pageName = page === 'index' ? 'home' : page;
 
@@ -450,6 +462,11 @@ function initHeroVideoPlayback() {
     });
 
     const playAttempt = () => {
+      // Check if the video element is still in the document DOM before playing
+      if (!document.body.contains(heroVideo)) {
+        removeInteractionListeners();
+        return;
+      }
       if (heroVideo.paused) {
         heroVideo.muted = true;
         heroVideo.play()
