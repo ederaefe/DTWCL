@@ -1,6 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/updater", "destination": "/dtw-admin-secure.html" }
+    { "source": "/updater", "destination": "/dtw-admin-secure" }
   ]
 }
