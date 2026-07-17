@@ -6,7 +6,7 @@
 
   <!-- Home / Landing Page -->
   <url>
-    <loc>https://dtw-consult.com/index.html</loc>
+    <loc>https://dtw-consult.com/</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- About Us — Profile, leadership quartet, approach -->
   <url>
-    <loc>https://dtw-consult.com/about.html</loc>
+    <loc>https://dtw-consult.com/about</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
   <!-- Services — 8 Consulting pathways & equivalency matrix -->
   <url>
-    <loc>https://dtw-consult.com/services.html</loc>
+    <loc>https://dtw-consult.com/services</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -30,7 +30,7 @@
 
   <!-- Contact — Office directories and intake form -->
   <url>
-    <loc>https://dtw-consult.com/contact.html</loc>
+    <loc>https://dtw-consult.com/contact</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

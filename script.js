@@ -110,6 +110,13 @@ async function navigate(page, pushStateEnabled = true, queryStr = '') {
   if (pageName === 'home') {
     appContent.innerHTML = homeHtml;
     document.title = "DTW Consult — Prominent Educational Advisory & Career Consulting Firm";
+    
+    // Dynamically update canonical link for SEO consolidation
+    const canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) {
+      canonicalEl.setAttribute('href', 'https://dtw-consult.com/');
+    }
+    
     if (pushStateEnabled) history.pushState({ page: 'home' }, '', `/${queryStr}`);
     
     // Re-initialize home-specific interactive modules
@@ -146,6 +153,17 @@ async function navigate(page, pushStateEnabled = true, queryStr = '') {
     // Set page title
     const newTitle = doc.querySelector('title')?.textContent || "DTW Consult";
     document.title = newTitle;
+
+    // Dynamically update canonical link for SEO consolidation
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (canonicalEl) {
+      canonicalEl.setAttribute('href', `https://dtw-consult.com/${pageName}`);
+    } else {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      canonicalEl.setAttribute('href', `https://dtw-consult.com/${pageName}`);
+      document.head.appendChild(canonicalEl);
+    }
 
     // Push standard Clean URL history state with query string
     if (pushStateEnabled) {
