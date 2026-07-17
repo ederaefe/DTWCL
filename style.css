@@ -345,7 +345,7 @@ img, video {
 }
 
 .hero-video-bg.playing {
-  opacity: 0.38; /* Slightly brighter target opacity for clearer view */
+  opacity: 0.22; /* Dimmer target opacity for improved text readability */
 }
 
 .hero .container {
