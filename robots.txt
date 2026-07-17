@@ -31,33 +31,41 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# ---- AI Language Model Crawlers ----
-# OpenAI / ChatGPT
+# ---- AI Language Model & Search Crawlers ----
+# OpenAI Search & ChatGPT Crawlers
 User-agent: GPTBot
 Allow: /
-
-# OpenAI content training crawler
 User-agent: ChatGPT-User
 Allow: /
+User-agent: OAI-SearchBot
+Allow: /
 
-# Anthropic / Claude
+# Anthropic / Claude Crawlers
 User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
 Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# Google Gemini / Vertex AI
+# Google Gemini & Extended Crawlers
 User-agent: Google-Extended
 Allow: /
 
-# Perplexity AI
+# Apple AI Crawlers
+User-agent: Applebot-Extended
+Allow: /
+
+# Perplexity AI Crawlers
 User-agent: PerplexityBot
 Allow: /
 
-# Meta AI
+# Meta AI Crawlers
 User-agent: FacebookBot
 Allow: /
 User-agent: meta-externalagent
+Allow: /
+User-agent: Meta-ExternalAgent
 Allow: /
 
 # Amazon Alexa / Kendra

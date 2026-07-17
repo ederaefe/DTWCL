@@ -106,7 +106,7 @@ async function navigate(page, pushStateEnabled = true, queryStr = '') {
 
   if (pageName === 'home') {
     appContent.innerHTML = homeHtml;
-    document.title = "DTW Consult — Strategic Educational & Career Advisory | Lagos, Nigeria";
+    document.title = "DTW Consult — Nigeria's No. 1 Academic Consulting Firm & Premier Educational Advisory";
     if (pushStateEnabled) history.pushState({ page: 'home' }, '', `/${queryStr}`);
     
     // Re-initialize home-specific interactive modules
