@@ -433,11 +433,13 @@ function initHeroVideoPlayback() {
     heroVideo.muted = true;
     heroVideo.setAttribute('muted', '');
     
-    // Use native loop for smooth hardware acceleration
-    heroVideo.loop = true;
-    heroVideo.setAttribute('loop', '');
+    // Disable native loop to let us manually trigger the reverse flow
+    heroVideo.removeAttribute('loop');
+    heroVideo.loop = false;
 
-    const speed = 0.30; // Cinematic slow motion speed (30% speed)
+    let isReversing = false;
+    let reverseInterval = null;
+    const speed = 1.0; // Play at native normal speed (no slow motion)
 
     const setSpeedAndFade = () => {
       try {
@@ -447,6 +449,60 @@ function initHeroVideoPlayback() {
       }
       heroVideo.classList.add('playing');
     };
+
+    const startReversePlay = () => {
+      if (isReversing) return;
+      isReversing = true;
+      heroVideo.pause();
+
+      let lastTime = performance.now();
+
+      const stepReverse = (now) => {
+        // Exit if state changed, video is missing, or navigating away from DOM
+        if (!isReversing || !heroVideo || !document.body.contains(heroVideo)) {
+          cancelAnimationFrame(reverseInterval);
+          return;
+        }
+
+        const delta = (now - lastTime) / 1000; // time elapsed in seconds
+        lastTime = now;
+
+        // Decrement current time based on target speed (1.0)
+        let nextTime = heroVideo.currentTime - (delta * speed);
+
+        if (nextTime <= 0.05) {
+          // Reached the beginning, restart forward playback
+          isReversing = false;
+          heroVideo.currentTime = 0;
+          heroVideo.play()
+            .then(setSpeedAndFade)
+            .catch(err => console.log("Forward play resume blocked:", err));
+        } else {
+          heroVideo.currentTime = nextTime;
+          reverseInterval = requestAnimationFrame(stepReverse);
+        }
+      };
+
+      reverseInterval = requestAnimationFrame(stepReverse);
+    };
+
+    // Trigger reverse play before video completely freezes at the end boundary
+    const checkForwardEnd = () => {
+      if (!isReversing && heroVideo.duration) {
+        if (heroVideo.currentTime >= heroVideo.duration - 0.1) {
+          startReversePlay();
+        }
+      }
+    };
+
+    // Safety net: standard ended event in case timeupdate misses the boundary
+    heroVideo.addEventListener('ended', () => {
+      if (!isReversing) {
+        startReversePlay();
+      }
+    });
+
+    heroVideo.addEventListener('timeupdate', checkForwardEnd);
     
     setTimeout(() => heroVideo.classList.add('playing'), 100);
 
@@ -462,18 +518,13 @@ function initHeroVideoPlayback() {
       .then(setSpeedAndFade)
       .catch(e => console.log("Initial autoplay blocked, waiting for interaction", e));
 
-    heroVideo.addEventListener('ended', () => {
-      heroVideo.currentTime = 0;
-      heroVideo.play().catch(err => console.log("Loop play blocked:", err));
-    });
-
     const playAttempt = () => {
       // Check if the video element is still in the document DOM before playing
       if (!document.body.contains(heroVideo)) {
         removeInteractionListeners();
         return;
       }
-      if (heroVideo.paused) {
+      if (heroVideo.paused && !isReversing) {
         heroVideo.muted = true;
         heroVideo.play()
           .then(() => {
