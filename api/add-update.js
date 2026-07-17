@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     if (!GITHUB_TOKEN) {
-      return res.status(500).json({ error: 'Server configuration error: GITHUB_TOKEN missing' });
+      return res.status(500).json({ error: 'Server configuration error' });
     }
 
     const REPO = 'ederaefe/DTWCL';
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
 
     const fileData = await getResponse.json();
     const currentSha = fileData.sha;
-    
+
     // Decode base64 content
     const decodedContent = Buffer.from(fileData.content, 'base64').toString('utf8');
     let updates = [];
@@ -107,10 +107,10 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Server Error:", error);
-    return res.status(500).json({ 
-      error: 'Internal Server Error', 
-      message: error.message, 
-      stack: error.stack 
+    return res.status(500).json({
+      error: 'Internal Server Error',
+      message: error.message,
+      stack: error.stack
     });
   }
 }
