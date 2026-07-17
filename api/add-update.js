@@ -1,35 +1,46 @@
 import crypto from 'crypto';
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
-
-  const { passcode, image, text, link } = req.body;
-
-  const expected = process.env.UPDATER_PASSCODE || '';
-  const input = passcode || '';
-  const expectedBuffer = Buffer.from(expected);
-  const inputBuffer = Buffer.from(input);
-
-  if (expectedBuffer.length !== inputBuffer.length || !crypto.timingSafeEqual(inputBuffer, expectedBuffer)) {
-    return res.status(401).json({ error: 'Unauthorized: Invalid passcode' });
-  }
-
-  if (!text) {
-    return res.status(400).json({ error: 'Bad Request: Text is required' });
-  }
-
-  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-  if (!GITHUB_TOKEN) {
-    return res.status(500).json({ error: 'Server configuration error: GITHUB_TOKEN missing' });
-  }
-
-  const REPO = 'ederaefe/DTWCL';
-  const FILE_PATH = 'data/updates.json';
-  const API_URL = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
-
   try {
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method Not Allowed' });
+    }
+
+    // Safely parse body if it is still a string (e.g. if Vercel did not parse it automatically)
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // Fallback if parsing fails
+      }
+    }
+    const { passcode, image, text, link } = body || {};
+
+    // Coerce environment variables and inputs to Strings to prevent Buffer.from TypeError crash
+    const expected = String(process.env.UPDATER_PASSCODE || '');
+    const input = String(passcode || '');
+
+    const expectedBuffer = Buffer.from(expected);
+    const inputBuffer = Buffer.from(input);
+
+    if (expectedBuffer.length !== inputBuffer.length || !crypto.timingSafeEqual(inputBuffer, expectedBuffer)) {
+      return res.status(401).json({ error: 'Unauthorized: Invalid passcode' });
+    }
+
+    if (!text) {
+      return res.status(400).json({ error: 'Bad Request: Text is required' });
+    }
+
+    const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+    if (!GITHUB_TOKEN) {
+      return res.status(500).json({ error: 'Server configuration error: GITHUB_TOKEN missing' });
+    }
+
+    const REPO = 'ederaefe/DTWCL';
+    const FILE_PATH = 'data/updates.json';
+    const API_URL = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`;
+
     // 1. Fetch current file
     const getResponse = await fetch(API_URL, {
       headers: {
@@ -96,6 +107,10 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Server Error:", error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    return res.status(500).json({ 
+      error: 'Internal Server Error', 
+      message: error.message, 
+      stack: error.stack 
+    });
   }
 }

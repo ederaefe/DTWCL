@@ -36,6 +36,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Updates — News Feed and bootcamps -->
+  <url>
+    <loc>https://dtw-consult.com/updates</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- LLMs.txt — Plain-text AI content registry summary -->
   <url>
     <loc>https://dtw-consult.com/llms.txt</loc>
