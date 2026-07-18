@@ -30,7 +30,7 @@ try {
   let compiledHtml = '\n';
 
   if (updates.length === 0) {
-    compiledHtml += '        <p style="text-align: center; color: var(--text-muted); padding: 4rem;">No updates at the moment. Check back soon!</p>\n';
+    compiledHtml += '        <p style="text-align: center; color: var(--text-muted); padding: 4rem;">updates are on the way check back soon</p>\n';
   } else {
     updates.forEach((item) => {
       let cardClass = 'update-card animate fade-up';

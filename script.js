@@ -533,7 +533,7 @@ async function loadUpdates() {
     container.className = 'updates-feed';
     
     if (updates.length === 0) {
-      container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">No updates at the moment. Check back soon!</p>';
+      container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">updates are on the way check back soon</p>';
       return;
     }
 
@@ -623,7 +623,7 @@ async function loadUpdates() {
 
   } catch (err) {
     console.error(err);
-    container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
+    container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 4rem;">updates are on the way check back soon</p>';
   }
 }
 
