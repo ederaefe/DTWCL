@@ -12,7 +12,7 @@
   --color-ash: #c5d3cc;
   --color-onyx: #0a0a0a;
   --color-graphite: #333533;
-  
+
   /* Semantic Variables */
   --bg-primary: #ffffff;
   --bg-secondary: var(--color-ash);
@@ -20,7 +20,7 @@
   --text-primary: var(--color-onyx);
   --text-muted: var(--color-graphite);
   --text-light: #ffffff;
-  
+
   /* Borders (Strictly geometric and sharp) */
   --border-radius: 0px;
   --border-light: 1px solid rgba(190, 204, 164, 0.5);
@@ -31,7 +31,7 @@
   --shadow-sm: 0 2px 4px rgba(10, 10, 10, 0.05);
   --shadow-md: 0 8px 16px rgba(10, 10, 10, 0.08);
   --shadow-lg: 0 16px 32px rgba(10, 10, 10, 0.12);
-  
+
   /* Transitions (Meticulously calibrated micro-animations) */
   --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --transition-normal: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -39,7 +39,9 @@
 }
 
 /* 2. BASE RESET & GENERAL STYLES */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -62,7 +64,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-weight: 700;
   line-height: 1.25;
@@ -81,7 +88,8 @@ a {
   transition: color var(--transition-fast);
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -103,7 +111,8 @@ img, video {
 }
 
 .section-alt {
-  background-color: rgba(197, 211, 204, 0.25); /* Subtle Ash background tint */
+  background-color: rgba(197, 211, 204, 0.25);
+  /* Subtle Ash background tint */
   border-top: var(--border-light);
   border-bottom: var(--border-light);
 }
@@ -140,7 +149,9 @@ img, video {
   gap: 3rem;
 }
 
-.grid-2, .grid-3, .grid-4 {
+.grid-2,
+.grid-3,
+.grid-4 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -235,7 +246,8 @@ img, video {
 }
 
 .nav-menu {
-  display: none; /* Hidden on mobile by default */
+  display: none;
+  /* Hidden on mobile by default */
 }
 
 /* Hamburger mobile button */
@@ -311,8 +323,8 @@ img, video {
   position: relative;
   background-color: var(--bg-dark);
   background: radial-gradient(circle at 80% 20%, rgba(210, 158, 15, 0.12) 0%, transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(190, 204, 164, 0.06) 0%, transparent 60%),
-              var(--bg-dark);
+    radial-gradient(circle at 20% 80%, rgba(190, 204, 164, 0.06) 0%, transparent 60%),
+    var(--bg-dark);
   color: var(--text-light);
   overflow: hidden;
   padding-top: 6rem;
@@ -340,12 +352,15 @@ img, video {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0; /* Hidden initially for smooth fade-in */
-  transition: opacity 2.5s ease-out; /* Premium slow fade-in transition */
+  opacity: 0;
+  /* Hidden initially for smooth fade-in */
+  transition: opacity 2.5s ease-out;
+  /* Premium slow fade-in transition */
 }
 
 .hero-video-bg.playing {
-  opacity: 0.22; /* Dimmer target opacity for improved text readability */
+  opacity: 0.15;
+  /* Dimmer target opacity for improved text readability */
 }
 
 .hero .container {
@@ -427,7 +442,8 @@ img, video {
 }
 
 .service-card:hover .service-num {
-  color: var(--color-gold); /* M10: Number color shift */
+  color: var(--color-gold);
+  /* M10: Number color shift */
 }
 
 .service-card h3 {
@@ -445,7 +461,8 @@ img, video {
 .value-card {
   background-color: var(--bg-primary);
   border: var(--border-light);
-  border-top: var(--border-thick); /* Initial structural accent */
+  border-top: var(--border-thick);
+  /* Initial structural accent */
   padding: 2.5rem 2rem;
   transition: all var(--transition-normal);
 }
@@ -453,7 +470,8 @@ img, video {
 .value-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-top-color: var(--color-onyx); /* Shift top accent border color */
+  border-top-color: var(--color-onyx);
+  /* Shift top accent border color */
 }
 
 .value-icon {
@@ -504,14 +522,14 @@ img, video {
   border: var(--border-light);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
   transition: all var(--transition-normal);
 }
 
 .team-card:hover {
   border-color: var(--color-gold);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .team-image-container {
@@ -529,7 +547,8 @@ img, video {
 }
 
 .team-card:hover .team-image-container img {
-  transform: scale(1.04); /* M11: Scale photo */
+  transform: scale(1.04);
+  /* M11: Scale photo */
 }
 
 .team-info {
@@ -730,11 +749,13 @@ select.form-control {
 }
 
 .faq-item.active .faq-trigger svg {
-  transform: rotate(180deg); /* M13: Chevron rotation */
+  transform: rotate(180deg);
+  /* M13: Chevron rotation */
 }
 
 .faq-item.active .faq-content {
-  max-height: 300px; /* M14: Expansion height */
+  max-height: 300px;
+  /* M14: Expansion height */
 }
 
 /* 10. EQUIVALENCY REFERENCE TABLE */
@@ -752,7 +773,8 @@ select.form-control {
   font-size: 0.9rem;
 }
 
-.data-table th, .data-table td {
+.data-table th,
+.data-table td {
   padding: 1rem 1.25rem;
   border-bottom: var(--border-light);
 }
@@ -906,7 +928,8 @@ select.form-control {
 .social-link:hover {
   color: var(--color-gold);
   border-color: var(--color-gold);
-  transform: scale(1.1); /* M17: Social scale animation */
+  transform: scale(1.1);
+  /* M17: Social scale animation */
 }
 
 .footer-bottom {
@@ -934,7 +957,8 @@ select.form-control {
   height: 3.5rem;
   background-color: #25d366;
   color: #ffffff;
-  border-radius: 50% 50% 50% 0; /* Chat bubble teardrop shape */
+  border-radius: 50% 50% 50% 0;
+  /* Chat bubble teardrop shape */
   box-shadow: var(--shadow-lg);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -948,7 +972,8 @@ select.form-control {
   border-radius: 50% 50% 50% 0;
   border: 2px solid #25d366;
   opacity: 0;
-  animation: whatsapp-pulse 2s infinite ease-out; /* M18: Pulse ring */
+  animation: whatsapp-pulse 2s infinite ease-out;
+  /* M18: Pulse ring */
 }
 
 .whatsapp-float:hover {
@@ -960,6 +985,7 @@ select.form-control {
     transform: scale(1);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1.5);
     opacity: 0;
@@ -969,7 +995,8 @@ select.form-control {
 /* 13.5. PRE-REGISTRATION FORM FLOAT BUTTON & POPUP PROMPT */
 .form-float {
   position: fixed;
-  bottom: 5.75rem; /* Leaves clear spacing above the WhatsApp button */
+  bottom: 5.75rem;
+  /* Leaves clear spacing above the WhatsApp button */
   right: 1.5rem;
   z-index: 998;
   display: flex;
@@ -979,7 +1006,8 @@ select.form-control {
   height: 3.5rem;
   background-color: var(--color-gold);
   color: #ffffff;
-  border-radius: 50%; /* Circle shape as requested */
+  border-radius: 50%;
+  /* Circle shape as requested */
   box-shadow: var(--shadow-lg);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -990,10 +1018,12 @@ select.form-control {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 50%; /* Circle shape matching parent */
+  border-radius: 50%;
+  /* Circle shape matching parent */
   border: 2px solid var(--color-gold);
   opacity: 0;
-  animation: form-pulse 2.5s infinite ease-out; /* Micro-pulse */
+  animation: form-pulse 2.5s infinite ease-out;
+  /* Micro-pulse */
 }
 
 .form-float:hover {
@@ -1006,6 +1036,7 @@ select.form-control {
     transform: scale(1);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;
@@ -1019,8 +1050,10 @@ select.form-control {
   z-index: 999;
   width: 16rem;
   padding: 0.85rem 1.15rem;
-  background-color: #ffffff; /* White background as requested */
-  color: var(--color-onyx); /* Onyx text for readability on white */
+  background-color: #ffffff;
+  /* White background as requested */
+  color: var(--color-onyx);
+  /* Onyx text for readability on white */
   border: 1px solid var(--color-gold);
   border-radius: 0.75rem 0.75rem 0 0.75rem;
   box-shadow: var(--shadow-lg);
@@ -1045,7 +1078,8 @@ select.form-control {
   right: -0.5rem;
   border-width: 0.5rem 0 0.5rem 0.5rem;
   border-style: solid;
-  border-color: transparent transparent transparent #ffffff; /* White pointer overlapping border */
+  border-color: transparent transparent transparent #ffffff;
+  /* White pointer overlapping border */
   display: block;
   width: 0;
 }
@@ -1064,7 +1098,8 @@ select.form-control {
 }
 
 .form-prompt-close:hover {
-  color: var(--color-onyx); /* Onyx close icon on hover so it remains visible against white background */
+  color: var(--color-onyx);
+  /* Onyx close icon on hover so it remains visible against white background */
 }
 
 /* 14. VIEWPORT TRIGGERS (Scroll Reveal Animations) */
@@ -1076,16 +1111,19 @@ select.form-control {
 }
 
 .animate.fade-left {
-  transform: translateX(-25px); /* M2: Left fade reveal */
+  transform: translateX(-25px);
+  /* M2: Left fade reveal */
 }
 
 .animate.fade-right {
-  transform: translateX(25px); /* M3: Right fade reveal */
+  transform: translateX(25px);
+  /* M3: Right fade reveal */
 }
 
 .animate.visible {
   opacity: 1 !important;
-  transform: translate(0, 0) !important; /* Reset layout offsets */
+  transform: translate(0, 0) !important;
+  /* Reset layout offsets */
 }
 
 /* M5: Nav link underline reveal */
@@ -1131,7 +1169,7 @@ select.form-control {
     align-items: center;
   }
 
-  .two-col > * {
+  .two-col>* {
     flex: 1;
   }
 
@@ -1202,27 +1240,32 @@ select.form-control {
   margin: 0 auto;
   padding: 4rem 1.5rem;
 }
+
 .update-card {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-  border: 1px solid rgba(0,0,0,0.03);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
+
 .update-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
+
 .update-image {
   width: 100%;
   height: 300px;
   object-fit: cover;
   background: var(--bg-soft);
 }
+
 .update-content {
   padding: 2rem;
 }
+
 .update-date {
   font-size: 0.85rem;
   color: var(--color-gold);
@@ -1232,12 +1275,14 @@ select.form-control {
   margin-bottom: 1rem;
   display: block;
 }
+
 .update-text {
   font-size: 1.05rem;
   line-height: 1.6;
   color: var(--color-onyx);
   margin-bottom: 1.5rem;
 }
+
 .update-link {
   display: inline-flex;
   align-items: center;
@@ -1247,9 +1292,11 @@ select.form-control {
   text-decoration: none;
   transition: color var(--transition-fast);
 }
+
 .update-link:hover {
   color: var(--color-onyx);
 }
+
 .skeleton-card {
   min-height: 200px;
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -1258,9 +1305,15 @@ select.form-control {
   border-radius: 16px;
   margin-bottom: 2rem;
 }
+
 @keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* ============================================================
@@ -1271,6 +1324,7 @@ select.form-control {
   user-select: none;
   margin-bottom: 1.5rem;
 }
+
 .custom-select-trigger {
   display: flex;
   justify-content: space-between;
@@ -1286,13 +1340,16 @@ select.form-control {
   cursor: pointer;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
+
 .custom-select-trigger:hover {
   border-color: var(--color-gold);
 }
+
 .custom-select-wrapper.open .custom-select-trigger {
   border-color: var(--color-gold);
   box-shadow: 0 0 0 3px rgba(219, 154, 2, 0.15);
 }
+
 .custom-select-trigger .arrow {
   width: 8px;
   height: 8px;
@@ -1303,9 +1360,11 @@ select.form-control {
   transition: transform var(--transition-fast);
   pointer-events: none;
 }
+
 .custom-select-wrapper.open .custom-select-trigger .arrow {
   transform: rotate(-135deg);
 }
+
 .custom-options {
   position: absolute;
   top: calc(100% + 5px);
@@ -1323,11 +1382,13 @@ select.form-control {
   max-height: 250px;
   overflow-y: auto;
 }
+
 .custom-select-wrapper.open .custom-options {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
+
 .custom-option {
   display: block;
   padding: 0.85rem 1.25rem;
@@ -1336,10 +1397,12 @@ select.form-control {
   cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
+
 .custom-option:hover {
   background: rgba(219, 154, 2, 0.08);
   color: var(--color-gold);
 }
+
 .custom-option.selected {
   background: rgba(219, 154, 2, 0.12);
   color: var(--color-gold);
@@ -1352,10 +1415,11 @@ select.form-control {
 @media (max-width: 767px) {
   .contact-two-col {
     display: flex;
-    flex-direction: column-reverse; /* Form stacks above details on mobile */
+    flex-direction: column-reverse;
+    /* Form stacks above details on mobile */
     gap: 2.5rem;
   }
-  
+
   .section {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem;
