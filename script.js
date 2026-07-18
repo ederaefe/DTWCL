@@ -433,6 +433,68 @@ function initHeroVideoPlayback() {
     heroVideo.muted = true;
     heroVideo.setAttribute('muted', '');
     
+    // Check if the device is a mobile device (by user agent or viewport width)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+    const setSpeedAndFade = () => {
+      try {
+        heroVideo.playbackRate = 1.0;
+      } catch (err) {
+        console.warn("Playback rate adjustment delayed:", err);
+      }
+      heroVideo.classList.add('playing');
+    };
+
+    if (isMobile) {
+      // On mobile, use native hardware-accelerated looping to bypass timeline scrubbing
+      heroVideo.loop = true;
+      heroVideo.setAttribute('loop', '');
+      
+      heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
+      heroVideo.addEventListener('play', setSpeedAndFade);
+      heroVideo.addEventListener('canplay', setSpeedAndFade);
+
+      if (heroVideo.readyState >= 1) {
+        setSpeedAndFade();
+      }
+
+      heroVideo.play()
+        .then(setSpeedAndFade)
+        .catch(e => console.log("Mobile initial autoplay blocked, waiting for interaction", e));
+
+      const mobilePlayAttempt = () => {
+        if (!document.body.contains(heroVideo)) {
+          removeMobileInteractionListeners();
+          return;
+        }
+        if (heroVideo.paused) {
+          heroVideo.muted = true;
+          heroVideo.play()
+            .then(() => {
+              setSpeedAndFade();
+              removeMobileInteractionListeners();
+            })
+            .catch(err => console.log("Mobile interaction play blocked:", err));
+        }
+      };
+
+      const removeMobileInteractionListeners = () => {
+        document.removeEventListener('click', mobilePlayAttempt);
+        document.removeEventListener('scroll', mobilePlayAttempt);
+        document.removeEventListener('touchstart', mobilePlayAttempt);
+      };
+
+      setTimeout(() => {
+        if (heroVideo.paused) {
+          document.addEventListener('click', mobilePlayAttempt, { once: true });
+          document.addEventListener('scroll', mobilePlayAttempt, { once: true });
+          document.addEventListener('touchstart', mobilePlayAttempt, { once: true });
+        }
+      }, 500);
+
+      return; // Exit function for mobile, bypassing manual reverse loop logic
+    }
+
     // Disable native loop to let us manually trigger the reverse flow
     heroVideo.removeAttribute('loop');
     heroVideo.loop = false;
@@ -440,15 +502,6 @@ function initHeroVideoPlayback() {
     let isReversing = false;
     let reverseInterval = null;
     const speed = 1.0; // Play at native normal speed (no slow motion)
-
-    const setSpeedAndFade = () => {
-      try {
-        heroVideo.playbackRate = speed;
-      } catch (err) {
-        console.warn("Playback rate adjustment delayed:", err);
-      }
-      heroVideo.classList.add('playing');
-    };
 
     const startReversePlay = () => {
       if (isReversing) return;
