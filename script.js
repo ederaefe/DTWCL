@@ -9,9 +9,10 @@ let homeHtml = '';
 window.__SPA_ROUTER__ = true;
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Cache the default index.html main container content for instant home page return
+  // Cache the default index.html main container content for instant home page return ONLY if we are actually on the homepage
+  const pathPage = window.location.pathname.replace('.html', '').replace(/^\//, '');
   const appContent = document.getElementById('app-content');
-  if (appContent) {
+  if (appContent && (pathPage === '' || pathPage === 'index' || pathPage === 'home')) {
     homeHtml = appContent.innerHTML;
   }
 
@@ -131,6 +132,27 @@ async function navigate(page, pushStateEnabled = true, queryStr = '') {
   updateActiveLinks(pageName);
 
   if (pageName === 'home') {
+    if (!homeHtml) {
+      // If homeHtml was not cached (e.g. direct load of a subpage), fetch index.html
+      try {
+        const response = await fetch('index.html');
+        if (!response.ok) throw new Error("Could not load homepage");
+        const htmlText = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        const newMain = doc.querySelector('main');
+        if (newMain) {
+          homeHtml = newMain.innerHTML;
+        } else {
+          homeHtml = htmlText;
+        }
+      } catch (err) {
+        console.error("Error loading home:", err);
+        // fallback redirect to root if fetch fails
+        window.location.href = '/';
+        return;
+      }
+    }
     appContent.innerHTML = homeHtml;
     document.title = "DTW Consult — Prominent Educational Advisory & Career Consulting Firm";
     
