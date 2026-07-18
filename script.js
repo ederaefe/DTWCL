@@ -21,14 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Global Scroll Reveal
   initScrollEffects();
 
-  // Initial routing check (for direct links redirected via query params)
+  // Initial routing check (handles direct query-param loads or direct clean URL entries)
   const params = new URLSearchParams(window.location.search);
   const targetPage = params.get('page');
+  const pathPage = window.location.pathname.replace('.html', '').replace(/^\//, '');
+
   if (targetPage) {
     navigate(targetPage, false);
     // Replace URL cleanly without query parameters
     const cleanUrl = targetPage === 'home' || targetPage === 'index' ? '/' : `/${targetPage}`;
     history.replaceState({ page: targetPage }, '', cleanUrl);
+  } else if (pathPage && pathPage !== 'index' && pathPage !== 'home') {
+    // Direct load of a subpage via its clean URL
+    updateActiveLinks(pathPage);
+    if (pathPage === 'contact') {
+      initFormspreeIntake();
+    } else if (pathPage === 'updates') {
+      loadUpdates();
+    }
+    initScrollEffects();
   } else {
     // If it's a direct load on the homepage, initialize homepage-specific scripts
     initFAQAccordion();
@@ -532,6 +543,7 @@ async function loadUpdates() {
       
       let imgHtml = '';
       if (item.image) {
+        card.classList.add('has-image');
         const directImg = getDirectImageUrl(item.image);
         imgHtml = `<img src="${directImg}" alt="Update Image" class="update-image" loading="lazy">`;
       }
@@ -546,16 +558,64 @@ async function loadUpdates() {
         `;
       }
 
+      const isLongText = item.text.length > 280;
+      let textContentHtml = '';
+
+      if (isLongText) {
+        const excerpt = item.text.slice(0, 260) + '...';
+        const fullText = item.text.replace(/\n/g, '<br>');
+        textContentHtml = `
+          <div class="update-text-wrapper collapsed">
+            <p class="update-text excerpt">${excerpt}</p>
+            <p class="update-text full" style="display: none;">${fullText}</p>
+            <button class="toggle-text-btn">Read full text</button>
+          </div>
+        `;
+      } else {
+        textContentHtml = `<p class="update-text">${item.text.replace(/\n/g, '<br>')}</p>`;
+      }
+
       card.innerHTML = `
         ${imgHtml}
         <div class="update-content">
           <span class="update-date">${formatDate(item.date)}</span>
-          <p class="update-text">${item.text.replace(/\n/g, '<br>')}</p>
+          ${textContentHtml}
           ${linkHtml}
         </div>
       `;
       container.appendChild(card);
     });
+
+    // Add event listener to updates container for delegation
+    if (!container.dataset.listenerBound) {
+      container.addEventListener('click', (e) => {
+        // Toggle text read-more / show-less
+        if (e.target.classList.contains('toggle-text-btn')) {
+          const wrapper = e.target.closest('.update-text-wrapper');
+          const excerpt = wrapper.querySelector('.excerpt');
+          const full = wrapper.querySelector('.full');
+          const isCollapsed = wrapper.classList.contains('collapsed');
+          
+          if (isCollapsed) {
+            excerpt.style.display = 'none';
+            full.style.display = 'block';
+            e.target.textContent = 'Show less';
+            wrapper.classList.remove('collapsed');
+          } else {
+            excerpt.style.display = 'block';
+            full.style.display = 'none';
+            e.target.textContent = 'Read full text';
+            wrapper.classList.add('collapsed');
+          }
+        }
+        
+        // Lightbox modal zoom trigger
+        if (e.target.classList.contains('update-image')) {
+          openImageModal(e.target.src);
+        }
+      });
+      container.dataset.listenerBound = 'true';
+    }
 
     if (typeof initScrollEffects === 'function') {
       setTimeout(initScrollEffects, 100);
@@ -565,6 +625,39 @@ async function loadUpdates() {
     console.error(err);
     container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 4rem;">Unable to load updates at this time.</p>';
   }
+}
+
+// Image Zoom Modal Helpers
+function openImageModal(src) {
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-img');
+  if (!modal || !modalImg) return;
+  modalImg.src = src;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('image-modal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Global window listeners for closing the modal
+if (typeof window !== 'undefined' && !window.__modal_listeners_added__) {
+  document.addEventListener('click', (e) => {
+    if (e.target.id === 'image-modal' || e.target.classList.contains('close-modal')) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeImageModal();
+    }
+  });
+  window.__modal_listeners_added__ = true;
 }
 
 /**
