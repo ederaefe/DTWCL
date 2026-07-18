@@ -429,135 +429,24 @@ function initFormspreeIntake() {
 function initHeroVideoPlayback() {
   const heroVideo = document.querySelector('.hero-video-bg');
   if (heroVideo) {
-    // Explicitly enforce muted properties to satisfy strict autoplay engines
+    // Explicitly enforce muted and looping properties for smooth native playback
     heroVideo.muted = true;
     heroVideo.setAttribute('muted', '');
+    heroVideo.loop = true;
+    heroVideo.setAttribute('loop', '');
     
-    // Check if the device is a mobile device (by user agent or viewport width)
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    // Preload metadata to start loading quickly
+    heroVideo.setAttribute('preload', 'auto');
 
     const setSpeedAndFade = () => {
       try {
-        heroVideo.playbackRate = 1.0;
+        // Enforce smooth standard speed or playback rate
+        heroVideo.playbackRate = 1.0; 
       } catch (err) {
         console.warn("Playback rate adjustment delayed:", err);
       }
       heroVideo.classList.add('playing');
     };
-
-    if (isMobile) {
-      // On mobile, use native hardware-accelerated looping to bypass timeline scrubbing
-      heroVideo.loop = true;
-      heroVideo.setAttribute('loop', '');
-      
-      heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
-      heroVideo.addEventListener('play', setSpeedAndFade);
-      heroVideo.addEventListener('canplay', setSpeedAndFade);
-
-      if (heroVideo.readyState >= 1) {
-        setSpeedAndFade();
-      }
-
-      heroVideo.play()
-        .then(setSpeedAndFade)
-        .catch(e => console.log("Mobile initial autoplay blocked, waiting for interaction", e));
-
-      const mobilePlayAttempt = () => {
-        if (!document.body.contains(heroVideo)) {
-          removeMobileInteractionListeners();
-          return;
-        }
-        if (heroVideo.paused) {
-          heroVideo.muted = true;
-          heroVideo.play()
-            .then(() => {
-              setSpeedAndFade();
-              removeMobileInteractionListeners();
-            })
-            .catch(err => console.log("Mobile interaction play blocked:", err));
-        }
-      };
-
-      const removeMobileInteractionListeners = () => {
-        document.removeEventListener('click', mobilePlayAttempt);
-        document.removeEventListener('scroll', mobilePlayAttempt);
-        document.removeEventListener('touchstart', mobilePlayAttempt);
-      };
-
-      setTimeout(() => {
-        if (heroVideo.paused) {
-          document.addEventListener('click', mobilePlayAttempt, { once: true });
-          document.addEventListener('scroll', mobilePlayAttempt, { once: true });
-          document.addEventListener('touchstart', mobilePlayAttempt, { once: true });
-        }
-      }, 500);
-
-      return; // Exit function for mobile, bypassing manual reverse loop logic
-    }
-
-    // Disable native loop to let us manually trigger the reverse flow
-    heroVideo.removeAttribute('loop');
-    heroVideo.loop = false;
-
-    let isReversing = false;
-    let reverseInterval = null;
-    const speed = 1.0; // Play at native normal speed (no slow motion)
-
-    const startReversePlay = () => {
-      if (isReversing) return;
-      isReversing = true;
-      heroVideo.pause();
-
-      let lastTime = performance.now();
-
-      const stepReverse = (now) => {
-        // Exit if state changed, video is missing, or navigating away from DOM
-        if (!isReversing || !heroVideo || !document.body.contains(heroVideo)) {
-          cancelAnimationFrame(reverseInterval);
-          return;
-        }
-
-        const delta = (now - lastTime) / 1000; // time elapsed in seconds
-        lastTime = now;
-
-        // Decrement current time based on target speed (1.0)
-        let nextTime = heroVideo.currentTime - (delta * speed);
-
-        if (nextTime <= 0.05) {
-          // Reached the beginning, restart forward playback
-          isReversing = false;
-          heroVideo.currentTime = 0;
-          heroVideo.play()
-            .then(setSpeedAndFade)
-            .catch(err => console.log("Forward play resume blocked:", err));
-        } else {
-          heroVideo.currentTime = nextTime;
-          reverseInterval = requestAnimationFrame(stepReverse);
-        }
-      };
-
-      reverseInterval = requestAnimationFrame(stepReverse);
-    };
-
-    // Trigger reverse play before video completely freezes at the end boundary
-    const checkForwardEnd = () => {
-      if (!isReversing && heroVideo.duration) {
-        if (heroVideo.currentTime >= heroVideo.duration - 0.1) {
-          startReversePlay();
-        }
-      }
-    };
-
-    // Safety net: standard ended event in case timeupdate misses the boundary
-    heroVideo.addEventListener('ended', () => {
-      if (!isReversing) {
-        startReversePlay();
-      }
-    });
-
-    heroVideo.addEventListener('timeupdate', checkForwardEnd);
-    
-    setTimeout(() => heroVideo.classList.add('playing'), 100);
 
     heroVideo.addEventListener('loadedmetadata', setSpeedAndFade);
     heroVideo.addEventListener('play', setSpeedAndFade);
@@ -566,18 +455,17 @@ function initHeroVideoPlayback() {
     if (heroVideo.readyState >= 1) {
       setSpeedAndFade();
     }
-    
+
     heroVideo.play()
       .then(setSpeedAndFade)
       .catch(e => console.log("Initial autoplay blocked, waiting for interaction", e));
 
     const playAttempt = () => {
-      // Check if the video element is still in the document DOM before playing
       if (!document.body.contains(heroVideo)) {
         removeInteractionListeners();
         return;
       }
-      if (heroVideo.paused && !isReversing) {
+      if (heroVideo.paused) {
         heroVideo.muted = true;
         heroVideo.play()
           .then(() => {
